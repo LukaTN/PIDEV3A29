@@ -1,0 +1,116 @@
+@font-face {
+    font-family: 'SF Pro Display Regular';
+    src: url('sf-pro-display-cufonfonts/SFPRODISPLAYREGULAR.otf');
+}
+@font-face {
+    font-family: 'SF Pro Display Semibold Italic';
+    src: url('sf-pro-display-cufonfonts/SFPRODISPLAYSEMIBOLDITALIC.otf');
+}
+@font-face {
+    font-family: 'SF Pro Display Bold';
+    src: url('sf-pro-display-cufonfonts/SFPRODISPLAYBOLD.otf');
+}
+@font-face {
+    font-family: 'SF Pro Display Bold';
+    src: url('sf-pro-display-cufonfonts/SFPRODISPLAYMEDIUM.otf');
+}
+.sf-display-pro-Bold{
+    -fx-font-family: 'SF Pro Display Bold';
+}
+.sf-display-pro-Regular{
+    -fx-font-family: 'SF Pro Display Regular';
+}
+.sf-display-pro-Medium{
+    -fx-font-family: 'SF Pro Display Medium';
+}
+.sf-display-pro-Semibold-Italic{
+    -fx-font-family: 'SF Pro Display Semibold Italic';
+}
+.add-conference-Button{
+    -fx-background-radius: 30;
+    -fx-font-family:'SF Pro Display Regular';
+    -fx-background-color: #0078D4;
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
+
+.parent{
+    -fx-background-color:linear-gradient(to bottom, #140A1C, #2D153F) ;
+    -fx-background-radius: 23px;
+}
+.logout{
+    -fx-background-radius: 60px;
+}
+.profile{
+    -fx-background-radius: 60px;
+    -fx-background-color: white;
+}
+.profile-image{
+    -fx-background-radius: 50%;
+
+}
+
+.blank-scene{
+    -fx-background-color: #F4F4FB;
+    -fx-background-radius: 13px;
+    -fx-effect: innershadow(gaussian, rgba(0,0,0,0.5), 15, 0, 0, 0);
+
+}
+
+
+.deletebutton
+{
+    -fx-background-color:#e31b24;
+    -fx-text-fill: white;
+    -fx-background-radius:60;
+
+}
+
+.editbutton
+{
+    -fx-background-color:#0078d4;
+    -fx-text-fill: white;
+    -fx-background-radius:60;
+}
+
+.text-field
+{
+    -fx-border-radius: 74;
+    -fx-background-radius: 74;
+    -fx-background-color: #F5F8FF;
+    -fx-border-color: black;
+    -fx-text-fill: black;
+}
+.date-picker
+{
+    -fx-border-radius: 10;
+    -fx-background-radius: 5;
+}
+/*.text-area{*/
+/*    -fx-border-radius: 20;*/
+/*    -fx-background-color: #F5F8FF;*/
+/*    -fx-border-color: black;*/
+/*    -fx-text-fill: black;*/
+/*    -fx-background-radius: 20;*/
+/*}*/
+
+.top-buttons-selected{
+    -fx-background-color: #3A355A;
+    -fx-background-radius: 35;
+    
+    -fx-font-size: 14;
+}
+
+.top-buttons-not-selected{
+    -fx-background-radius: 35;
+    
+    -fx-font-size: 14;
+    -fx-background-color: #9795AB;
+    -fx-text-fill: white;
+}
+.button-next{
+    -fx-background-radius: 60;
+    -fx-background-color: #32679F;
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+}
