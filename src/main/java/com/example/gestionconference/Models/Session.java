@@ -1,65 +1,51 @@
 package com.example.gestionconference.Models;
 
 
-
+import java.util.List;
 
 public class Session {
     private int id;
-    private int heureDebut;
-    private int heureFin;
-    private String objectif;
-    private int nbPresence;
+    private String sessionName;
+    private int startTime;
+    private int endTime;
+    private int presenceNbr;
+    private List<Topic> topicList;
 
-    // Constructor for Session
+    private int idConference;
 
-    public Session() {
-    }
-    public Session(int id,int heureDebut, int heureFin, String objectif, int nbPresence) {
-        this.id=id;
-        this.heureDebut = heureDebut;
-        this.heureFin = heureFin;
-        this.objectif = objectif;
-        this.nbPresence = nbPresence;
-    }
-    public Session(int heureDebut, int heureFin, String objectif, int nbPresence) {
-        this.heureDebut = heureDebut;
-        this.heureFin = heureFin;
-        this.objectif = objectif;
-        this.nbPresence = nbPresence;
+
+    public Session(){}
+
+
+    public Session(String sessionName, int startTime, int endTime, int idConference) {
+        this.sessionName = sessionName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.idConference = idConference;
     }
 
+    public Session(String sessionName, int startTime, int endTime) {
+        this.sessionName = sessionName;
+        this.startTime = startTime;
+        this.endTime = endTime;
 
-
-    public int getHeureDebut() {
-        return heureDebut;
     }
 
-    public void setHeureDebut(int heureDebut) {
-        this.heureDebut = heureDebut;
+    public Session(String sessionName, int startTime, int endTime,int presenceNbr,List<Topic> topicList) {
+        this.sessionName = sessionName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.presenceNbr = presenceNbr;
+        this.topicList = topicList;
+
     }
 
-    public int getHeureFin() {
-        return heureFin;
+    public List<Topic> getTopicList() {
+        return topicList;
     }
 
-    public void setHeureFin(int heureFin) {
-        this.heureFin = heureFin;
-    }
-
-    public String getObjectif() {
-        return objectif;
-    }
-
-    public void setObjectif(String objectif) {
-        this.objectif = objectif;
-    }
-
-    public int getNbPresence() {
-        return nbPresence;
-    }
-
-    public void setNbPresence(int nbPresence) {
-        this.nbPresence = nbPresence;
+    public void setTopicList(List<Topic> topicList) {
+        this.topicList = topicList;
     }
 
     public int getId() {
@@ -70,13 +56,56 @@ public class Session {
         this.id = id;
     }
 
+    public String getSessionName() {
+        return sessionName;
+    }
+
+    public void setSessionName(String sessionName) {
+        this.sessionName = sessionName;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(int startTime) {
+        this.startTime = startTime;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(int endTime) {
+        this.endTime = endTime;
+    }
+
+    public int getPresenceNbr() {
+        return presenceNbr;
+    }
+
+    public void setPresenceNbr(int presenceNbr) {
+        this.presenceNbr = presenceNbr;
+    }
+
+
+    public int getIdConference() {
+        return idConference;
+    }
+
+    public void setIdConference(int idConference) {
+        this.idConference = idConference;
+    }
+
     @Override
     public String toString() {
         return "Session{" +
-                "heureDebut='" + heureDebut + '\'' +
-                ", heureFin='" + heureFin + '\'' +
-                ", objectif='" + objectif + '\'' +
-                ", nbPresence=" + nbPresence +
+                "sessionName='" + sessionName + '\'' +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                ", presenceNbr=" + presenceNbr +
+                ", idConference=" + idConference +
+                ", idConference=" +topicList +
                 '}';
     }
 }
