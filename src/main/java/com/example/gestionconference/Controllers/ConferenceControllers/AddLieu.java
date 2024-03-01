@@ -1,9 +1,9 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
 
 
-import com.example.gestionconference.Models.Lieu;
-import com.example.gestionconference.Services.LieuServices;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -50,10 +50,7 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onSelect(ActionEvent event) {
-
-
          selectedValue = LDGov.getValue();
-
     }
 
     @FXML
@@ -83,7 +80,7 @@ public class AddLieu implements Initializable  {
             clearFields();
 
             // Navigate back to the Conference.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Conference.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -98,12 +95,7 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onCancel(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Conference.fxml"));
-        Parent root = loader.load();
-        Scene scene = new Scene(root);
-        Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        stage.setScene(scene);
-        stage.show();
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
     }
 
     void clearFields() {
@@ -114,11 +106,11 @@ public class AddLieu implements Initializable  {
     }
 
     public void toPlaces(ActionEvent actionEvent) {
-        cc.jump("Confera","/com/example/gestionconference/Fxml/LieuList.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/LieuList.fxml",TFZone);
     }
 
     public void toNewConf(ActionEvent actionEvent) {
-        cc.jump("Confera","/com/example/gestionconference/Fxml/Conference.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
     }
 }
 

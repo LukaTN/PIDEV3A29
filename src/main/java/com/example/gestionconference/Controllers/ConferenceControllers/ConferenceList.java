@@ -1,8 +1,8 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
-import com.example.gestionconference.Models.Conference;
-import com.example.gestionconference.Services.ConferenceServices;
-import com.example.gestionconference.Services.LieuServices;
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class ConferenceList  {
     @FXML
     void toAddConf(ActionEvent event) {
         ControllerCommon cc = new ControllerCommon();
-        cc.jump("Confera","/com/example/gestionconference/Fxml/Conference.fxml",addConf);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",addConf);
     }
 
 
@@ -50,7 +50,7 @@ public class ConferenceList  {
                 int row = 0;
 
                 for (Conference conference : eventList) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/items.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/items.fxml"));
                     AnchorPane pane = loader.load();
                     Items items = loader.getController();
                     items.setData(conference);

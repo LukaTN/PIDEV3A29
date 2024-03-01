@@ -1,10 +1,10 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
-import com.example.gestionconference.Models.Conference;
-import com.example.gestionconference.Models.ConferenceType;
-import com.example.gestionconference.Models.Lieu;
-import com.example.gestionconference.Services.ConferenceServices;
-import com.example.gestionconference.Services.LieuServices;
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -72,7 +72,7 @@ public class AddConference  implements Initializable {
             LDLocations.getItems().addAll(locationNames);
         } catch (SQLException e) {
             // Handle SQL exception gracefully, like logging or showing an error message
-            System.out.println(e.getMessage());; // For debugging purposes, you might want to log the exception
+            System.out.println(e.getMessage()); // For debugging purposes, you might want to log the exception
         }
 
 
@@ -104,7 +104,7 @@ public class AddConference  implements Initializable {
     @FXML
     void onNewLocation(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/AddLieu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/AddLieu.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -115,7 +115,7 @@ public class AddConference  implements Initializable {
     @FXML
     void onViewList(ActionEvent event) throws IOException {
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceList.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/ConferenceList.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -153,6 +153,15 @@ public class AddConference  implements Initializable {
             LocalDate selectedDate = TFDate.getValue();
             if (selectedDate == null || selectedDate.isBefore(LocalDate.now())) {
                 cc.showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid date (not less than the current date)");
+                return;
+            }
+            String ldLocationsValue = LDLocations.getValue();
+            if (ldLocationsValue == null){
+                cc.showAlert(Alert.AlertType.ERROR,"Error","Plese select location or create one click on button New Location for more");
+              return;
+            }
+            if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
                 return;
             }
             java.sql.Date sqlDate = java.sql.Date.valueOf(TFDate.getValue());

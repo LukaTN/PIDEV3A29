@@ -1,22 +1,19 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
-import com.example.gestionconference.Models.Conference;
-import com.example.gestionconference.Models.ConferenceType;
-import com.example.gestionconference.Models.Lieu;
-import com.example.gestionconference.Services.ConferenceServices;
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
+
 import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+
 import javafx.scene.control.*;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -62,7 +59,7 @@ public class UpdateConference implements Initializable {
     @FXML
     void onViewList(ActionEvent event) throws IOException {
 
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceList.fxml", TFConfName);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/ConferenceList.fxml", TFConfName);
     }
 
     public void setSelectedConference(Conference selectedConference) {
@@ -109,6 +106,15 @@ public class UpdateConference implements Initializable {
             LocalDate selectedDate = TFDate.getValue();
             if (selectedDate == null || selectedDate.isBefore(LocalDate.now())) {
                 cc.showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid date (not less than the current date)");
+                return;
+            }
+            String ldLocationsValue = LDLocations.getValue();
+            if (ldLocationsValue == null){
+                cc.showAlert(Alert.AlertType.ERROR,"Error","Plese select location or create one click on button New Location for more");
+                return;
+            }
+            if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
                 return;
             }
 

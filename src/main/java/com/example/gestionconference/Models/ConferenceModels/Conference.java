@@ -1,7 +1,6 @@
-package com.example.gestionconference.Models;
+package com.example.gestionconference.Models.ConferenceModels;
 
 import java.sql.Date;
-import java.util.List;
 
 public class Conference {
     private int id;

@@ -1,4 +1,4 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
