@@ -1,9 +1,8 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.Sponsoring;
 import javafx.scene.control.TableView;
-import com.example.gestionconference.Models.Sponsor;
-import com.example.gestionconference.Services.SponsorAcceptedServices;
+import com.example.gestionconference.Models.Sponsoring.Sponsor;
 import javafx.fxml.FXML;
-import java.sql.SQLException;
+
 public class ViewAcceptedSponsors {
 
 

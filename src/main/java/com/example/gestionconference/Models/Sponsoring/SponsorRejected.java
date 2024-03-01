@@ -1,4 +1,4 @@
-package com.example.gestionconference.Models;
+package com.example.gestionconference.Models.Sponsoring;
 
 public class SponsorRejected extends Sponsor {
     private String cause;
@@ -7,8 +7,8 @@ public class SponsorRejected extends Sponsor {
         super();
     }
 
-    public SponsorRejected(int id, String nom, String email, int numtel, String cause) {
-        super(id, nom, email, numtel);
+    public SponsorRejected(int id, String nom, String email, String numtel, String cause) {
+        super(id, nom, email, numtel, "REJECTED");
         this.cause = cause;
     }
 
