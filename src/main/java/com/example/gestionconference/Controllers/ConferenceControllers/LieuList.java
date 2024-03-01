@@ -1,7 +1,7 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
-import com.example.gestionconference.Models.Lieu;
-import com.example.gestionconference.Services.LieuServices;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,15 +10,20 @@ import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+
+import static com.example.gestionconference.Services.ConferenceService.LieuServices.isNumeric;
 
 public class LieuList implements Initializable {
 
     LieuServices ss = new LieuServices();
     String selectedValue;
+
+
+    @FXML
+    private TextField searchField;
 
     @FXML
     private TableView<Lieu> lieuTableView;
@@ -61,7 +66,6 @@ public class LieuList implements Initializable {
     public void showLieu() throws SQLException {
 
         ObservableList<Lieu> lieux = ss.getAllLocationsObservable();
-        System.out.println(lieux);
         capacityCol.setCellValueFactory(new PropertyValueFactory<>("capacity"));
         placeCol.setCellValueFactory(new PropertyValueFactory<>("label"));
         zoneCol.setCellValueFactory(new PropertyValueFactory<>("place"));
@@ -80,7 +84,6 @@ public class LieuList implements Initializable {
             TFZone.setText(selectedLieu.getPlace());
         }
     }
-
     @FXML
     void updateLieu(ActionEvent event) {
         Lieu lieu = lieuTableView.getSelectionModel().getSelectedItem();
@@ -141,7 +144,46 @@ public class LieuList implements Initializable {
 
     public void newPlace(ActionEvent actionEvent) {
 
-        cc.jump("Add Place","/com/example/gestionconference/Fxml/AddLieu.fxml",TFZone);
+        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFxml/AddLieu.fxml",TFZone);
+    }
+
+    @FXML
+    void searchLieu(ActionEvent event) {
+        try {
+            String search = searchField.getText();
+            ObservableList<Lieu> filteredLocations;
+
+            if (!search.isEmpty()) {
+                filteredLocations = ss.getAllLocationsObservable(search);
+            } else {
+                // Check if the capacity field is not empty and is a valid integer
+                if (!TFCapacity.getText().isEmpty()) {
+                    if (isNumeric(TFCapacity.getText())) {
+                        filteredLocations = ss.getAllLocationsObservable(TFCapacity.getText());
+                    } else {
+                        cc.showAlert(Alert.AlertType.ERROR, "Error", "There are no locations with this capacity.");
+                        ss.getAllLocations();
+                        return;
+                    }
+                } else {
+                    // Both search and capacity are empty, show all locations
+                    filteredLocations = ss.getAllLocationsObservable(null);
+                }
+            }
+
+            if (filteredLocations.isEmpty()) {
+                cc.showAlert(Alert.AlertType.INFORMATION, "No Results", "No locations found matching the criteria.");
+                ss.getAllLocations();
+            } else {
+                cc.showAlert(Alert.AlertType.INFORMATION, "Search Results", "Search completed successfully.");
+            }
+
+            lieuTableView.setItems(filteredLocations);
+        } catch (SQLException e) {
+            cc.showAlert(Alert.AlertType.ERROR, "Error", "An error occurred during the search: " + e.getMessage());
+            System.out.println(e.getMessage());
+        }
+
     }
 
 }

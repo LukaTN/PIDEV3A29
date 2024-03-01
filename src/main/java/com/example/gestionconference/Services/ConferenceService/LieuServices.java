@@ -1,6 +1,6 @@
-package com.example.gestionconference.Services;
+package com.example.gestionconference.Services.ConferenceService;
 
-import com.example.gestionconference.Models.Lieu;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Util.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -25,8 +25,8 @@ public class LieuServices {
 
         stm.setString(1, lieu.getZone());
         stm.setString(2, lieu.getPlace());
-        stm.setInt(3,lieu.getCapacity());
-        stm.setString(4,lieu.getLabel());
+        stm.setInt(3, lieu.getCapacity());
+        stm.setString(4, lieu.getLabel());
 
 
         stm.executeUpdate();
@@ -37,8 +37,8 @@ public class LieuServices {
         PreparedStatement stm = cnx.prepareStatement(req);
         stm.setString(1, lieu.getZone());
         stm.setString(2, lieu.getPlace());
-        stm.setInt(3,lieu.getCapacity());
-        stm.setString(4,lieu.getLabel());
+        stm.setInt(3, lieu.getCapacity());
+        stm.setString(4, lieu.getLabel());
         stm.setInt(5, lieu.getId());
         stm.executeUpdate();
     }
@@ -55,7 +55,7 @@ public class LieuServices {
         Statement st = cnx.createStatement();
         ResultSet res = st.executeQuery(req1);
         List<Lieu> lieux = new ArrayList<>();
-        while (res.next()){
+        while (res.next()) {
             Lieu u = new Lieu();
             u.setId(res.getInt("id"));
             u.setCapacity(res.getInt("capacite"));
@@ -68,12 +68,13 @@ public class LieuServices {
 
         return lieux;
     }
+
     public ObservableList<Lieu> getAllLocationsObservable() throws SQLException {
         String req1 = "SELECT * FROM emplacement";
         Statement st = cnx.createStatement();
         ResultSet res = st.executeQuery(req1);
         ObservableList<Lieu> lieux = FXCollections.observableArrayList();
-        while (res.next()){
+        while (res.next()) {
             Lieu u = new Lieu();
             u.setId(res.getInt("id"));
             u.setCapacity(res.getInt("capacite"));
@@ -86,6 +87,7 @@ public class LieuServices {
 
         return lieux;
     }
+
     public Lieu getLieuByid(int id) throws SQLException {
         String req = "SELECT * FROM emplacement WHERE id = ?";
         PreparedStatement stm = cnx.prepareStatement(req);
@@ -101,6 +103,51 @@ public class LieuServices {
             return lieu;
         }
         return null;
+    }
+
+    public ObservableList<Lieu> getAllLocationsObservable(Object search) throws SQLException {
+        String req1;
+        PreparedStatement stm;
+
+        if (search != null) {
+            req1 = "SELECT * FROM emplacement WHERE ville LIKE ? OR gouvernourat LIKE ? OR capacite = ?";
+            stm = cnx.prepareStatement(req1);
+            stm.setString(1, "%" + search + "%");
+            stm.setString(2, "%" + search + "%");
+
+            // Check if search is a number before setting it as an integer parameter
+            if (search instanceof String && isNumeric((String) search)) {
+                stm.setInt(3, Integer.parseInt((String) search));
+            } else {
+                stm.setInt(3, 0); // A placeholder value, won't affect the query
+            }
+        } else {
+            req1 = "SELECT * FROM emplacement";
+            stm = cnx.prepareStatement(req1);
+        }
+
+        ResultSet res = stm.executeQuery();
+        ObservableList<Lieu> lieux = FXCollections.observableArrayList();
+        while (res.next()) {
+            Lieu u = new Lieu();
+            u.setId(res.getInt("id"));
+            u.setCapacity(res.getInt("capacite"));
+            u.setZone(res.getString("gouvernourat"));
+            u.setLabel(res.getString("label"));
+            u.setPlace(res.getString("ville"));
+            lieux.add(u);
+        }
+
+        return lieux;
+    }
+
+    public static boolean isNumeric(String str) {
+        try {
+            Integer.parseInt(str);
+            return true;
+        } catch (NumberFormatException e) {
+            return false;
+        }
     }
 }
 

@@ -1,4 +1,4 @@
-package com.example.gestionconference.Models;
+package com.example.gestionconference.Models.ConferenceModels;
 
 public class Lieu {
     private int id;

@@ -1,7 +1,7 @@
-package com.example.gestionconference.Services;
+package com.example.gestionconference.Services.ConferenceService;
 
-import com.example.gestionconference.Models.Conference;
-import com.example.gestionconference.Models.ConferenceType;
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Util.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -87,9 +87,67 @@ public class ConferenceServices {
             u.setConferenceLocation(res.getInt("emplacement"));
             conference.add(u);
         }
-
         return conference;
     }
+
+    public List<Conference> getConferenceByName(String name) throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE nom = ?";
+        PreparedStatement stm = cnx.prepareStatement(req1);
+        stm.setString(1, name);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()){
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
+    }
+    public List<Conference> getConferenceByType(String type) throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE typeConf = ?";
+        PreparedStatement stm = cnx.prepareStatement(req1);
+        stm.setString(1, type);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()){
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
+    }
+    public List<Conference> getConferenceByLocation(int location) throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE emplacement = ?";
+        PreparedStatement stm = cnx.prepareStatement(req1);
+        stm.setInt(1, location);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()){
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
+    }
+
 }
 
 

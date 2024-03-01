@@ -1,9 +1,9 @@
-package com.example.gestionconference.Controllers;
+package com.example.gestionconference.Controllers.ConferenceControllers;
 
-import com.example.gestionconference.Models.Conference;
-import com.example.gestionconference.Models.Lieu;
-import com.example.gestionconference.Services.ConferenceServices;
-import com.example.gestionconference.Services.LieuServices;
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +19,6 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
-import java.util.List;
 
 public class Items {
 
@@ -75,7 +74,7 @@ public class Items {
 
         try {
             // Load the UpdateConference scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UpdateConference.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/UpdateConference.fxml"));
             Parent root = loader.load();
 
             // Get the controller for the UpdateConference scene

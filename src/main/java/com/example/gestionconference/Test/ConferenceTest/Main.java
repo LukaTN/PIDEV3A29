@@ -1,4 +1,4 @@
-package com.example.gestionconference.Test;
+package com.example.gestionconference.Test.ConferenceTest;
 
 import java.sql.SQLException;
 
