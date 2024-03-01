@@ -11,7 +11,10 @@ target/
 *.iws
 *.iml
 *.ipr
-
+pom.xml
+jfoenix-9.0.10.jar
+mvnw
+mvnw.cmd
 ### Eclipse ###
 .apt_generated
 .classpath
