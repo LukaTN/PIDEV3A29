@@ -1,4 +1,4 @@
-package com.example.gestionconference.Models;
+package com.example.gestionconference.Models.Sponsoring;
 
 public class CauseOfRejection extends SponsorRejected {
     private CauseType sujetCause;
@@ -8,7 +8,7 @@ public class CauseOfRejection extends SponsorRejected {
         super();
     }
 
-    public CauseOfRejection(int id, String nom, String email, int numtel, String cause, CauseType sujetCause, String description) {
+    public CauseOfRejection(int id, String nom, String email, String numtel, String cause, CauseType sujetCause, String description) {
         super(id, nom, email, numtel, cause);
         this.sujetCause = sujetCause;
         this.description = description;

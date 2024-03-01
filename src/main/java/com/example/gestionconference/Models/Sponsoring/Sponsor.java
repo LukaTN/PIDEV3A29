@@ -1,31 +1,31 @@
-package com.example.gestionconference.Models;
+package com.example.gestionconference.Models.Sponsoring;
 
 public class Sponsor {
     private int id;
     private String nom;
     private String email;
-    private int numtel;
+    private String numtel;
 
-    private Status status;
+    private String status;
 
-    public Sponsor(){
+    public Sponsor() {
 
     }
 
-    public Sponsor(int id, String nom, String email, int numtel ,Status status) {
+    public Sponsor(int id, String nom, String email, String numtel, String status) {
         this.id = id;
         this.nom = nom;
         this.email = email;
         this.numtel = numtel;
         this.status = status;
     }
+    public Sponsor(int id, String nom, String email, String numtel) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.numtel = numtel;
 
-    public Sponsor(String nom, String email, int numtel) {
     }
-
-    public Sponsor(int id, String nom, String email, int numtel) {
-    }
-
 
     public int getId() {
         return id;
@@ -51,21 +51,19 @@ public class Sponsor {
         this.email = email;
     }
 
-
-
-    public int getNumtel() {
+    public String getNumtel() {
         return numtel;
     }
 
-    public void setNumtel(int numtel) {
+    public void setNumtel(String numtel) {
         this.numtel = numtel;
     }
 
-    public Status getStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(Status status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 
@@ -75,9 +73,8 @@ public class Sponsor {
                 "id=" + id +
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
-                ", numtel=" + numtel +
+                ", numtel='" + numtel + '\'' +
                 ", status=" + status +
                 '}';
     }
 }
-

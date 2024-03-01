@@ -2,7 +2,7 @@ package com.example.gestionconference.Services;
 
 
 
-import com.example.gestionconference.Models.SponsorRejected;
+import com.example.gestionconference.Models.Sponsoring.SponsorRejected;
 import com.example.gestionconference.Util.MyDB;
 
 

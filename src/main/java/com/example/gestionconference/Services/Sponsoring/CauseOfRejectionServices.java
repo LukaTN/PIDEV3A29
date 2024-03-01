@@ -1,7 +1,7 @@
 package com.example.gestionconference.Services;
 
 
-import com.example.gestionconference.Models.CauseOfRejection;
+import com.example.gestionconference.Models.Sponsoring.CauseOfRejection;
 import com.example.gestionconference.Util.MyDB;
 
 

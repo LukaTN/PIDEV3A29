@@ -1,8 +1,7 @@
-package com.example.gestionconference.Services;
+package com.example.gestionconference.Services.Sponsoring;
 
-import com.example.gestionconference.Models.Sponsor;
+import com.example.gestionconference.Models.Sponsoring.Sponsor;
 import com.example.gestionconference.Util.MyDB;
-
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -22,8 +21,8 @@ public class SponsorServices {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, sponsor.getNom());
         preparedStatement.setString(2, sponsor.getEmail());
-        preparedStatement.setInt(3, sponsor.getNumtel());
-        preparedStatement.setString(4, sponsor.getStatus().name());
+        preparedStatement.setString(3, sponsor.getNumtel() );
+        preparedStatement.setString(4, sponsor.getStatus());
         preparedStatement.executeUpdate();
     }
 
@@ -33,8 +32,8 @@ public class SponsorServices {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, sponsor.getNom());
         preparedStatement.setString(2, sponsor.getEmail());
-        preparedStatement.setInt(3, sponsor.getNumtel());
-        preparedStatement.setString(4, sponsor.getStatus().name());
+        preparedStatement.setInt(3, Integer.parseInt(sponsor.getNumtel()));
+        preparedStatement.setString(4, sponsor.getStatus());
         preparedStatement.setInt(4, sponsor.getId());
         preparedStatement.executeUpdate();
     }
@@ -58,7 +57,7 @@ public class SponsorServices {
             sponsor.setId(rs.getInt("id"));
             sponsor.setNom(rs.getString("nom"));
             sponsor.setEmail(rs.getString("email"));
-            sponsor.setNumtel(rs.getInt("numtel"));
+            sponsor.setNumtel(rs.getString("numtel"));
             sponsors.add(sponsor);
         }
         return sponsors;
@@ -74,7 +73,7 @@ public class SponsorServices {
         if (resultSet.next()) {
             String nom = resultSet.getString("nom");
             String email = resultSet.getString("email");
-            int numtel = resultSet.getInt("numtel");
+            String numtel = resultSet.getString("numtel");
 
             return new Sponsor(id, nom, email, numtel);
         } else {
