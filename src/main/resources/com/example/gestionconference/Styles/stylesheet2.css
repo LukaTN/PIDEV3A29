@@ -1,0 +1,48 @@
+
+.parent {
+    -fx-background-color: linear-gradient(to bottom,#140A1C,#2D153F) ;
+}
+.child{
+    -fx-background-color: #FFFFFF ;
+    -fx-background-radius: 23px;
+}
+.title{
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #464141;
+    font-family: 'SF Pro Display', sans-serif;
+
+}
+
+.child2{
+    -fx-background-color: linear-gradient(to bottom,#013766,#00AFFF) ;
+    -fx-background-radius: 23px;
+
+}
+.child3{
+    -fx-background-color: #FFFFFF ;
+    -fx-background-radius: 0px 23px 23 0;
+
+}
+.child4{
+    -fx-background-color: linear-gradient(to bottom,#00AFFF,#FFFFFF) ;
+    -fx-background-radius: 23px;
+}
+.login-button {
+    -fx-background-color: #013766;
+    -fx-font-size:15px;
+    -fx-border: none;
+    -fx-background-radius: 30px;
+    -fx-cursor: pointer;
+    -fx-font-weight: bold;
+}
+.form{
+    -fx-background-color: #D1EDFC;
+    -fx-background-radius: 23px;
+}
+.image{
+    -fx-alignment: center;
+
+
+}
+

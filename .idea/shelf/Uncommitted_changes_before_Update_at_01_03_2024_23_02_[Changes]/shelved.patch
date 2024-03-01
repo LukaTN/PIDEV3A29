@@ -1,0 +1,33 @@
+Index: src/main/java/com/example/gestionconference/Test/Main.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.gestionconference.Test;\r\n\r\nimport javafx.fxml.FXMLLoader;\r\nimport javafx.scene.Parent;\r\nimport javafx.scene.Scene;\r\nimport javafx.stage.Stage;\r\nimport javafx.application.Application;\r\nimport java.io.IOException;\r\n\r\n\r\npublic class Main extends Application {\r\n\r\n\r\n    @Override\r\n    public void start(Stage primaryStage) throws IOException {\r\n        FXMLLoader loader = new FXMLLoader(getClass().getResource(\"/com/example/gestionconference/Fxml/AddSession.fxml\"));\r\n        Parent root = loader.load();\r\n        Scene scene = new Scene(root);\r\n        primaryStage.setTitle(\"Confera\");\r\n        primaryStage.setScene(scene);\r\n        primaryStage.show();\r\n\r\n    }\r\n\r\n    public static void main(String[] args) {\r\n        launch(args);\r\n    }\r\n\r\n}
+===================================================================
+diff --git a/src/main/java/com/example/gestionconference/Test/Main.java b/src/main/java/com/example/gestionconference/Test/Main.java
+--- a/src/main/java/com/example/gestionconference/Test/Main.java	
++++ b/src/main/java/com/example/gestionconference/Test/Main.java	
+@@ -19,7 +19,6 @@
+         primaryStage.setTitle("Confera");
+         primaryStage.setScene(scene);
+         primaryStage.show();
+-
+     }
+ 
+     public static void main(String[] args) {
+Index: src/main/java/com/example/gestionconference/Services/SessionServices.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.gestionconference.Services;\r\n\r\nimport com.example.gestionconference.Models.Session;\r\nimport com.example.gestionconference.Util.MyDB;\r\nimport javafx.collections.FXCollections;\r\nimport javafx.collections.ObservableList;\r\n\r\nimport java.sql.*;\r\n\r\n\r\npublic class SessionServices {\r\n    private Connection cnx;\r\n\r\n    public SessionServices() {\r\n        cnx = MyDB.getInstance().getCnx();\r\n    }\r\n\r\n    public void addSession(Session session) throws SQLException {\r\n\r\n\r\n            String req = \"INSERT INTO `session` (`heureDebut`,`heureFin`,`objectif`,`nbPresence`) VALUES(?,?,?,?)\";\r\n            PreparedStatement stm = cnx.prepareStatement(req);\r\n\r\n            stm.setInt(1, session.getHeureDebut());\r\n            stm.setInt(2, session.getHeureFin());\r\n            stm.setString(3,session.getObjectif());\r\n            stm.setInt(4,session.getNbPresence());\r\n            stm.executeUpdate();\r\n        }\r\n    public void deleteSession(int id) throws SQLException {\r\n        String req = \"DELETE FROM `session` WHERE id = ?\";\r\n        PreparedStatement stm = cnx.prepareStatement(req);\r\n        stm.setInt(1, id);\r\n        stm.executeUpdate();\r\n    }\r\n\r\n    public void updateSession(Session session) throws SQLException {\r\n        String req = \"UPDATE `session` SET `heureDebut`=?,`heureFin`=?,`objectif`=?,`nbPresence`=? WHERE id = ?\";\r\n        PreparedStatement stm = cnx.prepareStatement(req);\r\n        stm.setInt(1, session.getHeureDebut());\r\n        stm.setInt(2, session.getHeureFin());\r\n        stm.setString(3,session.getObjectif());\r\n        stm.setInt(4,session.getNbPresence());\r\n        stm.executeUpdate();\r\n    }\r\n\r\n    public ObservableList<Session> getAllSessions() throws SQLException {\r\n        String req1 = \"SELECT * FROM session\";\r\n        Statement st = cnx.createStatement();\r\n        ResultSet res = st.executeQuery(req1);\r\n        ObservableList<Session> sessions = FXCollections.observableArrayList();\r\n        while (res.next()){\r\n            Session u = new Session();\r\n            u.setId(res.getInt(\"id\"));\r\n            u.setHeureDebut(res.getInt(\"heureDebut\"));\r\n            u.setHeureFin(res.getInt(\"heureFin\"));\r\n            u.setObjectif(res.getString(\"objectif\"));\r\n            u.setNbPresence(res.getInt(\"nbPresence\"));\r\n            sessions.add(u);\r\n        }\r\n        return sessions;\r\n    }\r\n}\r\n\r\n\r\n
+===================================================================
+diff --git a/src/main/java/com/example/gestionconference/Services/SessionServices.java b/src/main/java/com/example/gestionconference/Services/SessionServices.java
+--- a/src/main/java/com/example/gestionconference/Services/SessionServices.java	
++++ b/src/main/java/com/example/gestionconference/Services/SessionServices.java	
+@@ -8,7 +8,7 @@
+ import java.sql.*;
+ 
+ 
+-public class SessionServices {
++public class   SessionServices {
+     private Connection cnx;
+ 
+     public SessionServices() {
