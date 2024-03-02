@@ -4,18 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="add image">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/SessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/ConferenceModels/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/ConferenceModels/Conference.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/ConferenceService/ConferenceServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/ConferenceService/ConferenceServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/UpdateConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/UpdateConference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/UpdateConference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/UpdateConference.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/StyleSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/StyleSheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,6 +47,7 @@
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "preferences.pluginManager",
     "vue.rearranger.settings.migration": "true"
   }
@@ -116,7 +110,7 @@
       <workItem from="1708460737199" duration="4906000" />
       <workItem from="1709046293081" duration="1466000" />
       <workItem from="1709329684901" duration="806000" />
-      <workItem from="1709395055459" duration="4931000" />
+      <workItem from="1709395055459" duration="7493000" />
     </task>
     <servers />
   </component>
@@ -133,5 +127,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add image" />
+    <option name="LAST_COMMIT_MESSAGE" value="add image" />
   </component>
 </project>

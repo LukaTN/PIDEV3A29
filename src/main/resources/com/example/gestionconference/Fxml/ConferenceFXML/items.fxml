@@ -11,15 +11,7 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="event_aff" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="674.0" style="-fx-background-color: #ffff;" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.ConferenceControllers.Items">
-   <children>  
-      <AnchorPane layoutX="37.0" layoutY="50.0" prefHeight="222.0" prefWidth="198.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
-         <children>
-            <ImageView fx:id="confImage" fitHeight="222.0" fitWidth="198.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-         <opaqueInsets>
-            <Insets />
-         </opaqueInsets>
-      </AnchorPane>
+   <children>
       <HBox alignment="CENTER" layoutX="468.0" layoutY="291.0" prefHeight="87.0" prefWidth="198.0" spacing="15.0">
          <children>
             <Button fx:id="supprimerBT" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="79.0" styleClass="deletebutton" stylesheets="@../../Styles/StyleSheet.css" text="Delete">
@@ -120,5 +112,6 @@
             <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
          </padding>
       </HBox>
+      <ImageView fx:id="confImage" fitHeight="131.0" fitWidth="198.0" layoutX="40.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true" styleClass="widget" />
    </children>
 </AnchorPane>
