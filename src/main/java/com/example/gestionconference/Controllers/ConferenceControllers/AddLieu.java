@@ -80,7 +80,7 @@ public class AddLieu implements Initializable  {
             clearFields();
 
             // Navigate back to the Conference.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -95,7 +95,7 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onCancel(ActionEvent event) throws IOException {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
     }
 
     void clearFields() {
@@ -106,11 +106,11 @@ public class AddLieu implements Initializable  {
     }
 
     public void toPlaces(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/LieuList.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/LieuList.fxml",TFZone);
     }
 
     public void toNewConf(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
     }
 }
 

@@ -5,19 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_101.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/SessionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/SessionServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Test/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddLieu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddLieu.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/ConferenceList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/ConferenceList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/LieuList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/LieuList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/UpdateConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/UpdateConference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/ConferenceTest/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/ConferenceTest/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/AddLieu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/ConferenceList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/Lieu.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Lieu.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/LieuList.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/LieuList.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/MainPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/MainPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/UpdateConference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/UpdateConference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFxml/items.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +48,9 @@
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2cdJzHPdWfc8HK98x8gmvIsTY92" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -47,7 +60,7 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
+    "git-widget-placeholder": "GestionConference",
     "last_opened_file_path": "C:/Users/zayat/IdeaProjects/PIDEV3A29",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -57,11 +70,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.Main" />
+  <component name="RunManager" selected="Application.GestionConference">
+    <configuration name="GestionConference" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.ConferenceTest.MainFX" />
       <module name="PIDEV3A29" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\zayat\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml " />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\melek\.jdks\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.example.gestionconference.Test.*" />
@@ -72,9 +85,27 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="GestionSession" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.SessionMain.MainFX" />
+      <module name="PIDEV3A29" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\melek\.jdks\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gestionconference.Test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.GestionSession" />
+      <item itemvalue="Application.GestionConference" />
+    </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.GestionConference" />
       </list>
     </recent_temporary>
   </component>
