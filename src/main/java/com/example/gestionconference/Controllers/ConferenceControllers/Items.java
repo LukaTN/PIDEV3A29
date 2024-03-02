@@ -74,7 +74,7 @@ public class Items {
 
         try {
             // Load the UpdateConference scene
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/UpdateConference.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/UpdateConference.fxml"));
             Parent root = loader.load();
 
             // Get the controller for the UpdateConference scene

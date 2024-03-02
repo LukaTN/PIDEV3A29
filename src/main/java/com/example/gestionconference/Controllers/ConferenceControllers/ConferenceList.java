@@ -36,7 +36,7 @@ public class ConferenceList  {
     @FXML
     void toAddConf(ActionEvent event) {
         ControllerCommon cc = new ControllerCommon();
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",addConf);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",addConf);
     }
 
 
@@ -50,7 +50,7 @@ public class ConferenceList  {
                 int row = 0;
 
                 for (Conference conference : eventList) {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/items.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml"));
                     AnchorPane pane = loader.load();
                     Items items = loader.getController();
                     items.setData(conference);

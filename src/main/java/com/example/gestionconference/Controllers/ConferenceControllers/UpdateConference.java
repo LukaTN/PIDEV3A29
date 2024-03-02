@@ -59,7 +59,7 @@ public class UpdateConference implements Initializable {
     @FXML
     void onViewList(ActionEvent event) throws IOException {
 
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/ConferenceList.fxml", TFConfName);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml", TFConfName);
     }
 
     public void setSelectedConference(Conference selectedConference) {

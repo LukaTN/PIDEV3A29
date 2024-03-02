@@ -144,7 +144,7 @@ public class LieuList implements Initializable {
 
     public void newPlace(ActionEvent actionEvent) {
 
-        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFxml/AddLieu.fxml",TFZone);
+        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml",TFZone);
     }
 
     @FXML
