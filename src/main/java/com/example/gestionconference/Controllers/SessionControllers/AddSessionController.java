@@ -230,6 +230,7 @@ public class AddSessionController implements Initializable {
             errorMsg.setText("Add at least one Session");
         }
 
+        System.out.println("z,f,zf");
     }
 }
 
