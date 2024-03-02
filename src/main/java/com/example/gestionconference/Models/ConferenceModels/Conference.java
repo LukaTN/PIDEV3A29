@@ -9,6 +9,8 @@ public class Conference {
     private String subject;
     private double budget;
     private ConferenceType typeConf;
+
+    private String image;
     private int emplacement;
     private int organisateur;
 
@@ -25,7 +27,6 @@ public class Conference {
         this.typeConf = typeConf;
         this.emplacement = emplacement;
     }
-
     public Conference(String name, Date date, String subject, double budget, ConferenceType typeConf, int emplacement, int organisateur) {
 
         this.name = name;
@@ -117,6 +118,29 @@ public class Conference {
         this.emplacement = emplacement;
     }
 
+    public ConferenceType getTypeConf() {
+        return typeConf;
+    }
+
+    public void setTypeConf(ConferenceType typeConf) {
+        this.typeConf = typeConf;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public int getEmplacement() {
+        return emplacement;
+    }
+
+    public void setEmplacement(int emplacement) {
+        this.emplacement = emplacement;
+    }
 
     @Override
     public String toString() {

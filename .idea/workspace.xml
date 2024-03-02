@@ -5,9 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/AddConference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/ConferenceControllers/Items.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/AddSessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/SessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/SessionControllers/SessionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/ConferenceModels/Conference.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/ConferenceModels/Conference.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/ConferenceService/ConferenceServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/ConferenceService/ConferenceServices.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/ConferenceFXML/items.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/StyleSheet.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/StyleSheet.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +49,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "git-widget-placeholder": "GestionConference",
-    "last_opened_file_path": "C:/Users/zayat/IdeaProjects/PIDEV3A29",
+    "last_opened_file_path": "C:/Users/melek/Desktop/PI/GestionConference/src/main/resources/com/example/gestionconference/Images",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -50,6 +58,11 @@
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\melek\Desktop\PI\GestionConference\src\main\resources\com\example\gestionconference\Images" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.GestionConference">
     <configuration name="GestionConference" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.ConferenceTest.MainFX" />
@@ -103,6 +116,7 @@
       <workItem from="1708460737199" duration="4906000" />
       <workItem from="1709046293081" duration="1466000" />
       <workItem from="1709329684901" duration="806000" />
+      <workItem from="1709395055459" duration="4931000" />
     </task>
     <servers />
   </component>

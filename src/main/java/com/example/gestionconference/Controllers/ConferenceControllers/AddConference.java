@@ -13,9 +13,13 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.text.Text;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
@@ -46,6 +50,8 @@ public class AddConference  implements Initializable {
 
     @FXML
     private ComboBox<String> LDLocations;
+    @FXML
+    private ImageView imageConf;
 
     @FXML
     private TextField TFOrgName;
@@ -54,6 +60,8 @@ public class AddConference  implements Initializable {
     private Text finalResult;
     List<Lieu> lieux ;
     int lieuId;
+
+    private Conference conference = new Conference();
 
     ControllerCommon cc = new ControllerCommon();
 
@@ -166,23 +174,58 @@ public class AddConference  implements Initializable {
             }
             java.sql.Date sqlDate = java.sql.Date.valueOf(TFDate.getValue());
 
-            Conference s = new Conference(
-                    TFConfName.getText(),
-                    sqlDate,
-                    TASubject.getText(),
-                    Double.parseDouble(SpBudget.getText()),
-                    transform(),
-                    lieuId,
-                    1
-            );
+            conference.setName(TFConfName.getText());
+            conference.setDate(sqlDate);
+            conference.setSubject(TASubject.getText());
+            conference.setBudget(Double.parseDouble(SpBudget.getText()));
+            conference.setType(transform());
+            conference.setEmplacement(lieuId);
 
-            ss.addConference(s);
+//            Conference s = new Conference(
+//                    TFConfName.getText(),
+//                    sqlDate,
+//                    TASubject.getText(),
+//                    Double.parseDouble(SpBudget.getText()),
+//                    transform(),
+//                    lieuId,
+//                    1
+//            );
+
+            ss.addConference(conference);
             cc.showAlert(Alert.AlertType.INFORMATION, "Success", "Conference added successfully");
             clearFields();
         } catch (Exception e) {
             cc.showAlert(Alert.AlertType.ERROR, "Error", "Error adding conference: " + e.getMessage());
             System.out.println(e.getMessage());
         }
+    }
+
+    @FXML
+    void importImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        // Show the FileChooser dialog
+        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
+
+        if (selectedFile != null) {
+            try {
+                // Set the image path in the Conference object
+                String imagePath = selectedFile.getAbsolutePath();
+                imageConf.setImage(new Image(selectedFile.toURI().toString()));
+
+                // Set the image path in your Conference object (assuming imagePath is a property in the Conference class)
+                // Replace "yourConferenceObject" with the actual instance of your Conference object
+                conference.setImage(imagePath);
+
+            } catch (Exception e) {
+                // Handle exceptions gracefully, like logging or showing an error message
+                cc.showAlert(Alert.AlertType.ERROR, "Error", "Error processing image: " + e.getMessage());
+            }
+        }
+
     }
 
 
