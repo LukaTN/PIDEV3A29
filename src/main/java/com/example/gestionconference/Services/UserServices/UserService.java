@@ -1,10 +1,10 @@
 package com.example.gestionconference.Services.UserServices;
 
-import GestionUser.UserModels.User;
+import com.example.gestionconference.Models.UserModels.User;
+import com.example.gestionconference.Util.UserUtils.Mydatabase;
 
 import java.sql.*;
 import java.util.List;
-import GestionUser.UserUtils.Mydatabase;
 
 public class UserService implements iCrud<User> {
 

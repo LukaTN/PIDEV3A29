@@ -12,17 +12,26 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class AddLieu implements Initializable  {
+
+    @FXML
+    private WebView wbMap;
+    JSONParser parser = new JSONParser();
     LieuServices ss = new LieuServices();
     String selectedValue;
     @FXML
@@ -42,9 +51,13 @@ public class AddLieu implements Initializable  {
 
     ControllerCommon cc = new ControllerCommon();
 
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LDGov.getItems().addAll("Ariana","Gafsa","Kef","Kasserine","Beja","Jendouba","Medenine","Monastir","Nabeul","Sfax","SidiBouzid","Siliana","Sousse","Tataouine","Tozeur","Tunis","Zaghouan");
+//        List<String> states = StatesApi.getbyCountry("Tunisia");
+//        LDGov.getItems().addAll(states);
     }
 
 
@@ -111,6 +124,12 @@ public class AddLieu implements Initializable  {
 
     public void toNewConf(ActionEvent actionEvent) {
         cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
+    }
+
+    @FXML
+    void onMouseClickedGoverment(MouseEvent event) {
+        List<String> states = StatesApi.getbyCountry("Tunisia");
+        LDGov.getItems().addAll(states);
     }
 }
 

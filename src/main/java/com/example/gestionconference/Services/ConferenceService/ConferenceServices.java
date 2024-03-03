@@ -9,6 +9,8 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.util.List;
 
+import static com.example.gestionconference.Services.ConferenceService.LieuServices.isNumeric;
+
 public class ConferenceServices {
     private Connection cnx;
 
@@ -91,6 +93,84 @@ public class ConferenceServices {
             conference.add(u);
         }
         return conference;
+    }
+    public List<Conference> getAllConferenceObservable(Object search) throws SQLException {
+        String req1;
+        PreparedStatement stm;
+
+        if (search != null) {
+            req1 = "SELECT * FROM conference WHERE nom LIKE ? OR budget LIKE ? OR typeConf = ?";
+            stm = cnx.prepareStatement(req1);
+            stm.setString(1, "%" + search + "%");
+            stm.setString(2, "%" + search + "%");
+
+            // Check if search is a number before setting it as an integer parameter
+            if (search instanceof String && isNumeric((String) search)) {
+                stm.setInt(3, Integer.parseInt((String) search));
+            } else {
+                stm.setInt(3, 0); // A placeholder value, won't affect the query
+            }
+        } else {
+            req1 = "SELECT * FROM conference";
+            stm = cnx.prepareStatement(req1);
+        }
+
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()) {
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+
+        return conferences;
+    }
+
+    public List<Conference> getAllPrivateConferences() throws SQLException {
+        String req = "SELECT * FROM conference WHERE typeConf = 'PRIVATE'";
+        Statement st = cnx.createStatement();
+        ResultSet res = st.executeQuery(req);
+        ObservableList<Conference> privateConferences = FXCollections.observableArrayList();
+        while (res.next()) {
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            privateConferences.add(u);
+        }
+        return privateConferences;
+    }
+
+    public List<Conference> getAllNonPrivateConferences() throws SQLException {
+        String req = "SELECT * FROM conference WHERE typeConf != 'PRIVATE'";
+        Statement st = cnx.createStatement();
+        ResultSet res = st.executeQuery(req);
+        ObservableList<Conference> nonPrivateConferences = FXCollections.observableArrayList();
+        while (res.next()) {
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            nonPrivateConferences.add(u);
+        }
+        return nonPrivateConferences;
     }
 
 }

@@ -1,6 +1,10 @@
 package com.example.gestionconference.Models.ConferenceModels;
 
+import com.example.gestionconference.Models.SessionModels.Session;
+
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Conference {
     private int id;
@@ -13,6 +17,8 @@ public class Conference {
     private String image;
     private int emplacement;
     private int organisateur;
+
+    private List<Session> sessions;
 
 
     // Constructor for Conference
@@ -36,7 +42,7 @@ public class Conference {
         this.typeConf = typeConf;
         this.emplacement = emplacement;
         this.organisateur = organisateur;
-        //this.sessions= new ArrayList<Session>();
+
     }
 
     public Conference( String name, Date date, String subject, double budget, ConferenceType typeConf, int emplacement) {
@@ -48,6 +54,33 @@ public class Conference {
         this.typeConf = typeConf;
         this.emplacement = emplacement;
 
+    }
+    public Conference(int id, String name, Date date, String subject, double budget, ConferenceType typeConf,
+                      String image, int emplacement, int organisateur) {
+        this.id = id;
+        this.name = name;
+        this.date = date;
+        this.subject = subject;
+        this.budget = budget;
+        this.typeConf = typeConf;
+        this.image = image;
+        this.emplacement = emplacement;
+        this.organisateur = organisateur;
+    }
+
+    public Conference(int id, String name, Date date, String subject, double budget, ConferenceType typeConf,
+                      String image, int emplacement, int organisateur, List<Session> sessions) {
+        this(id, name, date, subject, budget, typeConf, image, emplacement, organisateur);
+        this.sessions = sessions;
+    }
+
+
+    public List<Session> getSessions() {
+        return sessions;
+    }
+
+    public void setSessions(List<Session> sessions) {
+        this.sessions = sessions;
     }
 
     public Conference(){

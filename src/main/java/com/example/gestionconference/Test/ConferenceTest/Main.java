@@ -1,5 +1,7 @@
 package com.example.gestionconference.Test.ConferenceTest;
 
+import com.example.gestionconference.Controllers.ConferenceControllers.StatesApi;
+
 import java.sql.SQLException;
 
 
@@ -12,7 +14,8 @@ public class Main {
 //        ConferenceServices cs = new ConferenceServices();
 //        cs.updateConference(c);
 
-
+        StatesApi ss = new StatesApi();
+        System.out.println(ss.getbyCountry("Tunisia"));
     }
 
 
