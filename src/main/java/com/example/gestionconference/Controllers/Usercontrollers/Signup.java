@@ -1,7 +1,9 @@
-package GestionUser.Usercontrollers;
+package com.example.gestionconference.Controllers.Usercontrollers;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
@@ -15,8 +17,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import GestionUser.UserModels.User;
-import GestionUser.UserServices.UserService;
+import com.example.gestionconference.Models.UserModels.User;
+import com.example.gestionconference.Services.UserServices.UserService;
 
 public class Signup {
 
@@ -49,11 +51,16 @@ public class Signup {
 
     @FXML
     private Button signup;
+
     @FXML
     private ImageView profileImageView;
 
     @FXML
     private ChoiceBox<String> role;
+
+    private byte[] profilePicture;
+
+
     private String[] roles = {"Organizer", "Participant"};
     @FXML
     void initialize() {
@@ -70,19 +77,31 @@ public class Signup {
 
     }
     @FXML
-    private File choosePicture() {
+    private void choosePicture() {
         FileChooser fileChooser = new FileChooser();
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
 
         File selectedFile = fileChooser.showOpenDialog(null);
 
         if (selectedFile != null) {
-            // Load the selected image and display it in the ImageView
-            Image image = new Image(selectedFile.toURI().toString());
-            profileImageView.setImage(image);
-            System.out.println(selectedFile.getAbsolutePath());
+
+            try {
+                // Convert the selected image to bytes
+                byte[] imageBytes = Files.readAllBytes(selectedFile.toPath());
+
+
+                // Load the selected image and display it in the ImageView
+                Image image = new Image(new ByteArrayInputStream(imageBytes));
+                profileImageView.setImage(image);
+                System.out.println(selectedFile.getAbsolutePath());
+                this.profilePicture = imageBytes;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
         }
-        return selectedFile;
+
     }
     @FXML
 
@@ -105,23 +124,22 @@ public class Signup {
                 if (us.getByUsername(username) != null)  {
                     showAlert(Alert.AlertType.ERROR, "Error", "Username already exists", "Please choose a different username.");
                 } else {
-                    User u = new User(username, nom, prenom, mail, pass, numtel, role);
+                    User u = new User(username, nom, prenom, mail, pass, numtel, role,this.profilePicture);
                     us.add(u);
                     showAlert(Alert.AlertType.INFORMATION, "Success", "Registration Successful", "You have successfully registered.");
                     try {
-                        us.add(u);
+
 
                         // Load the new FXML page
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/signin.fxml"));
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signin.fxml"));
                         Parent root = loader.load();
                         Scene scene = new Scene(root);
-
                         // Get the current stage
                         Stage stage = (Stage) signup.getScene().getWindow();
-
                         // Set the new scene
                         stage.setScene(scene);
-                    } catch (IOException | SQLException er) {
+
+                    } catch (IOException er) {
                         er.printStackTrace();
                     }
                 }

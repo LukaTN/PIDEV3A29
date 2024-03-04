@@ -1,4 +1,4 @@
-package GestionUser.Usercontrollers;
+package com.example.gestionconference.Controllers.Usercontrollers;
 
 
 
@@ -7,6 +7,7 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.example.gestionconference.Models.UserModels.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.fxml.FXML;
@@ -15,8 +16,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import GestionUser.UserModels.User;
-import GestionUser.UserServices.UserService;
+import com.example.gestionconference.Services.UserServices.UserService;
 
 public class Signin {
 
@@ -39,11 +39,22 @@ public class Signin {
     private Label signuplink;
 
     @FXML
+    private Label fermer;
+
+    public void close(Event event)
+    {
+        Stage stage = (Stage) fermer.getScene().getWindow();
+        stage.close();
+    }
+
+
+    @FXML
     void initialize() {
         assert login != null : "fx:id=\"login\" was not injected: check your FXML file 'signin.fxml'.";
         assert loginbutton != null : "fx:id=\"loginbutton\" was not injected: check your FXML file 'signin.fxml'.";
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'signin.fxml'.";
         assert signuplink != null : "fx:id=\"signuplink\" was not injected: check your FXML file 'signin.fxml'.";
+        assert fermer != null : "fx:id=\"fermer\" was not injected: check your FXML file 'signin.fxml'.";
 
     }
     @FXML
@@ -82,6 +93,24 @@ public class Signin {
                     alert.setHeaderText(null);
                     alert.setContentText("Login Successful");
                     alert.show();
+                    try {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/Accountmanagement.fxml"));
+                        Parent root = loader.load();
+                        Scene scene = new Scene(root);
+
+                        // Get the controller of the loaded FXML file
+                        Accountmanagement accountManagementController = loader.getController();
+
+                        // Pass user details to the Accountmanagement controller
+                        accountManagementController.initData(user);
+
+                        // Set the new scene
+                        Stage stage = (Stage) loginbutton.getScene().getWindow();
+                        stage.setScene(scene);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
                 }
             }
         }
@@ -93,7 +122,7 @@ public class Signin {
 
 
             // Load the new FXML page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signup.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 

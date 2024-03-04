@@ -1,4 +1,4 @@
-package GestionUser.UserModels;
+package com.example.gestionconference.Models.UserModels;
 
 public class User {
 
@@ -9,6 +9,20 @@ public class User {
     private String password;
     private int phone;
     private String role;
+    private byte[] profilePicture;
+
+
+
+    public byte[] getProfilePicture() {
+        return profilePicture;
+    }
+
+    public void setProfilePicture(byte[] profilePicture) {
+        this.profilePicture = profilePicture;
+    }
+
+
+
 
     //getters and setters
     public String getRole() {
@@ -77,7 +91,7 @@ public class User {
         return username;
     }
 
-    public User(String username, String nom, String prenom, String mail, String password, int phone, String role) {
+    public User(String username, String nom, String prenom, String mail, String password, int phone, String role, byte[] profilePicture) {
         this.username = username;
         this.nom = nom;
         this.prenom = prenom;
@@ -85,6 +99,7 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.role = role;
+        this.profilePicture = profilePicture;
     }
 
     @Override

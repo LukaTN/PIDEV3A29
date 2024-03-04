@@ -1,5 +1,4 @@
-package GestionUser.UserTest;
-
+package com.example.gestionconference.Test.UserMain;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,7 +17,7 @@ public class MainFX extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException {
         //generate
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/signup.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signin.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Confera");

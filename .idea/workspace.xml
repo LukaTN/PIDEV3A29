@@ -5,27 +5,47 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/jfoenix_9_0_101.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/SessionServices.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/SessionServices.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Test/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Test/Main.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/ChangePassword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/ChangePassword.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/UserModels/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/UserModels/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/MainFX.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signin.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signup.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Images/UserImages/Login User.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Images/UserImages/Login User.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/stylesheet2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/stylesheet2.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Models/Conference.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Models/Conference.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/ChangePassword.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/UserModels/User.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
@@ -42,22 +62,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/zayat/IdeaProjects/PIDEV3A29",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;gestion__user&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/zayat/openjfx-21.0.2_windows-x64_bin-sdk/javafx-sdk-21.0.2/lib&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
-  <component name="RunManager">
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\resources\com\example\gestionconference\Fxml\UserFXML" />
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\resources\com\example\gestionconference\Styles" />
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\resources\com\example\gestionconference\Images" />
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Util" />
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\resources" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Mainfx">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.Main" />
       <module name="PIDEV3A29" />
@@ -72,8 +108,42 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Mainfx" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.UserMain.MainFX" />
+      <module name="PIDEV3A29" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\zayat\Downloads\openjfx-21.0.2_windows-x64_bin-sdk\javafx-sdk-21.0.2\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="GestionUser.UserTest.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="com.example.gestionconference.Test.UserMain.MainFX" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.gestionconference.Test.UserMain.MainFX" />
+      <module name="PIDEV3A29" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.gestionconference.Test.UserMain.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.com.example.gestionconference.Test.UserMain.MainFX" />
+      <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Mainfx" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Mainfx" />
+        <item itemvalue="Application.com.example.gestionconference.Test.UserMain.MainFX" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -92,6 +162,10 @@
       <workItem from="1708460737199" duration="4906000" />
       <workItem from="1709046293081" duration="1466000" />
       <workItem from="1709329684901" duration="806000" />
+      <workItem from="1709330512685" duration="2988000" />
+      <workItem from="1709466685907" duration="17285000" />
+      <workItem from="1709556743405" duration="6491000" />
+      <workItem from="1709565224927" duration="17718000" />
     </task>
     <servers />
   </component>
@@ -108,5 +182,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java</url>
+          <line>124</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
