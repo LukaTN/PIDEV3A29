@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/ChangePassword.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/ChangePassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Accountmanagement.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Controllers/Usercontrollers/Signup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/UserModels/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Models/UserModels/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Services/UserServices/iCrud.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/MainFX.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/gestionconference/Test/UserMain/MainFX.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signin.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signin.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signup.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/signup.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Images/UserImages/Login User.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Images/UserImages/Login User.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/stylesheet2.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Styles/stylesheet2.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Models/Conference.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/gestionconference/Models/Conference.class" afterDir="false" />
-    </list>
+    <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -165,7 +147,7 @@
       <workItem from="1709330512685" duration="2988000" />
       <workItem from="1709466685907" duration="17285000" />
       <workItem from="1709556743405" duration="6491000" />
-      <workItem from="1709565224927" duration="17718000" />
+      <workItem from="1709565224927" duration="18199000" />
     </task>
     <servers />
   </component>
