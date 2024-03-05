@@ -101,14 +101,16 @@ public class ConferenceServices {
         if (search != null) {
             req1 = "SELECT * FROM conference WHERE nom LIKE ? OR budget LIKE ? OR typeConf = ?";
             stm = cnx.prepareStatement(req1);
-            stm.setString(1, "%" + search + "%");
-            stm.setString(2, "%" + search + "%");
+            stm.setString(1,  search + "%");
+            stm.setString(2,   search + "%");
 
             // Check if search is a number before setting it as an integer parameter
-            if (search instanceof String && isNumeric((String) search)) {
-                stm.setInt(3, Integer.parseInt((String) search));
+            if (search instanceof ConferenceType) {
+                ConferenceType conferenceType = (ConferenceType) search;
+                stm.setString(3, conferenceType.name());
             } else {
-                stm.setInt(3, 0); // A placeholder value, won't affect the query
+                // Handle other cases or provide a default value
+                stm.setString(3, "%" + search + "%");
             }
         } else {
             req1 = "SELECT * FROM conference";
@@ -133,11 +135,13 @@ public class ConferenceServices {
         return conferences;
     }
 
-    public List<Conference> getAllPrivateConferences() throws SQLException {
-        String req = "SELECT * FROM conference WHERE typeConf = 'PRIVATE'";
-        Statement st = cnx.createStatement();
-        ResultSet res = st.executeQuery(req);
-        ObservableList<Conference> privateConferences = FXCollections.observableArrayList();
+
+    public List<Conference> getPublicorPrivate(ConferenceType type) throws SQLException {
+        String req = "SELECT * FROM conference WHERE typeConf = ?";
+        PreparedStatement stm = cnx.prepareStatement(req);
+        stm.setString(1, type.toString());
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
         while (res.next()) {
             Conference u = new Conference();
             u.setId(res.getInt("id"));
@@ -148,29 +152,23 @@ public class ConferenceServices {
             u.setType(transform(res.getString("typeConf")));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
-            privateConferences.add(u);
+            conferences.add(u);
         }
-        return privateConferences;
+        return conferences;
     }
 
-    public List<Conference> getAllNonPrivateConferences() throws SQLException {
-        String req = "SELECT * FROM conference WHERE typeConf != 'PRIVATE'";
-        Statement st = cnx.createStatement();
-        ResultSet res = st.executeQuery(req);
-        ObservableList<Conference> nonPrivateConferences = FXCollections.observableArrayList();
+    public int conferenceByName(String name) throws SQLException {
+        String req = "SELECT id FROM conference WHERE nom = ?";
+        PreparedStatement stm = cnx.prepareStatement(req);
+        stm.setString(1, name);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        int id = 0;
         while (res.next()) {
-            Conference u = new Conference();
-            u.setId(res.getInt("id"));
-            u.setName(res.getString("nom"));
-            u.setDate(res.getDate("date"));
-            u.setSubject(res.getString("sujet"));
-            u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
-            u.setImage(res.getString("image"));
-            u.setConferenceLocation(res.getInt("emplacement"));
-            nonPrivateConferences.add(u);
+            id = res.getInt("id");
+
         }
-        return nonPrivateConferences;
+        return id;
     }
 
 }

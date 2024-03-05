@@ -153,7 +153,7 @@
                         </ImageView>
                      </children>
                   </HBox>
-                  <CheckBox fx:id="confType" layoutX="258.0" layoutY="129.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="63.0" text="Private" />
+                  <CheckBox fx:id="confType" onAction="#toConfType" layoutX="258.0" layoutY="129.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="63.0" text="Private" />
                </children></AnchorPane>
             </children>
         </AnchorPane>

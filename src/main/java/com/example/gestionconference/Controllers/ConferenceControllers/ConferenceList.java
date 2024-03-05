@@ -1,6 +1,7 @@
 package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
@@ -35,7 +36,6 @@ public class ConferenceList {
     @FXML
     public void initialize() {
         diplayConferences();
-
         searchField.textProperty().addListener((observable, oldValue, newValue) -> {
             try {
                 searchConference(newValue);
@@ -86,6 +86,25 @@ public class ConferenceList {
         //String text = searchField.getText();
         List<Conference> filteredConferences = ss.getAllConferenceObservable(o);
 
+
+        setData(filteredConferences);
+
+    }
+
+    public void toConfType(ActionEvent actionEvent) {
+        if (confType.isSelected()) {
+            try {
+                List<Conference> filteredConferences = ss.getPublicorPrivate(ConferenceType.PRIVATE);
+                setData(filteredConferences);
+            } catch (Exception e) {
+                System.out.println(e.getMessage());
+
+            }
+        }else {
+            diplayConferences();
+        }
+    }
+    public void setData(List<Conference> filteredConferences) {
         try {
 
             event_gridPane.getChildren().clear();
@@ -107,10 +126,10 @@ public class ConferenceList {
             }
         } catch (SQLException e) {
             System.out.println(e.getMessage());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
-
     }
-
 }
 
 

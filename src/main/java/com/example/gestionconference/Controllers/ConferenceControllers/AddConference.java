@@ -1,5 +1,6 @@
 package com.example.gestionconference.Controllers.ConferenceControllers;
 
+import com.example.gestionconference.Controllers.SessionControllers.AddSessionController;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
@@ -62,6 +63,7 @@ public class AddConference  implements Initializable {
     int lieuId;
 
     private Conference conference = new Conference();
+
 
     ControllerCommon cc = new ControllerCommon();
 
@@ -141,7 +143,6 @@ public class AddConference  implements Initializable {
                 cc.showAlert(Alert.AlertType.ERROR, "Missing Information", "Please fill in all fields.");
                 return;
             }
-
             try {
                 int capacity = Integer.parseInt(SpBudget.getText());
                 if (capacity <= 0) {
@@ -192,12 +193,32 @@ public class AddConference  implements Initializable {
 //            );
 
             ss.addConference(conference);
+            int addedConferenceId = ss.conferenceByName(TFConfName.getText());
             cc.showAlert(Alert.AlertType.INFORMATION, "Success", "Conference added successfully");
             clearFields();
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/SessionFXML/AddSession.fxml"));
+            Parent root = loader.load();
+            AddSessionController addSessionController = loader.getController();
+            //int addedConferenceId = ss.conferenceByName(TFConfName.getText());
+            System.out.println("+*******************************");
+            System.out.println(addedConferenceId);
+            addSessionController.setConferenceId(addedConferenceId);
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("confera");
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) finalResult.getScene().getWindow();
+            currentStage.close();
         } catch (Exception e) {
             cc.showAlert(Alert.AlertType.ERROR, "Error", "Error adding conference: " + e.getMessage());
             System.out.println(e.getMessage());
         }
+    }
+
+    public int getAddedConferenceId() {
+        System.out.println(conference.getId());
+        return conference.getId(); // Assuming the ID property is named "id" in the Conference class
     }
 
     @FXML

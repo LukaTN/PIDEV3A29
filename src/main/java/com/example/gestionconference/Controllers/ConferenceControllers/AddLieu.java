@@ -35,6 +35,9 @@ public class AddLieu implements Initializable  {
     LieuServices ss = new LieuServices();
     String selectedValue;
     @FXML
+    private TextField confCountry;
+
+    @FXML
     private ComboBox<String> LDGov;
 
     @FXML
@@ -128,8 +131,18 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onMouseClickedGoverment(MouseEvent event) {
-        List<String> states = StatesApi.getbyCountry("Tunisia");
-        LDGov.getItems().addAll(states);
+        String country = confCountry.getText();
+        try {
+            List<String> states = StatesApi.getbyCountry(country);
+            LDGov.getItems().clear();
+            LDGov.getItems().addAll(states);
+            if (LDGov.getItems().isEmpty()) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name or enter country in english.");
+            }
+        }catch (Exception e){
+            cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name.");
+        }
+
     }
 }
 
