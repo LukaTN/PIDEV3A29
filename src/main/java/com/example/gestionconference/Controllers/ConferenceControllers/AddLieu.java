@@ -3,6 +3,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,15 +13,15 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import javafx.scene.control.ComboBox;
-import javafx.scene.web.WebEngine;
-import javafx.scene.web.WebView;
-import javafx.stage.Stage;
-import org.json.simple.parser.JSONParser;
 
+import javafx.stage.Stage;
+
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.List;
@@ -29,9 +30,7 @@ import java.util.ResourceBundle;
 
 public class AddLieu implements Initializable  {
 
-    @FXML
-    private WebView wbMap;
-    JSONParser parser = new JSONParser();
+
     LieuServices ss = new LieuServices();
     String selectedValue;
     @FXML
@@ -51,6 +50,9 @@ public class AddLieu implements Initializable  {
 
     @FXML
     private Text finalResp;
+
+    private User user;
+
 
     ControllerCommon cc = new ControllerCommon();
 
@@ -143,6 +145,10 @@ public class AddLieu implements Initializable  {
             cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name.");
         }
 
+    }
+
+    public void initData(User user) {
+        this.user=user;
     }
 }
 

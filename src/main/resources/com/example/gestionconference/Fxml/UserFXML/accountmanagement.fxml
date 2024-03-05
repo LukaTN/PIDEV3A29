@@ -106,11 +106,21 @@
                   </Text>
                </children>
             </VBox>
+            <ImageView fx:id="goBack" fitHeight="21.0" fitWidth="21.0" layoutX="20.0" layoutY="22.0" onMouseClicked="#goback" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../Images/Vector_3.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
       <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../Images/UserImages/logo1.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="logoutt" fitHeight="31.0" fitWidth="21.0" layoutX="35.0" layoutY="528.0" onMouseClicked="#logout" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../Images/logout-1--arrow-exit-frame-leave-logout-rectangle-right.png" />
          </image>
       </ImageView>
    </children>

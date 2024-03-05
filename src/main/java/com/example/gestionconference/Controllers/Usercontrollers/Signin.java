@@ -7,6 +7,8 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+import com.example.gestionconference.Controllers.ConferenceControllers.AddConference;
+import com.example.gestionconference.Controllers.ConferenceControllers.ControllerCommon;
 import com.example.gestionconference.Models.UserModels.User;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
@@ -44,6 +46,8 @@ public class Signin {
     @FXML
     private Label forgotpass;
 
+    ControllerCommon cc = new ControllerCommon();
+
 
 
     public void close(Event event)
@@ -61,7 +65,8 @@ public class Signin {
         assert signuplink != null : "fx:id=\"signuplink\" was not injected: check your FXML file 'signin.fxml'.";
         assert fermer != null : "fx:id=\"fermer\" was not injected: check your FXML file 'signin.fxml'.";
         assert forgotpass != null : "fx:id=\"forgotpass\" was not injected: check your FXML file 'signin.fxml'.";
-
+        login.setText("melek");
+        password.setText("password");
 
     }
     @FXML
@@ -100,23 +105,28 @@ public class Signin {
                     alert.setHeaderText(null);
                     alert.setContentText("Login Successful");
                     alert.show();
-                    try {
-                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/Accountmanagement.fxml"));
-                        Parent root = loader.load();
-                        Scene scene = new Scene(root);
+                    if( user.getRole().equals("Organizer")){
+                        try {
+                            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
+                            Parent root = loader.load();
+                            Scene scene = new Scene(root);
 
-                        // Get the controller of the loaded FXML file
-                        Accountmanagement accountManagementController = loader.getController();
+                            // Get the controller of the loaded FXML file
+                            AddConference addconference = loader.getController();
 
-                        // Pass user details to the Accountmanagement controller
-                        accountManagementController.initData(user);
+                            // Pass user details to the Accountmanagement controller
+                            addconference.initData(user);
 
-                        // Set the new scene
-                        Stage stage = (Stage) loginbutton.getScene().getWindow();
-                        stage.setScene(scene);
-                    } catch (IOException e) {
-                        e.printStackTrace();
+                            // Set the new scene
+                            Stage stage = (Stage) loginbutton.getScene().getWindow();
+                            stage.setScene(scene);
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
+                    }else {
+
                     }
+
 
                 }
             }
