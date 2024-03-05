@@ -5,7 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="1f9ffd20-44b9-4723-98f9-ee63ebea3938" name="Changes" comment="Integration 1.0 gestion session + gestion conference">
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/gestionconference/Fxml/UserFXML/accountmanagement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -172,7 +173,7 @@
       <workItem from="1709642625324" duration="3197000" />
       <workItem from="1709649841154" duration="751000" />
       <workItem from="1709652795969" duration="953000" />
-      <workItem from="1709658026481" duration="772000" />
+      <workItem from="1709658026481" duration="966000" />
     </task>
     <task id="LOCAL-00001" summary="Integration 1.0 gestion session + gestion conference">
       <option name="closed" value="true" />
