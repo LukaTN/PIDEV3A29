@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.Sponsoring;
 import javafx.scene.control.TableView;
 import com.example.gestionconference.Models.Sponsoring.Sponsor;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 
 public class ViewAcceptedSponsors {
 
@@ -20,5 +21,8 @@ public class ViewAcceptedSponsors {
 
         // Populate the TableView with the retrieved sponsor data
         // acceptedSponsorsTable.setItems(FXCollections.observableList(acceptedSponsors));
+    }
+
+    public void rowClicked(MouseEvent mouseEvent) {
     }
 }
