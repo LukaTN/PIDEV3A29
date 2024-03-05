@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.net.URL?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
@@ -19,17 +20,17 @@
          <children>
             <AnchorPane layoutX="325.0" prefHeight="367.0" prefWidth="325.0" styleClass="child3">
                <children>
-                  <ImageView fitHeight="67.0" fitWidth="131.0" layoutX="97.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="25.0" fitWidth="100.0" layoutX="130.0" layoutY="35.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../Images/UserImages/Login User.png" />
+                        <Image url="@../../Images/UserImages/Login%20User.png" />
                      </image>
                   </ImageView>
-                  <Button fx:id="loginbutton" alignment="CENTER" layoutX="128.0" layoutY="265.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="31.0" prefWidth="67.0" styleClass="login-button" stylesheets="@../../Styles/stylesheet2.css" text="Login" textFill="WHITE">
+                  <Button fx:id="loginbutton" alignment="CENTER" layoutX="128.0" layoutY="265.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="31.0" prefWidth="67.0" styleClass="login-button" stylesheets="@/com/example/gestionconference/Styles/stylesheet2.css" text="Login" textFill="WHITE">
                      <font>
                         <Font name="Bell MT" size="12.0" />
                      </font>
                   </Button>
-                  <VBox layoutX="71.0" layoutY="118.0" prefHeight="120.0" prefWidth="182.0" spacing="23.0">
+                  <VBox layoutX="71.0" layoutY="118.0" prefHeight="97.0" prefWidth="182.0" spacing="23.0">
                      <children>
                         <TextField fx:id="login" prefHeight="35.0" prefWidth="200.0" promptText="Login" styleClass="form" stylesheets="@../../Styles/stylesheet2.css">
                            <font>
@@ -48,7 +49,16 @@
                         <Font name="Arial" size="12.0" />
                      </font>
                   </Label>
+                  <Label fx:id="forgotpass" layoutX="115.0" layoutY="223.0" onMouseClicked="#goToReset" text="forgot password?" underline="true">
+                     <font>
+                        <Font name="Arial" size="12.0" />
+                     </font>
+                  </Label>
                </children>
+               <stylesheets>
+                  <URL value="@../../Styles/stylesheet2.css" />
+                  <URL value="@../../Styles/stylesheet2.css" />
+               </stylesheets>
             </AnchorPane>
             <ImageView fitHeight="292.0" fitWidth="302.0" layoutX="14.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -73,5 +83,10 @@
             <Image url="@../../Images/UserImages/Calque_2.png" />
          </image>
       </ImageView>
+      <Label fx:id="fermer" layoutX="872.0" onMouseClicked="#close" prefHeight="18.0" prefWidth="7.0" text="x" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="18.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -1,3 +1,4 @@
+/*
 package com.example.gestionconference.Controllers.RessourceControllers.LogisticController;
 
 import com.example.gestionconference.Models.LogisticModels.Logistic;
@@ -100,4 +101,4 @@ public class LogisticManagment {
 
         });
     }
-}
+}*/

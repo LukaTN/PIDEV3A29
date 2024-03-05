@@ -1,3 +1,4 @@
+/*
 package com.example.gestionconference.Controllers.RessourceControllers.FinancialIncomesController;
 
 import com.example.gestionconference.Models.FinancialIncomesModels.FinancialIncomes;
@@ -40,7 +41,9 @@ public class FinancialIncomesController implements Initializable {
 
     @FXML
     private TextField proofTF;
-    /*private FinancialIncomesServices fs = new FinancialIncomesServices();*/
+    */
+/*private FinancialIncomesServices fs = new FinancialIncomesServices();*//*
+
 
 
     ObservableList<FinancialIncomes> initialData(){
@@ -120,3 +123,4 @@ public class FinancialIncomesController implements Initializable {
     }
 
 }
+*/
