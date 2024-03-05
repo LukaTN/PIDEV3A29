@@ -8,9 +8,13 @@ target/
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/workspace.xml
+.
 *.iws
 *.iml
 *.ipr
+src/main/java/com/example/gestionconference/Controllers/SessionControllers/*
+src/main/java/com/example/gestionconference/Controllers/Usercontrollers/*
 
 ### Eclipse ###
 .apt_generated

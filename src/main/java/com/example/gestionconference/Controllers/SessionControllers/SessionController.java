@@ -484,7 +484,7 @@ public class SessionController  implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
+        System.out.println("uznjf,");
     }
-
 
 }

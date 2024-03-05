@@ -2,16 +2,20 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import static com.example.gestionconference.Services.ConferenceService.LieuServices.isNumeric;
@@ -55,7 +59,12 @@ public class LieuList implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LDGov.getItems().addAll("Ariana","Gafsa","Kef","Kasserine","Beja","Jendouba","Medenine","Monastir","Nabeul","Sfax","SidiBouzid","Siliana","Sousse","Tataouine","Tozeur","Tunis","Zaghouan");
+        searchField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observableValue, String oldValue, String newvalue) {
+                searchLieu(newvalue);
+            }
+        });
         try {
             showLieu();
         } catch (SQLException e) {
@@ -144,38 +153,18 @@ public class LieuList implements Initializable {
 
     public void newPlace(ActionEvent actionEvent) {
 
-        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFxml/AddLieu.fxml",TFZone);
+        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml",TFZone);
     }
 
-    @FXML
-    void searchLieu(ActionEvent event) {
+
+     public void searchLieu(Object o) {
         try {
-            String search = searchField.getText();
             ObservableList<Lieu> filteredLocations;
 
-            if (!search.isEmpty()) {
-                filteredLocations = ss.getAllLocationsObservable(search);
+            if (o != null) {
+                filteredLocations = ss.getAllLocationsObservable(o);
             } else {
-                // Check if the capacity field is not empty and is a valid integer
-                if (!TFCapacity.getText().isEmpty()) {
-                    if (isNumeric(TFCapacity.getText())) {
-                        filteredLocations = ss.getAllLocationsObservable(TFCapacity.getText());
-                    } else {
-                        cc.showAlert(Alert.AlertType.ERROR, "Error", "There are no locations with this capacity.");
-                        ss.getAllLocations();
-                        return;
-                    }
-                } else {
-                    // Both search and capacity are empty, show all locations
-                    filteredLocations = ss.getAllLocationsObservable(null);
-                }
-            }
-
-            if (filteredLocations.isEmpty()) {
-                cc.showAlert(Alert.AlertType.INFORMATION, "No Results", "No locations found matching the criteria.");
-                ss.getAllLocations();
-            } else {
-                cc.showAlert(Alert.AlertType.INFORMATION, "Search Results", "Search completed successfully.");
+                filteredLocations = ss.getAllLocationsObservable();
             }
 
             lieuTableView.setItems(filteredLocations);
@@ -184,6 +173,12 @@ public class LieuList implements Initializable {
             System.out.println(e.getMessage());
         }
 
+    }
+
+    @FXML
+    void onMouseClickedGoverment(MouseEvent event) {
+        List<String> states = StatesApi.getbyCountry("Tunisia");
+        LDGov.getItems().addAll(states);
     }
 
 }

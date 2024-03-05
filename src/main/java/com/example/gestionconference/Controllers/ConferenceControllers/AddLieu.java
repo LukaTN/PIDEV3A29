@@ -12,19 +12,31 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import javafx.scene.control.ComboBox;
+import javafx.scene.web.WebEngine;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import org.json.simple.parser.JSONParser;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class AddLieu implements Initializable  {
+
+    @FXML
+    private WebView wbMap;
+    JSONParser parser = new JSONParser();
     LieuServices ss = new LieuServices();
     String selectedValue;
+    @FXML
+    private TextField confCountry;
+
     @FXML
     private ComboBox<String> LDGov;
 
@@ -42,9 +54,13 @@ public class AddLieu implements Initializable  {
 
     ControllerCommon cc = new ControllerCommon();
 
+
+
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LDGov.getItems().addAll("Ariana","Gafsa","Kef","Kasserine","Beja","Jendouba","Medenine","Monastir","Nabeul","Sfax","SidiBouzid","Siliana","Sousse","Tataouine","Tozeur","Tunis","Zaghouan");
+//        List<String> states = StatesApi.getbyCountry("Tunisia");
+//        LDGov.getItems().addAll(states);
     }
 
 
@@ -80,7 +96,7 @@ public class AddLieu implements Initializable  {
             clearFields();
 
             // Navigate back to the Conference.fxml
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
@@ -95,7 +111,7 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onCancel(ActionEvent event) throws IOException {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
     }
 
     void clearFields() {
@@ -106,11 +122,27 @@ public class AddLieu implements Initializable  {
     }
 
     public void toPlaces(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/LieuList.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/LieuList.fxml",TFZone);
     }
 
     public void toNewConf(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/Conference.fxml",TFZone);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
+    }
+
+    @FXML
+    void onMouseClickedGoverment(MouseEvent event) {
+        String country = confCountry.getText();
+        try {
+            List<String> states = StatesApi.getbyCountry(country);
+            LDGov.getItems().clear();
+            LDGov.getItems().addAll(states);
+            if (LDGov.getItems().isEmpty()) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name or enter country in english.");
+            }
+        }catch (Exception e){
+            cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name.");
+        }
+
     }
 }
 

@@ -1,4 +1,4 @@
-package GestionUser.Usercontrollers;
+package com.example.gestionconference.Controllers.Usercontrollers;
 
 
 
@@ -15,8 +15,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
-import GestionUser.UserModels.User;
-import GestionUser.UserServices.UserService;
+import com.example.gestionconference.Models.UserModels.User;
+import com.example.gestionconference.Services.UserServices.UserService;
 
 public class Signin {
 
@@ -93,7 +93,7 @@ public class Signin {
 
 
             // Load the new FXML page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signup.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 

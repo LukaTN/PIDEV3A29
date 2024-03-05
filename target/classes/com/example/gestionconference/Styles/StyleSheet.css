@@ -86,7 +86,7 @@
  }
 
 .text-field .prompt-text {
-    -fx-text-fill: gray;
+    -fx-text-fill: grey;
     -fx-font-size: 4;
 
 }
@@ -265,4 +265,24 @@
 .table-row-cell {
     -fx-background-radius: 10;
     -fx-border-color: transparent; /* Transparent border color */
+}
+
+.deletebutton
+{
+    -fx-background-color:#e31b24;
+    -fx-text-fill: white;
+    -fx-background-radius:60;
+
+}
+
+.editbutton
+{
+    -fx-background-color:#0078d4;
+    -fx-text-fill: white;
+    -fx-background-radius:60;
+}
+
+.menu-item
+{
+    -fx-background-color: linear-gradient(to bottom,#013B66,#00AFFF) ;
 }

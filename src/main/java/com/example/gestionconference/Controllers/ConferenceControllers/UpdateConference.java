@@ -10,6 +10,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
@@ -28,6 +32,9 @@ public class UpdateConference implements Initializable {
 
     @FXML
     private TextField SpBudget;
+
+    @FXML
+    private ImageView imageConf;
 
     @FXML
     private TextArea TASubject;
@@ -53,22 +60,23 @@ public class UpdateConference implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-
     }
+
+
 
     @FXML
     void onViewList(ActionEvent event) throws IOException {
 
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFxml/ConferenceList.fxml", TFConfName);
+        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml", TFConfName);
     }
 
     public void setSelectedConference(Conference selectedConference) {
         this.selectedConference = selectedConference;
         TFConfName.setText(selectedConference.getName());
-        TFDate.setValue(selectedConference.getDate().toLocalDate());
         TASubject.setText(selectedConference.getSubject());
         SpBudget.setText(String.valueOf(selectedConference.getBudget()));
-
+        Image existingImage = new Image("file:" + selectedConference.getImage());
+        imageConf.setImage(existingImage);
         if (selectedConference.getType() == ConferenceType.PRIVATE) {
             ChTypeConf.setSelected(true);
         } else {
@@ -103,16 +111,6 @@ public class UpdateConference implements Initializable {
                 cc.showAlert(Alert.AlertType.ERROR, "Error", "Invalid budget value");
                 return;
             }
-            LocalDate selectedDate = TFDate.getValue();
-            if (selectedDate == null || selectedDate.isBefore(LocalDate.now())) {
-                cc.showAlert(Alert.AlertType.ERROR, "Error", "Please select a valid date (not less than the current date)");
-                return;
-            }
-            String ldLocationsValue = LDLocations.getValue();
-            if (ldLocationsValue == null){
-                cc.showAlert(Alert.AlertType.ERROR,"Error","Plese select location or create one click on button New Location for more");
-                return;
-            }
             if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
                 cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
                 return;
@@ -121,12 +119,12 @@ public class UpdateConference implements Initializable {
             // If all validations pass, update the conference
             Conference updatedConference = new Conference();
             updatedConference.setId(selectedConference.getId());
-            java.sql.Date sqlDate = java.sql.Date.valueOf(TFDate.getValue());
             updatedConference.setName(conferenceName);
-            updatedConference.setDate(sqlDate);
             updatedConference.setSubject(subject);
             updatedConference.setBudget(budget);
+            updatedConference.setDate(selectedConference.getDate());
             updatedConference.setType(transform());
+            updatedConference.setImage(selectedConference.getImage());
 
             conferenceServices.updateConference(updatedConference);
             cc.showAlert(Alert.AlertType.INFORMATION, "Success", "Conference updated successfully");
@@ -140,4 +138,31 @@ public class UpdateConference implements Initializable {
     }
 
 
+    public void importImage(ActionEvent actionEvent) {
+        try {
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.getExtensionFilters().addAll(
+                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+            );
+
+            // Show open file dialog
+            Stage stage = (Stage) imageConf.getScene().getWindow();
+            java.io.File selectedFile = fileChooser.showOpenDialog(stage);
+
+            if (selectedFile != null) {
+                // Load and set the selected image
+                Image selectedImage = new Image(selectedFile.toURI().toString());
+                imageConf.setImage(selectedImage);
+
+                // Update the image path in the Conference object
+                selectedConference.setImage(selectedFile.getAbsolutePath());
+
+                // You may want to display a success message or handle other tasks here
+            }
+
+        }catch (Exception e) {
+            cc.showAlert(Alert.AlertType.ERROR, "Error", "Error loading image: " + e.getMessage());
+        }
+
+    }
 }

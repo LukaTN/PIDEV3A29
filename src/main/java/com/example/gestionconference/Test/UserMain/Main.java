@@ -1,7 +1,9 @@
-package GestionUser.UserTest;
+package com.example.gestionconference.Test.UserMain;
 
-import GestionUser.UserModels.User;
-import GestionUser.UserServices.UserService;
+
+import com.example.gestionconference.Models.UserModels.User;
+import com.example.gestionconference.Services.UserServices.UserService;
+
 
 import java.sql.SQLException;
 

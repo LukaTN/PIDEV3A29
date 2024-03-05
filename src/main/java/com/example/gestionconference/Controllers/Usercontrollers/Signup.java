@@ -1,4 +1,4 @@
-package GestionUser.Usercontrollers;
+package com.example.gestionconference.Controllers.Usercontrollers;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -15,8 +15,8 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import GestionUser.UserModels.User;
-import GestionUser.UserServices.UserService;
+import com.example.gestionconference.Models.UserModels.User;
+import com.example.gestionconference.Services.UserServices.UserService;
 
 public class Signup {
 
