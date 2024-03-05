@@ -85,7 +85,7 @@
       </Pane>
       <ImageView fitHeight="50.0" fitWidth="54.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@UserImages/logo1.png" />
+            <Image url="@../../Images/UserImages/Logo.png" />
          </image>
       </ImageView>
    </children>
