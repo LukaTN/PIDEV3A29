@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.ConferenceControllers.ConferenceList">
+    <left>
+        <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="27.2" layoutY="70.0" prefHeight="242.0" prefWidth="0.0" spacing="33.0" AnchorPane.leftAnchor="27.2">
+                    <children>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/briefcase-dollar--briefcase-payment-cash-money-finance-baggage-bag.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/bullet-list--points-bullet-unordered-list-lists-bullets.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/cog--work-loading-cog-gear-settings-machine.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/user-circle-single--circle-geometric-human-person-single-user.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/information-circle--information-frame-info-more-help-point-circle.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <Button layoutX="63.0" layoutY="610.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" styleClass="logout" stylesheets="@../../Styles/StyleSheet.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="29.0">
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                    <graphic>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <ImageView layoutX="8.0" layoutY="4.0" styleClass="logout" AnchorPane.leftAnchor="8.0">
+                                    <image>
+                                        <Image url="@../../Images/logout-1--arrow-exit-frame-leave-logout-rectangle-right.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
+    </left>
+    <top>
+        <AnchorPane prefHeight="90.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView layoutX="24.0" layoutY="28.0">
+                    <image>
+                        <Image url="@../../Images/Calque_1.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="40.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
+                    <children>
+                        <Button fx:id="addConf" maxWidth="400.0" minWidth="-Infinity" mnemonicParsing="false" onAction="#toAddConf" prefHeight="44.0" prefWidth="233.0" styleClass="add-conference-Button" text="New Conference">
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="15.0" x="5.0">
+                                    <image>
+                                        <Image url="@../../Images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
+                            </image>
+                        </ImageView>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
+                            <children>
+                                <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                                    <image>
+                                        <Image url="@../../Images/Mask group.png" />
+                                    </image>
+                                </ImageView>
+                                <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+            <ScrollPane layoutY="-5.0" prefHeight="626.0" prefWidth="716.0" style="-fx-border-radius: 35;">
+               <content>
+                  <GridPane fx:id="event_gridPane" alignment="CENTER" prefHeight="622.0" prefWidth="713.0" styleClass="menu-item" stylesheets="@../../Styles/StyleSheet.css" vgap="20.0">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </GridPane>
+               </content>
+            </ScrollPane>
+            <AnchorPane layoutX="714.0" layoutY="-5.0" prefHeight="626.0" prefWidth="405.0" style="-fx-background-color: white;">
+               <children>
+                  <VBox alignment="CENTER" layoutX="99.0" layoutY="134.0" prefHeight="200.0" prefWidth="231.0" spacing="50.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                     <children>
+                        <HBox prefHeight="16.0" prefWidth="200.0">
+                           <children>
+                              <TextField fx:id="searchField" prefHeight="25.0" prefWidth="198.0" promptText="Search" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                              <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../../Images/magnifying-glass--glass-search-magnifying.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </HBox>
+                        <ChoiceBox fx:id="triConference" onAction="#handleSortChoice" prefHeight="25.0" prefWidth="198.0" styleClass="widget-get" stylesheets="@../../Styles/StyleSheet.css" />
+                        <CheckBox fx:id="confType" mnemonicParsing="false" onAction="#toConfType" prefHeight="17.0" prefWidth="63.0" text="Private" />
+                     </children>
+                  </VBox>
+               </children></AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

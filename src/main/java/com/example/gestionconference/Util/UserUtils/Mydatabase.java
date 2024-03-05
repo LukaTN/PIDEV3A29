@@ -1,4 +1,4 @@
-package GestionUser.UserUtils;
+package com.example.gestionconference.Util.UserUtils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
