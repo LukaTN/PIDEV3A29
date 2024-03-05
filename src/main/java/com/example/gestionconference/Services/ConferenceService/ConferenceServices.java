@@ -21,7 +21,7 @@ public class ConferenceServices {
     public void addConference(Conference conference) throws SQLException {
 
 
-        String req = "INSERT INTO `conference` (`nom`,`date`,`sujet`,`budget`,`typeConf`,`image`,`emplacement`) VALUES(?,?,?,?,?,?,?)";
+        String req = "INSERT INTO `conference` (`nom`,`date`,`sujet`,`budget`,`typeConf`,`image`,`emplacement`,`organisateur`) VALUES(?,?,?,?,?,?,?,?)";
         PreparedStatement stm = cnx.prepareStatement(req);
 
         stm.setString(1, conference.getName());
@@ -31,7 +31,8 @@ public class ConferenceServices {
         stm.setString(5,conference.getType().toString());
         stm.setString(6,conference.getImage());
         stm.setInt(7,conference.getConferenceLocation());
-
+        stm.setInt(8,conference.getOrganisateur());
+        
         stm.executeUpdate();
     }
     public void deleteConference(Conference conference) throws SQLException {
@@ -169,6 +170,68 @@ public class ConferenceServices {
 
         }
         return id;
+    }
+
+    public List<Conference> triConferenceByname() throws SQLException {
+        String req = "SELECT * FROM conference ORDER BY nom";
+
+            PreparedStatement stm = cnx.prepareStatement(req);
+            ResultSet res = stm.executeQuery();
+            ObservableList<Conference> conferences = FXCollections.observableArrayList();
+            while (res.next()) {
+                Conference u = new Conference();
+                u.setId(res.getInt("id"));
+                u.setName(res.getString("nom"));
+                u.setDate(res.getDate("date"));
+                u.setSubject(res.getString("sujet"));
+                u.setBudget(res.getDouble("budget"));
+                u.setType(transform(res.getString("typeConf")));
+                u.setImage(res.getString("image"));
+                u.setConferenceLocation(res.getInt("emplacement"));
+                conferences.add(u);
+            }
+        return conferences;
+    }
+
+    public List<Conference> triConferenceByBudget() throws SQLException {
+        String req = "SELECT * FROM conference ORDER BY budget";
+        PreparedStatement stm = cnx.prepareStatement(req);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()) {
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
+
+    }
+
+    public List<Conference> triConferenceByDate() throws SQLException {
+        String req = "SELECT * FROM conference ORDER BY date";
+        PreparedStatement stm = cnx.prepareStatement(req);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()) {
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
     }
 
 }

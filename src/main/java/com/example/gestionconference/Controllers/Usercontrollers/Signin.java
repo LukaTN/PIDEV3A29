@@ -93,7 +93,7 @@ public class Signin {
 
 
             // Load the new FXML page
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/signup.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signup.fxml"));
             Parent root = loader.load();
             Scene scene = new Scene(root);
 

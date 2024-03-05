@@ -137,7 +137,9 @@ public class AddConference  implements Initializable {
     @FXML
     void onAddConf(ActionEvent event) {
         try {
-            // Validate input fields
+            Boolean bol = true;
+
+
             if (TFConfName.getText().isEmpty() || TFDate.getValue() == null || TASubject.getText().isEmpty()
                     || SpBudget.getText().isEmpty() || LDLocations.getValue() == null) {
                 cc.showAlert(Alert.AlertType.ERROR, "Missing Information", "Please fill in all fields.");
@@ -181,6 +183,7 @@ public class AddConference  implements Initializable {
             conference.setBudget(Double.parseDouble(SpBudget.getText()));
             conference.setType(transform());
             conference.setEmplacement(lieuId);
+            conference.setOrganisateur(1);
 
 //            Conference s = new Conference(
 //                    TFConfName.getText(),

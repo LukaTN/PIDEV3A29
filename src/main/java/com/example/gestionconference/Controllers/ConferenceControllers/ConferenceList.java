@@ -4,6 +4,7 @@ import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
+import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,6 +19,8 @@ import java.util.List;
 
 public class ConferenceList {
 
+    @FXML
+    private ChoiceBox triConference;
 
     @FXML
     private CheckBox confType;
@@ -43,7 +46,12 @@ public class ConferenceList {
                 throw new RuntimeException(e);
             }
         });
+        triConference.setItems(FXCollections.observableArrayList(
+                "Sort by Name", "Sort by Budget", "Sort by Date"
+        ));
 
+        // Set default value
+        triConference.setValue("Sorting");
     }
 
 
@@ -129,6 +137,32 @@ public class ConferenceList {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+
+    @FXML
+    public void handleSortChoice(ActionEvent actionEvent) {
+        String selectedSort = triConference.getValue().toString();
+
+        try {
+            switch (selectedSort) {
+                case "Sort by Name":
+                    setData(ss.triConferenceByname());
+                    break;
+                case "Sort by Budget":
+                    setData(ss.triConferenceByBudget());
+                    break;
+                case "Sort by Date":
+                    setData(ss.triConferenceByDate());
+                    break;
+                default:
+                    // Handle default case if needed
+                    break;
+            }
+        } catch (SQLException e) {
+            System.out.println(e.getMessage());
+        }
+
     }
 }
 
