@@ -1,3 +1,4 @@
+/*
 package com.example.gestionconference.Services;
 
 
@@ -86,3 +87,4 @@ public class SponsorRejectedServices  {
         }
     }
 }
+*/

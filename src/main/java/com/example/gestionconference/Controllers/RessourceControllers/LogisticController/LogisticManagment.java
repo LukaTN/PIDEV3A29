@@ -1,7 +1,8 @@
+/*
 package com.example.gestionconference.Controllers.RessourceControllers.LogisticController;
 
-import com.example.gestionconference.Models.LogisticModels.Logistic;
-import com.example.gestionconference.Services.LogisticServices.LogisticServices;
+import com.example.gestionconference.Models.*;
+import com.example.gestionconference.Services.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -100,4 +101,4 @@ public class LogisticManagment {
 
         });
     }
-}
+}*/
