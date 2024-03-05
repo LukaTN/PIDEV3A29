@@ -1,3 +1,6 @@
+# Ignore IntelliJ IDEA files
+.idea/
+
 # Compiled class files
 *.class
 
@@ -7,6 +10,10 @@
 # Ignore log files
 *.log
 
+# Ignore user-specific files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
 
 # Ignore Gradle files
 .gradle/

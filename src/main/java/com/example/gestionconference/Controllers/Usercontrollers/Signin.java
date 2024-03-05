@@ -41,6 +41,11 @@ public class Signin {
     @FXML
     private Label fermer;
 
+    @FXML
+    private Label forgotpass;
+
+
+
     public void close(Event event)
     {
         Stage stage = (Stage) fermer.getScene().getWindow();
@@ -55,6 +60,8 @@ public class Signin {
         assert password != null : "fx:id=\"password\" was not injected: check your FXML file 'signin.fxml'.";
         assert signuplink != null : "fx:id=\"signuplink\" was not injected: check your FXML file 'signin.fxml'.";
         assert fermer != null : "fx:id=\"fermer\" was not injected: check your FXML file 'signin.fxml'.";
+        assert forgotpass != null : "fx:id=\"forgotpass\" was not injected: check your FXML file 'signin.fxml'.";
+
 
     }
     @FXML
@@ -136,5 +143,26 @@ public class Signin {
 
         }
     }
+
+    public void goToReset(Event actionEvent) {
+        try {
+
+
+            // Load the new FXML page
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/resetPassword1.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Get the current stage
+            Stage stage = (Stage) forgotpass.getScene().getWindow();
+
+            // Set the new scene
+            stage.setScene(scene);
+        } catch (IOException er) {
+            er.printStackTrace();
+
+        }
+    }
+
 }
 
