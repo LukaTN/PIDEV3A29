@@ -1,9 +1,11 @@
 package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Controllers.SessionControllers.AddSessionController;
+import com.example.gestionconference.Controllers.Usercontrollers.Accountmanagement;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
@@ -16,10 +18,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -49,6 +53,8 @@ public class AddConference  implements Initializable {
     @FXML
     private DatePicker TFDate;
 
+    private User user;
+
     @FXML
     private ComboBox<String> LDLocations;
     @FXML
@@ -56,6 +62,14 @@ public class AddConference  implements Initializable {
 
     @FXML
     private TextField TFOrgName;
+    @FXML
+    private ImageView imageUser;
+
+    @FXML
+    private Text role;
+
+    @FXML
+    private Text username;
 
     @FXML
     private Text finalResult;
@@ -137,8 +151,6 @@ public class AddConference  implements Initializable {
     @FXML
     void onAddConf(ActionEvent event) {
         try {
-            Boolean bol = true;
-
 
             if (TFConfName.getText().isEmpty() || TFDate.getValue() == null || TASubject.getText().isEmpty()
                     || SpBudget.getText().isEmpty() || LDLocations.getValue() == null) {
@@ -183,7 +195,8 @@ public class AddConference  implements Initializable {
             conference.setBudget(Double.parseDouble(SpBudget.getText()));
             conference.setType(transform());
             conference.setEmplacement(lieuId);
-            conference.setOrganisateur(1);
+          //  System.out.println(user.getId());
+            conference.setOrganisateur(user.getId());
 
 //            Conference s = new Conference(
 //                    TFConfName.getText(),
@@ -206,6 +219,7 @@ public class AddConference  implements Initializable {
             System.out.println("+*******************************");
             System.out.println(addedConferenceId);
             addSessionController.setConferenceId(addedConferenceId);
+
             Scene scene = new Scene(root);
             Stage stage = new Stage();
             stage.setTitle("confera");
@@ -268,4 +282,49 @@ public class AddConference  implements Initializable {
         LDLocations.setValue(null);
     }
 
+
+    public void initData(User user) {
+        this.user=user;
+        username.setText(user.getUsername());
+        role.setText(user.getRole());
+        try {
+            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+            imageUser.setImage(image);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    @FXML
+    void toAccountManagemnt(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/Accountmanagement.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Get the controller of the loaded FXML file
+            Accountmanagement accountmanagement = loader.getController();
+
+            // Pass user details to the Accountmanagement controller
+            accountmanagement.initData(user);
+
+            // Set the new scene
+            Stage stage = (Stage) imageConf.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    public void logout(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signin.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) imageConf.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

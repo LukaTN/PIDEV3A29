@@ -1,11 +1,13 @@
 package com.example.gestionconference.Controllers.Usercontrollers;
 
+import com.example.gestionconference.Controllers.ConferenceControllers.AddConference;
 import com.example.gestionconference.Models.UserModels.User;
 import javafx.event.Event;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
 import javafx.scene.image.Image;
 
@@ -25,6 +27,8 @@ import javafx.stage.Stage;
 
 public class Accountmanagement {
 
+    @FXML
+    private ImageView logoutt;
     @FXML
     private ResourceBundle resources;
 
@@ -55,6 +59,7 @@ public class Accountmanagement {
 
 
     private User user ;
+
 
     private byte[] profilePicture;
 
@@ -184,7 +189,51 @@ public class Accountmanagement {
         }
     }
 
+    @FXML
+    void goback(MouseEvent event) {
+        if( user.getRole().equals("Organizer")){
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
+                Parent root = loader.load();
+                Scene scene = new Scene(root);
 
+                // Get the controller of the loaded FXML file
+                AddConference addconference = loader.getController();
+
+                // Pass user details to the Accountmanagement controller
+                addconference.initData(user);
+
+                // Set the new scene
+                Stage stage = (Stage) pass.getScene().getWindow();
+                stage.setScene(scene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }else {
+
+        }
+
+    }
+
+    @FXML
+    void logout(MouseEvent event) throws IOException {
+        try{
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signin.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+
+        // Get the current stage
+        Stage stage = (Stage) pass.getScene().getWindow();
+
+        // Set the new scene
+        stage.setScene(scene);
+
+    } catch (IOException er) {
+        er.printStackTrace();
+
+    }
+
+    }
 
 
 }
