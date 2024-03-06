@@ -18,18 +18,6 @@ public class SessionServices {
 
 
 
-    public int convertTime(Time t) {
-        String[] parts =t.toString().split(":");
-
-        int hours = Integer.parseInt(parts[0]);
-        int minutes = Integer.parseInt(parts[1]);
-
-
-        int convertedTime = hours * 10000 + minutes * 100;
-
-        return convertedTime;
-    }
-
     public void addSessions(List<Session> sessions) {
         TopicServices ts = new TopicServices();
         String req = "INSERT INTO `session` (`sessionName`,`startTime`,`endTime`,`idConference`) VALUES(?,?,?,?)";

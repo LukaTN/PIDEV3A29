@@ -1,7 +1,7 @@
-package GestionUser.UserModels;
+package com.example.gestionconference.Models.UserModels;
 
 public class User {
-
+private int id;
     private String username;
     private String nom;  // changed from 'name' to 'nom'
     private String prenom;  // added 'prenom'
@@ -19,7 +19,13 @@ public class User {
         this.role = role;
     }
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public void setUsername(String username) {
         this.username = username;
@@ -85,6 +91,11 @@ public class User {
         this.password = password;
         this.phone = phone;
         this.role = role;
+    }
+
+    public User(int id ,String username) {
+        this.username = username;
+     this.id = id;
     }
 
     @Override

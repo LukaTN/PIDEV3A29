@@ -38,23 +38,6 @@ public class TopicServices {
         }
     }
 
-    public ObservableList<Topic> getAllTopics() throws SQLException {
-        String req1 = "SELECT * FROM topics";
-        Statement st = cnx.createStatement();
-        ResultSet res = st.executeQuery(req1);
-        ObservableList<Topic> sessions = FXCollections.observableArrayList();
-        while (res.next()){
-            Topic s = new Topic();
-            s.setId(res.getInt("id"));
-            s.setTopicName(res.getString("topicName"));
-            s.setTopicDescription(res.getString("topicDescription"));
-            s.setSpeakerName(res.getString("speakerName"));
-            s.setIdSession(res.getInt("idSession"));
-            sessions.add(s);
-        }
-
-        return sessions;
-    }
 
 
 
