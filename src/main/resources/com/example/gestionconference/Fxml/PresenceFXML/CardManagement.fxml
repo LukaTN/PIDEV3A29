@@ -23,6 +23,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -224,7 +225,7 @@
                                           </TableView>
                                        </children>
                                     </AnchorPane>
-                                    <StackedBarChart fx:id="DashbordSC" layoutX="755.0" layoutY="266.0" prefHeight="197.0" prefWidth="200.0">
+                                    <StackedBarChart fx:id="DashbordSC" layoutX="755.0" layoutY="177.0" prefHeight="287.0" prefWidth="200.0">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
@@ -232,8 +233,8 @@
                                         <NumberAxis side="LEFT" />
                                       </yAxis>
                                     </StackedBarChart>
-                                    <ComboBox fx:id="ConferenceListCB" layoutX="789.0" layoutY="76.0" prefHeight="26.0" prefWidth="147.0" promptText="Conference List" />
-                                    <Label fx:id="tester" layoutX="841.0" layoutY="173.0" text="0" />
+                                    <ComboBox fx:id="ConferenceListCB" layoutX="789.0" layoutY="76.0" onAction="#onSelectConf" prefHeight="26.0" prefWidth="147.0" promptText="Conference List" />
+                                    <Label fx:id="tester" layoutX="851.0" layoutY="133.0" text="0" />
                                  </children>
                               </AnchorPane>
                            </content></Tab>
@@ -241,7 +242,7 @@
                            <content>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <StackedBarChart layoutX="73.0" layoutY="54.0" prefHeight="400.0" prefWidth="543.0">
+                                    <StackedBarChart fx:id="sessionsChart" layoutX="73.0" layoutY="54.0" prefHeight="400.0" prefWidth="543.0">
                                       <xAxis>
                                         <CategoryAxis side="BOTTOM" />
                                       </xAxis>
@@ -249,7 +250,11 @@
                                         <NumberAxis side="LEFT" />
                                       </yAxis>
                                     </StackedBarChart>
-                                    <AnchorPane layoutX="707.0" layoutY="72.0" prefHeight="351.0" prefWidth="239.0" styleClass="widget" />
+                                    <AnchorPane layoutX="707.0" layoutY="72.0" prefHeight="351.0" prefWidth="239.0" styleClass="widget">
+                                       <children>
+                                          <ComboBox fx:id="ConferenceListCB1" layoutX="48.0" layoutY="44.0" onAction="#onSelectConf" prefHeight="26.0" prefWidth="147.0" promptText="Conference List" />
+                                          <Button layoutX="94.0" layoutY="206.0" mnemonicParsing="false" onAction="#onRefresh" text="Refresh" />
+                                       </children></AnchorPane>
                                  </children>
                               </AnchorPane>
                            </content>
@@ -260,7 +265,46 @@
                                  <children>
                                     <AnchorPane layoutX="557.0" layoutY="42.0" prefHeight="398.0" prefWidth="396.0" styleClass="widget">
                                        <children>
-                                          <Text fx:id="statusT" layoutX="155.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                                          <Text fx:id="statusT" layoutX="56.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Medium" text="TEST AT :">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font></Text>
+                                          <AnchorPane fx:id="inAnchor" layoutX="56.0" layoutY="228.0" prefHeight="137.0" prefWidth="284.0">
+                                             <children>
+                                                <ImageView fitHeight="78.0" fitWidth="78.0" layoutY="30.0">
+                                                   <image>
+                                                      <Image url="@../../Images/Group%202625.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text fill="#24a225" layoutX="99.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36;" styleClass="sf-display-pro-Bold" text="Welcome !">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                          <Text fx:id="ParticipantNameT" layoutX="198.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Participant Name" />
+                                          <Text fx:id="NumberT" layoutX="198.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Text" />
+                                          <Text fx:id="statusTimeT" layoutX="174.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Medium" text="Current Time">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="51.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                                          <AnchorPane fx:id="outAnchor" layoutX="27.0" layoutY="223.0" prefHeight="148.0" prefWidth="345.0">
+                                             <children>
+                                                <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="27.0" layoutY="34.0">
+                                                   <image>
+                                                      <Image url="@../../Images/Group%202626.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text fill="#a00d12" layoutX="128.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36;" styleClass="sf-display-pro-Bold" text="Goodbay !">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
                                        </children></AnchorPane>
                                     <AnchorPane layoutX="63.0" layoutY="45.0" prefHeight="390.0" prefWidth="451.0" styleClass="widget">
                                        <children>

@@ -58,6 +58,27 @@ public class ConferenceServices {
             return null;
         }
     }
+
+
+    public List<Conference> getConferenceByName(String name) throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE nom = ?";
+        PreparedStatement stm = cnx.prepareStatement(req1);
+        stm.setString(1, name);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        while (res.next()){
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conferences.add(u);
+        }
+        return conferences;
+    }
     public void updateConference(Conference conference)  {
         String req = "UPDATE `conference` SET `nom`=?,`date`=?,`sujet`=?,`budget`=?,`typeConf`=?,`image`=? WHERE id = ?";
 

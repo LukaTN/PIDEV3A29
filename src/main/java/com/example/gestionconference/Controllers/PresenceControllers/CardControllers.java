@@ -6,6 +6,7 @@ import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import com.example.gestionconference.Services.PresenceServices.CardService;
+import com.example.gestionconference.Services.SessionServices.SessionServices;
 import com.example.gestionconference.Services.UserServices.UserService;
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
@@ -22,6 +23,7 @@ import javafx.scene.chart.StackedBarChart;
 import javafx.scene.chart.XYChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import org.json.JSONObject;
 
@@ -53,6 +55,21 @@ public class CardControllers implements Initializable {
     private TableView<Presence> CardParticipantTable;
 
     @FXML
+    private Text statusTimeT;
+
+    @FXML
+    private Text NumberT;
+
+    @FXML
+    private Text ParticipantNameT;
+
+    @FXML
+    private AnchorPane inAnchor;
+
+    @FXML
+    private AnchorPane outAnchor;
+
+    @FXML
     private TableColumn<Presence, String> ParticipantColumn;
 
     @FXML
@@ -72,7 +89,8 @@ public class CardControllers implements Initializable {
 
     @FXML
     private StackedBarChart<String, Number> DashbordSC;
-
+    @FXML
+    private StackedBarChart<String, Number> sessionsChart;
     @FXML
     private Tab tabFour;
 
@@ -107,6 +125,8 @@ public class CardControllers implements Initializable {
     @FXML
     private Text statusT;
 
+    public ComboBox<String> ConferenceListCB;
+
     private static final String API_URL = "http://worldtimeapi.org/api/ip";
 
 
@@ -119,12 +139,18 @@ public class CardControllers implements Initializable {
     private final LieuServices lieu = new LieuServices();
     private ObservableList<User> conferenceList = FXCollections.observableArrayList();
     String testerr="0";
+    String confName="conference1";
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         ScheduledExecutorService executorService = Executors.newScheduledThreadPool(1);
         executorService.scheduleAtFixedRate(this::updateTime, 0, 1, TimeUnit.SECONDS);
-
+        try {
+            ConferenceListCB.setItems(FXCollections.observableArrayList(
+                    conf.getAllConferences().stream().map(Conference::getName).collect(Collectors.toList())));
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
         Thread updateUidThread = getUidThread();
         updateUidThread.start();
 
@@ -194,9 +220,9 @@ public class CardControllers implements Initializable {
                             String presenceState = "Absent";
                             try {
 
-                                if (cs.participantPresence(cellData.getValue().getId(),"test2")){
+                                if (cs.participantPresence(cellData.getValue().getId(),confName)){
                                     presence++;
-                                    tester.setText(presence/2+"/"+lieu.getLieuByid(conf.getConferenceByName("test2").get(0).getConferenceLocation()).getCapacity());
+                                    tester.setText(presence/2+"/"+lieu.getLieuByid(conf.getConferenceByName(confName).get(0).getConferenceLocation()).getCapacity());
                                     presenceState = "Present" ;
 
                                 }
@@ -418,7 +444,7 @@ public class CardControllers implements Initializable {
             while (true) {
                 try {
                     // Specify the URL of your ESP32 endpoint
-                    URL url = new URL("http://192.168.231.134/rfid");
+                    URL url = new URL("http://192.168.208.134/rfid");
 
                     // Open a connection to the URL
                     HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -443,7 +469,10 @@ public class CardControllers implements Initializable {
                                 int pair = newPresence.getPresenceStatus()%2;
                                 if(pair==1){
                                     statusT.setText("in");
+                                    ParticipantNameT.setText(us.getById(24).getUserName());
+                                    break;
                                 }else {
+                                    ParticipantNameT.setText(us.getById(24).getUserName());
                                     statusT.setText("out");
                                 }
                             }
@@ -473,7 +502,7 @@ public class CardControllers implements Initializable {
 
     // Add data to the series
     series1.getData().add(new XYChart.Data<>("Category 1", 3));
-    series1.getData().set(0,new XYChart.Data<>("Category 1", lieu.getLieuByid(conf.getConferenceByName("test2").get(0).getConferenceLocation()).getCapacity()));
+    series1.getData().set(0,new XYChart.Data<>("Category 1", lieu.getLieuByid(conf.getConferenceByName(confName).get(0).getConferenceLocation()).getCapacity()));
 
     XYChart.Series<String, Number> series2 = new XYChart.Series<>();
     series2.setName("Series 2");
@@ -489,4 +518,18 @@ public class CardControllers implements Initializable {
 
     @FXML
     void onParticipantGet(ActionEvent event)  {}
+
+    @FXML
+    void onSelectConf(ActionEvent event)  {
+    confName = ConferenceListCB.getValue();
+    presence=0;
+
+    }
+
+    @FXML
+    void onRefresh(ActionEvent event) throws SQLException {
+        SessionServices ss = new SessionServices();
+        ss.getAllSessions();
+
+    }
 }

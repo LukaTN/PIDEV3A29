@@ -112,6 +112,11 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+    public User(int id,String username) {
+        this.id = id;
+        this.username = username;
+    }
+
 
     @Override
     public String toString() {

@@ -182,4 +182,30 @@ public class UserService implements iCrud<User> {
         return null;
     }
 
+    // Get user by username
+    public User getById(int id) throws SQLException {
+        String sql = "SELECT * FROM user WHERE id = ?";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setMail(resultSet.getString("mail"));
+                user.setPassword(resultSet.getString("password"));
+                user.setPhone(resultSet.getInt("numtel"));
+                user.setNom(resultSet.getString("nom"));
+                user.setPrenom(resultSet.getString("prenom"));
+                user.setRole(resultSet.getString("role"));
+                user.setProfilePicture(resultSet.getBytes("profile_picture"));
+
+                return user;
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+        return null;
+    }
+
 }

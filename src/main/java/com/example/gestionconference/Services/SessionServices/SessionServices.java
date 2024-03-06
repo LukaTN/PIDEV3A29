@@ -55,7 +55,7 @@ public class SessionServices {
         while (res.next()){
             Session s = new Session();
             s.setId(res.getInt("id"));
-            s.setId(res.getInt("id"));
+
             s.setSessionName(res.getString("sessionName"));
             s.setStartTime(res.getTime("startTime").toLocalTime());
             s.setEndTime(res.getTime("endTime").toLocalTime());

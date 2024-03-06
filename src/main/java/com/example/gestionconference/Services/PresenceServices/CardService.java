@@ -58,7 +58,7 @@ Presence presence = new Presence(uid,0,currentTimeStamp,0);
                 // Increment the presence status
                 int stat = status + 1;
                 presence.setPresenceStatus(stat);
-                if(status!=1){
+
                     String req1 = "INSERT INTO `uidcard` (`uid`,`idParticipant`,`status`) VALUES(?,?,?)";
                     PreparedStatement updateStmt = cnx.prepareStatement(req1);
                     if(resultSet.getInt("idParticipant") != 0 && uid != null) {
@@ -77,18 +77,18 @@ Presence presence = new Presence(uid,0,currentTimeStamp,0);
                     updateStmt2.executeUpdate();
                     return presence;
                     }
-                }
-               return null;
+
+
             } else {
                 // UID does not exist in the table
                 String insertQuery = "INSERT INTO uidcard (uid) VALUES (?)";
                 PreparedStatement insertStmt = cnx.prepareStatement(insertQuery);
                 insertStmt.setString(1, uid);
                 insertStmt.executeUpdate();
-                return null;
+                return presence;
 
             }
-
+return null;
     }
 
 
