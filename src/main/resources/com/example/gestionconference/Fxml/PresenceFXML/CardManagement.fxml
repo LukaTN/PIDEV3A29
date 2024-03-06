@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.StackedBarChart?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.PresenceControllers.CardControllers">
+    <left>
+        <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="27.2" layoutY="70.0" prefHeight="242.0" prefWidth="0.0" spacing="33.0" AnchorPane.leftAnchor="27.2">
+                    <children>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/briefcase-dollar--briefcase-payment-cash-money-finance-baggage-bag.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/bullet-list--points-bullet-unordered-list-lists-bullets.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/cog--work-loading-cog-gear-settings-machine.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/user-circle-single--circle-geometric-human-person-single-user.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/information-circle--information-frame-info-more-help-point-circle.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <Button layoutX="63.0" layoutY="610.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" styleClass="logout" stylesheets="@../../Styles/StyleSheet.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="29.0">
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                    <graphic>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <ImageView layoutX="8.0" layoutY="4.0" styleClass="logout" AnchorPane.leftAnchor="8.0">
+                                    <image>
+                                        <Image url="@../../Images/logout-1--arrow-exit-frame-leave-logout-rectangle-right.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
+    </left>
+    <top>
+        <AnchorPane prefHeight="90.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView layoutX="24.0" layoutY="28.0">
+                    <image>
+                        <Image url="@../../Images/Calque_1.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="40.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
+                    <children>
+                        <Button maxWidth="400.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" styleClass="add-conference-Button" text="New Conference">
+                            <graphic>
+                                <ImageView fitHeight="15.0" fitWidth="15.0" x="5.0">
+                                    <image>
+                                        <Image url="@../../Images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.png" />
+                                    </image>
+                                </ImageView>
+                            </graphic>
+                        </Button>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <ImageView>
+                            <image>
+                                <Image url="@../../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
+                            </image>
+                        </ImageView>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
+                            <children>
+                                <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                                    <image>
+                                        <Image url="@../../Images/Mask group.png" />
+                                    </image>
+                                </ImageView>
+                                <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane layoutX="13.0" layoutY="17.0" prefHeight="640.0" prefWidth="1120.0" styleClass="blank-scene">
+               <children>
+                  <TabPane fx:id="tabPane" layoutX="49.0" layoutY="47.0" prefHeight="543.0" prefWidth="1001.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab fx:id="tabOne" text="Card Management">
+                           <content>
+                              <AnchorPane prefHeight="506.0" prefWidth="865.0">
+                                 <children>
+                                    <AnchorPane layoutX="28.0" layoutY="34.0" prefHeight="418.0" prefWidth="276.0" styleClass="widget">
+                                       <children>
+                                          <TableView fx:id="CardParticipantTable" layoutX="1.0" layoutY="1.0" prefHeight="418.0" prefWidth="445.0">
+                                            <columns>
+                                              <TableColumn fx:id="ParticipantColumn" prefWidth="194.66668701171875" text="Participant Name" />
+                                              <TableColumn fx:id="CardColumn" prefWidth="134.13327026367188" text="UID Card" />
+                                                <TableColumn fx:id="ActionColumn" minWidth="0.0" prefWidth="109.86660766601562" text="Action" />
+                                            </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="535.0" layoutY="35.0" prefHeight="423.0" prefWidth="431.0" styleClass="widget">
+                                       <children>
+                                          <Text fill="#3a355a" layoutX="56.0" layoutY="67.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 24;" styleClass="sf-display-pro-Medium" text="Here you can specify an unique Card for each user of your Organization :" wrappingWidth="318.93670654296875">
+                                             <font>
+                                                <Font size="27.0" />
+                                             </font>
+                                          </Text>
+                                          <VBox layoutX="54.0" layoutY="266.0" prefHeight="134.0" prefWidth="261.0" spacing="10.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-fill: #A59A9A;" styleClass="sf-display-pro-Medium" text="This table gets updated whenever a new card is added,allowing you to assign the new card to the participant of your choice." wrappingWidth="342.13677978515625">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-fill: #A59A9A;" styleClass="sf-display-pro-Medium" text="You can select the participant from a drop-down box, which includes all participants who do not have a card assigned yet." wrappingWidth="342.13677978515625">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-fill: #A59A9A;" styleClass="sf-display-pro-Medium" text="The PIN card helps track participation and evaluate each session effectively." wrappingWidth="342.13677978515625">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Text>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 10; -fx-fill: #A59A9A;" styleClass="sf-display-pro-Medium" text="If you want to swap card between two participant you need to delete card before." wrappingWidth="342.13677978515625">
+                                                   <font>
+                                                      <Font size="27.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </VBox>
+                                          <GridPane layoutX="78.0" layoutY="166.0" prefHeight="70.0" prefWidth="282.0" vgap="20.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.1999267578125" minWidth="10.0" prefWidth="189.39990234375" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="120.19997558593747" minWidth="10.0" prefWidth="92.60009765625" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label style="-fx-font-size: 14;" styleClass="sf-display-pro-Bold" text="Available Card" textFill="#5a5e51" />
+                                                <Label style="-fx-font-size: 14;" styleClass="sf-display-pro-Bold" text="Participant without Card:" textFill="#5a5e51" GridPane.rowIndex="1" />
+                                                <Label fx:id="AvailableParticipantT" style="-fx-font-size: 14;" styleClass="sf-display-pro-Medium" text="0/01" textFill="#3e3838" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Label fx:id="AvailableCardT" style="-fx-font-size: 14;" styleClass="sf-display-pro-Medium" text="0/10" textFill="#3e3838" GridPane.columnIndex="1" />
+                                             </children>
+                                          </GridPane>
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                      <Tab fx:id="tabTwo" text="Test">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane layoutX="38.0" layoutY="44.0" prefHeight="418.0" prefWidth="276.0" styleClass="widget">
+                                       <children>
+                                          <TableView fx:id="ParticipantTable" layoutX="1.0" layoutY="1.0" prefHeight="418.0" prefWidth="696.0">
+                                             <columns>
+                                                <TableColumn fx:id="ParticipantNameC" prefWidth="194.66668701171875" text="Participant Name" />
+                                                <TableColumn fx:id="ParticipantNumberC" prefWidth="157.86666870117188" text="Phone Number" />
+                                                <TableColumn fx:id="ParticipantEmailC" minWidth="0.0" prefWidth="211.73333740234375" text="Particpant Email" />
+                                                <TableColumn fx:id="ParticipantStatusC" minWidth="0.0" prefWidth="128.0" text="Status" />
+                                             </columns>
+                                          </TableView>
+                                       </children>
+                                    </AnchorPane>
+                                    <StackedBarChart fx:id="DashbordSC" layoutX="755.0" layoutY="177.0" prefHeight="287.0" prefWidth="200.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </StackedBarChart>
+                                    <ComboBox fx:id="ConferenceListCB" layoutX="789.0" layoutY="76.0" onAction="#onSelectConf" prefHeight="26.0" prefWidth="147.0" promptText="Conference List" />
+                                    <Label fx:id="tester" layoutX="851.0" layoutY="133.0" text="0" />
+                                 </children>
+                              </AnchorPane>
+                           </content></Tab>
+                        <Tab fx:id="tabThree" text="Sessions">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <StackedBarChart fx:id="sessionsChart" layoutX="73.0" layoutY="54.0" prefHeight="400.0" prefWidth="543.0">
+                                      <xAxis>
+                                        <CategoryAxis side="BOTTOM" />
+                                      </xAxis>
+                                      <yAxis>
+                                        <NumberAxis side="LEFT" />
+                                      </yAxis>
+                                    </StackedBarChart>
+                                    <AnchorPane layoutX="707.0" layoutY="72.0" prefHeight="351.0" prefWidth="239.0" styleClass="widget">
+                                       <children>
+                                          <ComboBox fx:id="ConferenceListCB1" layoutX="48.0" layoutY="44.0" onAction="#onSelectConf" prefHeight="26.0" prefWidth="147.0" promptText="Conference List" />
+                                          <Button layoutX="94.0" layoutY="206.0" mnemonicParsing="false" onAction="#onRefresh" text="Refresh" />
+                                       </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                        <Tab fx:id="tabFour" text="Live">
+                           <content>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <AnchorPane layoutX="557.0" layoutY="42.0" prefHeight="398.0" prefWidth="396.0" styleClass="widget">
+                                       <children>
+                                          <Text fx:id="statusT" layoutX="56.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Medium" text="TEST AT :">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font></Text>
+                                          <AnchorPane fx:id="inAnchor" layoutX="56.0" layoutY="228.0" prefHeight="137.0" prefWidth="284.0">
+                                             <children>
+                                                <ImageView fitHeight="78.0" fitWidth="78.0" layoutY="30.0">
+                                                   <image>
+                                                      <Image url="@../../Images/Group%202625.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text fill="#24a225" layoutX="99.0" layoutY="81.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36;" styleClass="sf-display-pro-Bold" text="Welcome !">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                          <Text fx:id="ParticipantNameT" layoutX="198.0" layoutY="82.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Participant Name" />
+                                          <Text fx:id="NumberT" layoutX="198.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Text" />
+                                          <Text fx:id="statusTimeT" layoutX="174.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Medium" text="Current Time">
+                                             <font>
+                                                <Font size="23.0" />
+                                             </font>
+                                          </Text>
+                                          <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="110.0" layoutX="51.0" layoutY="43.0" stroke="BLACK" strokeType="INSIDE" width="114.0" />
+                                          <AnchorPane fx:id="outAnchor" layoutX="27.0" layoutY="223.0" prefHeight="148.0" prefWidth="345.0">
+                                             <children>
+                                                <ImageView fitHeight="82.0" fitWidth="82.0" layoutX="27.0" layoutY="34.0">
+                                                   <image>
+                                                      <Image url="@../../Images/Group%202626.png" />
+                                                   </image>
+                                                </ImageView>
+                                                <Text fill="#a00d12" layoutX="128.0" layoutY="86.0" strokeType="OUTSIDE" strokeWidth="0.0" style="-fx-font-size: 36;" styleClass="sf-display-pro-Bold" text="Goodbay !">
+                                                   <font>
+                                                      <Font size="36.0" />
+                                                   </font>
+                                                </Text>
+                                             </children>
+                                          </AnchorPane>
+                                       </children></AnchorPane>
+                                    <AnchorPane layoutX="63.0" layoutY="45.0" prefHeight="390.0" prefWidth="451.0" styleClass="widget">
+                                       <children>
+                                          <Label fx:id="timeLabel" layoutX="56.0" layoutY="52.0" style="-fx-font-size: 82;" styleClass="sf-display-pro-Medium" text="12:00:01">
+                                             <font>
+                                                <Font size="82.0" />
+                                             </font>
+                                          </Label>
+                                          <Label layoutX="128.0" layoutY="142.0" style="-fx-font-size: 22;" styleClass="sf-display-pro-Medium" text="Date:">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <Circle fill="#ff1f4e" layoutX="400.0" layoutY="57.0" radius="13.0" stroke="WHITE" strokeType="INSIDE" />
+                                          <Label fx:id="dateLabel" layoutX="189.0" layoutY="143.0" style="-fx-font-size: 22;" styleClass="sf-display-pro-Regular" text="2001-29-05">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Label>
+                                          <GridPane layoutX="60.0" layoutY="214.0" prefHeight="122.0" prefWidth="354.0">
+                                            <columnConstraints>
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="212.80003662109374" minWidth="10.0" prefWidth="192.000048828125" />
+                                              <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.79996337890628" minWidth="10.0" prefWidth="161.59995117187503" />
+                                            </columnConstraints>
+                                            <rowConstraints>
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                            </rowConstraints>
+                                             <children>
+                                                <Label style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Presence :" textFill="#5a5e51" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label prefHeight="24.0" prefWidth="184.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Conference Name :" textFill="#5a5e51">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Session Name :" textFill="#5a5e51" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Organization :" textFill="#5a5e51" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="ConfNameT" prefHeight="24.0" prefWidth="138.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Regular" text="Flutter" textFill="#3e3838" GridPane.columnIndex="1">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="PresenceT" prefHeight="24.0" prefWidth="184.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Regular" text="12/30" textFill="#3e3838" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="SessionNameT" prefHeight="24.0" prefWidth="184.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Regular" text="Providers" textFill="#3e3838" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="OrganizationNameT" prefHeight="24.0" prefWidth="184.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Regular" text="Forvia" textFill="#3e3838" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label style="-fx-font-size: 20;" styleClass="sf-display-pro-Medium" text="Location :" textFill="#5a5e51" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                                <Label fx:id="OrganizationNameT1" prefHeight="24.0" prefWidth="184.0" style="-fx-font-size: 20;" styleClass="sf-display-pro-Regular" text="CoWorking" textFill="#3e3838" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                </Label>
+                                             </children>
+                                          </GridPane>
+                                       </children></AnchorPane>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                        </Tab>
+                    </tabs>
+                  </TabPane>
+               </children></AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

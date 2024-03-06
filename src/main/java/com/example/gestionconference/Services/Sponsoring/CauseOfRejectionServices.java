@@ -24,7 +24,7 @@ public class CauseOfRejectionServices  {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, causeOfRejection.getNom());
         preparedStatement.setString(2, causeOfRejection.getEmail());
-        preparedStatement.setInt(3, causeOfRejection.getNumtel());
+        preparedStatement.setString(3, causeOfRejection.getNumtel());
         preparedStatement.setString(4, causeOfRejection.getCause());
         preparedStatement.setString(5, causeOfRejection.getSujetCause().toString());
         preparedStatement.setString(6, causeOfRejection.getDescription());
@@ -37,7 +37,7 @@ public class CauseOfRejectionServices  {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, causeOfRejection.getNom());
         preparedStatement.setString(2, causeOfRejection.getEmail());
-        preparedStatement.setInt(3, causeOfRejection.getNumtel());
+        preparedStatement.setString(3, causeOfRejection.getNumtel());
         preparedStatement.setString(4, causeOfRejection.getCause());
         preparedStatement.setString(5, causeOfRejection.getSujetCause().toString());
         preparedStatement.setString(6, causeOfRejection.getDescription());
@@ -64,7 +64,7 @@ public class CauseOfRejectionServices  {
             causeOfRejection.setId(rs.getInt("id"));
             causeOfRejection.setNom(rs.getString("nom"));
             causeOfRejection.setEmail(rs.getString("email"));
-            causeOfRejection.setNumtel(rs.getInt("numtel"));
+            causeOfRejection.setNumtel(rs.getString("numtel"));
             causeOfRejection.setCause(rs.getString("cause"));
           //  causeOfRejection.setSujetCause(SujetCause.valueOf(rs.getString("sujet_cause")));
             causeOfRejection.setDescription(rs.getString("description"));

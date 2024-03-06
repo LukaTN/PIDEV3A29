@@ -1,82 +1,62 @@
 package com.example.gestionconference.Test.SessionMain;
-import com.example.gestionconference.Models.SessionModels.DataModel;
 
-import javafx.application.Application;
-import javafx.application.Platform;
-import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+public class test {
 
-public class test extends Application {
+    public static void main(String[] args) {
+        // Get the UID thread
+        Thread thread = getUidThread();
 
-    private TableView<DataModel> tableView;
+        // Start the thread
+        thread.start();
+    }
 
-    // Database connection parameters
-    private final String dbUrl = "jdbc:mysql://localhost:3306/testback";
-    private final String dbUsername = "root";
-    private final String dbPassword = "";
+    private static Thread getUidThread() {
+        return new Thread(new Runnable() {
+            @Override
+            public void run() {
+                String tester = "";
+                while (true) {
+                    try {
+                        // Specify the URL of your ESP32 endpoint
+                        URL url = new URL("http://192.168.231.134/rfid");
 
-    final String URL = "jdbc:mysql://localhost:3306/confera";
-    final String USER = "root";
-    final String password = "";
+                        // Open a connection to the URL
+                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                        conn.setRequestMethod("GET");
 
-    @Override
-    public void start(Stage primaryStage) {
-        tableView = new TableView<>();
-        TableColumn<DataModel, String> nameColumn = new TableColumn<>("uid");
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+                        // Read the response
+                        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                        StringBuilder response = new StringBuilder();
+                        String line;
+                        while ((line = reader.readLine()) != null) {
+                            response.append(line);
+                        }
+                        reader.close();
+                        String test = response.toString();
+                        String test2 = test.substring(test.indexOf(",") + 1);
+                        if (!response.toString().isEmpty()) {
+                            if (!tester.equals(test2)) {
+                                System.out.println("Response from ESP32: " + response.toString());
 
-        // Add more columns as needed
+                            }
+                            tester = test2;
+                        }
 
-        tableView.getColumns().add(nameColumn);
+                        // Close the connection
+                        conn.disconnect();
 
-        VBox root = new VBox(tableView);
-        Scene scene = new Scene(root, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Real-Time Table View Demo");
-        primaryStage.show();
-
-        // Load data initially
-        loadDataFromDatabase();
-
-        // Start a thread to periodically update the table view
-        Thread updateThread = new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000); // Adjust the update interval as needed
-                    Platform.runLater(this::loadDataFromDatabase);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                        // Sleep for 1 second before making the next request
+                        Thread.sleep(1000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
-        updateThread.setDaemon(true);
-        updateThread.start();
-    }
-
-    private void loadDataFromDatabase() {
-        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-             Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM testiot");
-            tableView.getItems().clear();
-            while (rs.next()) {
-                DataModel data = new DataModel(rs.getString("uid"));
-                tableView.getItems().add(data);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }
