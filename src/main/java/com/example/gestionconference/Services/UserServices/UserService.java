@@ -7,6 +7,9 @@ import java.util.List;
 
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Util.UserUtils.Mydatabase;
+import com.example.gestionconference.Models.UserModels.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class UserService implements iCrud<User> {
 
