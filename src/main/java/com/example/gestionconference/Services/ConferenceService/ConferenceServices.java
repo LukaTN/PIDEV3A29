@@ -2,7 +2,7 @@ package com.example.gestionconference.Services.ConferenceService;
 
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
-import com.example.gestionconference.Util.MyDB;
+import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 

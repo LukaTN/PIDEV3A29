@@ -1,7 +1,7 @@
 package com.example.gestionconference.Services.SessionServices;
 
 import com.example.gestionconference.Models.SessionModels.Session;
-import com.example.gestionconference.Util.MyDB;
+import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
