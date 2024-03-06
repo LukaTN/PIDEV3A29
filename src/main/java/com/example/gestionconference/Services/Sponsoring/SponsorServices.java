@@ -1,7 +1,7 @@
 package com.example.gestionconference.Services.Sponsoring;
 
 import com.example.gestionconference.Models.Sponsoring.Sponsor;
-import com.example.gestionconference.Util.MyDB;
+import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 
 import java.sql.*;
 import java.util.ArrayList;
