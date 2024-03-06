@@ -1,40 +1,33 @@
+# Ignore IntelliJ IDEA files
+.idea/
+
+# Compiled class files
+*.class
+
+# Compiled Java bytecode
+*.jar
+
+# Ignore log files
+*.log
+
+# Ignore user-specific files
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
+# Ignore Gradle files
+.gradle/
+
+# Ignore Maven build directory
 target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
 
-### IntelliJ IDEA ###
-.idea/modules.xml
-.idea/jarRepositories.xml
-.idea/compiler.xml
-.idea/libraries/
-*.iws
-*.iml
-*.ipr
-src/main/java/com/example/gestionconference/Controllers/SessionControllers
-src/main/java/com/example/gestionconference/Controllers/Usercontrollers
-
-### Eclipse ###
-.apt_generated
+# Ignore Eclipse project files
 .classpath
-.factorypath
 .project
-.settings
-.springBeans
-.sts4-cache
+.settings/
 
-### NetBeans ###
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-build/
-!**/src/main/**/build/
-!**/src/test/**/build/
+# Ignore NetBeans project files
+nbproject/
 
-### VS Code ###
-.vscode/
-
-### Mac OS ###
-.DS_Store
+# Ignore Javadoc
+target/site/

@@ -145,20 +145,20 @@
                         <Button lineSpacing="300.0" mnemonicParsing="false" onAction="#updateLieu" prefHeight="35.0" prefWidth="86.0" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Update" />
                      </children>
                   </HBox>
-                  <VBox layoutX="112.0" layoutY="89.0" prefHeight="363.0" prefWidth="253.0" spacing="40.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                  <VBox layoutX="112.0" layoutY="113.0" prefHeight="363.0" prefWidth="253.0" spacing="40.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
                         <TextField fx:id="TFZone" promptText="Zone" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
                         <TextField fx:id="TFCapacity" promptText="Capacity" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
                         <TextField fx:id="TFPlaceNom" promptText="Place" styleClass="text-field" />
-                        <ComboBox fx:id="LDGov" prefHeight="30.0" prefWidth="180.0" promptText="Goverment" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" />
+                        <ComboBox fx:id="LDGov" onMouseClicked="#onMouseClickedGoverment" prefHeight="30.0" prefWidth="180.0" promptText="Goverment" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" />
                      </children>
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                      </padding>
                   </VBox>
-                  <HBox alignment="CENTER" layoutX="114.0" layoutY="15.0" prefHeight="59.0" prefWidth="250.0" spacing="4.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                  <HBox alignment="CENTER" layoutX="114.0" layoutY="30.0" prefHeight="63.0" prefWidth="250.0" spacing="4.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
-                        <TextField fx:id="searchField" onAction="#searchLieu" prefHeight="25.0" prefWidth="198.0" promptText="Search" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                        <TextField fx:id="searchField" prefHeight="25.0" prefWidth="198.0" promptText="Search" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
                         <ImageView fitHeight="20.0" fitWidth="20.0" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../../Images/magnifying-glass--glass-search-magnifying.png" />

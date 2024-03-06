@@ -1,4 +1,6 @@
-package com.example.gestionconference.Services.Sponsoring;
+/*
+package com.example.gestionconference.Services;
+
 
 
 import com.example.gestionconference.Models.Sponsoring.SponsorRejected;
@@ -23,7 +25,7 @@ public class SponsorRejectedServices  {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, sponsorRejected.getNom());
         preparedStatement.setString(2, sponsorRejected.getEmail());
-        preparedStatement.setString(3, sponsorRejected.getNumtel());
+        preparedStatement.setInt(3, sponsorRejected.getNumtel());
         preparedStatement.setString(4, sponsorRejected.getCause());
         preparedStatement.executeUpdate();
     }
@@ -34,7 +36,7 @@ public class SponsorRejectedServices  {
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setString(1, sponsorRejected.getNom());
         preparedStatement.setString(2, sponsorRejected.getEmail());
-        preparedStatement.setString(3, sponsorRejected.getNumtel());
+        preparedStatement.setInt(3, sponsorRejected.getNumtel());
         preparedStatement.setString(4, sponsorRejected.getCause());
         preparedStatement.setInt(5, sponsorRejected.getId());
         preparedStatement.executeUpdate();
@@ -59,7 +61,7 @@ public class SponsorRejectedServices  {
             sponsorRejected.setId(rs.getInt("id"));
             sponsorRejected.setNom(rs.getString("nom"));
             sponsorRejected.setEmail(rs.getString("email"));
-            sponsorRejected.setNumtel(rs.getString("numtel"));
+            sponsorRejected.setNumtel(rs.getInt("numtel"));
             sponsorRejected.setCause(rs.getString("cause"));
             sponsorRejecteds.add(sponsorRejected);
         }
@@ -76,7 +78,7 @@ public class SponsorRejectedServices  {
         if (resultSet.next()) {
             String nom = resultSet.getString("nom");
             String email = resultSet.getString("email");
-            String numtel = resultSet.getString("numtel");
+            int numtel = resultSet.getInt("numtel");
             String cause = resultSet.getString("cause");
 
             return new SponsorRejected(id, nom, email, numtel, cause);
@@ -85,3 +87,4 @@ public class SponsorRejectedServices  {
         }
     }
 }
+*/

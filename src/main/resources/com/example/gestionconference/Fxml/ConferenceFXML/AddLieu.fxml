@@ -129,13 +129,14 @@
          <children>
             <AnchorPane layoutX="-2.0" layoutY="2.0" prefHeight="640.0" prefWidth="1120.0" styleClass="blank-scene">
                <children>
-                  <VBox alignment="CENTER" layoutX="402.0" layoutY="51.0" prefHeight="314.0" prefWidth="317.0" spacing="60.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                  <VBox alignment="CENTER" layoutX="402.0" layoutY="25.0" prefHeight="314.0" prefWidth="317.0" spacing="60.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
-                           <TextField fx:id="TFZone" layoutX="245.0" layoutY="149.0" promptText="Zone" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
-                           <TextField fx:id="TFCapacity" layoutX="245.0" layoutY="200.0" promptText="Capacity" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
-                           <TextField fx:id="TFPlaceNom" layoutX="245.0" layoutY="250.0" promptText="Place" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
-                           <ComboBox fx:id="LDGov" layoutX="244.0" layoutY="86.0" onAction="#onSelect" prefWidth="150.0" promptText="Goverment" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" />
-                           <Text fx:id="finalResp" layoutX="81.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                        <TextField fx:id="TFZone" layoutX="245.0" layoutY="149.0" promptText="Zone" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                        <TextField fx:id="TFCapacity" layoutX="245.0" layoutY="200.0" promptText="Capacity" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                        <TextField fx:id="TFPlaceNom" layoutX="245.0" layoutY="250.0" promptText="Place" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                        <TextField fx:id="confCountry" promptText="Country" />
+                        <ComboBox fx:id="LDGov" layoutX="244.0" layoutY="86.0" onAction="#onSelect" onMouseClicked="#onMouseClickedGoverment" prefWidth="150.0" promptText="Goverment" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" />
+                        <Text fx:id="finalResp" layoutX="81.0" layoutY="313.0" strokeType="OUTSIDE" strokeWidth="0.0" />
 
                      </children>
                      <opaqueInsets>
@@ -147,8 +148,8 @@
                   </VBox>
                   <HBox alignment="CENTER" layoutY="494.0" prefHeight="100.0" prefWidth="1121.0" spacing="400.0">
                      <children>
-                           <Button lineSpacing="300.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="93.0" styleClass="back-button" stylesheets="@../../Styles/StyleSheet.css" text="Cancel" />
-                           <Button mnemonicParsing="false" onAction="#toPlaces" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Places" />
+                        <Button lineSpacing="300.0" mnemonicParsing="false" onAction="#onCancel" prefHeight="35.0" prefWidth="93.0" styleClass="back-button" stylesheets="@../../Styles/StyleSheet.css" text="Cancel" />
+                        <Button mnemonicParsing="false" onAction="#toPlaces" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Places" />
                         <Button mnemonicParsing="false" onAction="#onAddButton" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Add Place" />
                      </children>
                   </HBox>

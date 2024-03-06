@@ -24,7 +24,7 @@
       <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
 
          <children>
-            <VBox layoutX="27.2" layoutY="70.0" prefHeight="242.0" prefWidth="0.0" spacing="33.0" AnchorPane.leftAnchor="27.2">
+            <VBox layoutX="27.2" layoutY="70.0" prefHeight="242.0" prefWidth="24.0" spacing="33.0" AnchorPane.leftAnchor="27.2">
                <children>
                   <ImageView>
                      <image>
@@ -36,12 +36,7 @@
                         <Image url="@../../Images/bullet-list--points-bullet-unordered-list-lists-bullets.png" />
                      </image>
                   </ImageView>
-                  <ImageView>
-                     <image>
-                        <Image url="@../../Images/cog--work-loading-cog-gear-settings-machine.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView>
+                  <ImageView fx:id="accountManagement" fitHeight="28.0" fitWidth="23.0" onMouseClicked="#toAccountManagemnt">
                      <image>
                         <Image url="@../../Images/user-circle-single--circle-geometric-human-person-single-user.png" />
                      </image>
@@ -58,7 +53,7 @@
                   <Insets top="5.0" />
                </padding>
                <graphic>
-                  <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                  <AnchorPane onMouseClicked="#logout" prefHeight="200.0" prefWidth="200.0">
                      <children>
                         <ImageView layoutX="8.0" layoutY="4.0" styleClass="logout" AnchorPane.leftAnchor="8.0">
                            <image>
@@ -105,17 +100,17 @@
                   <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                   <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
                      <children>
-                        <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                        <Text fx:id="username" layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                        <ImageView fx:id="imageUser" fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
                            <image>
                               <Image url="@../../Images/Mask group.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                        <Text fx:id="role" layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -133,7 +128,7 @@
             <AnchorPane layoutX="-2.0" layoutY="2.0" prefHeight="640.0" prefWidth="1120.0" styleClass="blank-scene">
                <children>
                   <Text fx:id="finalResult" layoutX="190.0" layoutY="506.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="265.0" />
-                  <VBox alignment="CENTER" layoutX="402.0" layoutY="119.0" prefHeight="387.0" prefWidth="317.0" spacing="20.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                  <VBox alignment="CENTER" layoutX="546.0" layoutY="114.0" prefHeight="387.0" prefWidth="317.0" spacing="20.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
                         <TextField fx:id="TFConfName" prefHeight="26.0" prefWidth="200.0" promptText="Conference Name" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
                         <DatePicker fx:id="TFDate" prefHeight="25.0" prefWidth="336.0" promptText="Date" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
@@ -168,6 +163,24 @@
                         <Button mnemonicParsing="false" onAction="#onAddConf" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Add Conference" />
                      </children>
                   </HBox>
+                  <VBox alignment="CENTER" layoutX="207.0" layoutY="114.0" prefHeight="387.0" prefWidth="317.0" spacing="20.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                     <children>
+                        <ImageView fx:id="imageConf" fitHeight="150.0" fitWidth="201.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../../Images/icons8-upload-image-100.png" />
+                           </image>
+                        </ImageView>
+                        <HBox prefHeight="29.0" prefWidth="331.0" spacing="20.0">
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
+                        <Button maxWidth="95.0" mnemonicParsing="false" onAction="#importImage" prefHeight="8.0" prefWidth="95.0" styleClass="next-button" stylesheets="@../../Styles/stylesheet2.css" text="import" />
+                     </children>
+                     <padding>
+                        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                     </padding>
+                  </VBox>
                </children></AnchorPane>
          </children>
       </AnchorPane>

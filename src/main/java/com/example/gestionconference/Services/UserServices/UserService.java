@@ -3,9 +3,8 @@ package com.example.gestionconference.Services.UserServices;
 
 
 import java.sql.*;
-import java.util.ArrayList;
 import java.util.List;
-import GestionUser.UserUtils.Mydatabase;
+import com.example.gestionconference.Util.UserUtils.Mydatabase;
 import com.example.gestionconference.Models.UserModels.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,7 @@ public class UserService implements iCrud<User> {
     }
 
     @Override
-    public ObservableList<User>  getAll() throws SQLException {
+    public ObservableList<User> getAll() throws SQLException {
         ObservableList<User> users = FXCollections.observableArrayList();
         String sql = "SELECT * FROM user";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
@@ -43,7 +42,6 @@ public class UserService implements iCrud<User> {
         return users;
     }
 
-
     @Override
     public boolean add(User user) throws SQLException {
         if (userExistsByUsername(user.getUsername())) {
@@ -52,7 +50,7 @@ public class UserService implements iCrud<User> {
         }
 
         // SQL query to insert a new user
-        String sql = "INSERT INTO user (username, mail, password, numtel, nom, prenom,role) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user (username, mail, password, numtel, nom, prenom,role,profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, user.getUsername());
@@ -62,6 +60,7 @@ public class UserService implements iCrud<User> {
             preparedStatement.setString(5, user.getNom());
             preparedStatement.setString(6, user.getPrenom());
             preparedStatement.setString(7, user.getRole());
+            preparedStatement.setBytes(8, user.getProfilePicture());
             preparedStatement.executeUpdate();
 
             System.out.println("User added successfully.");
@@ -130,7 +129,7 @@ public class UserService implements iCrud<User> {
     @Override
     public boolean update(User user) throws SQLException {
         if (userExistsByUsername(user.getUsername())){
-        String sql = "update user set username = ?,  mail = ?, password = ?, numtel = ?, nom = ?, prenom = ? where username=?";
+        String sql = "update user set username = ?,  mail = ?, password = ?, numtel = ?, nom = ?, prenom = ?, profile_picture=?,role=? where username=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getMail());
@@ -138,7 +137,9 @@ public class UserService implements iCrud<User> {
             preparedStatement.setInt(4, user.getPhone());
             preparedStatement.setString(5, user.getNom());
             preparedStatement.setString(6, user.getPrenom());
-            preparedStatement.setString(7, user.getUsername());
+            preparedStatement.setString(9, user.getUsername());
+            preparedStatement.setBytes(7, user.getProfilePicture());
+            preparedStatement.setString(8, user.getRole());
             preparedStatement.executeUpdate();
             System.out.println("Updated successfully");
             return true;
@@ -153,6 +154,8 @@ public class UserService implements iCrud<User> {
         return false;
     }
 
+
+
     // Get user by username
     public User getByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM user WHERE username = ?";
@@ -161,12 +164,15 @@ public class UserService implements iCrud<User> {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
+                user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
                 user.setMail(resultSet.getString("mail"));
                 user.setPassword(resultSet.getString("password"));
                 user.setPhone(resultSet.getInt("numtel"));
                 user.setNom(resultSet.getString("nom"));
                 user.setPrenom(resultSet.getString("prenom"));
+                user.setRole(resultSet.getString("role"));
+                user.setProfilePicture(resultSet.getBytes("profile_picture"));
 
                 return user;
             }

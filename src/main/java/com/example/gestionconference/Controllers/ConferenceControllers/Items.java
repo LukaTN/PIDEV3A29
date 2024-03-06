@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -44,7 +45,7 @@ public class Items {
     private Label confType;
 
     @FXML
-    private ImageView eventIV;
+    private ImageView confImage;
 
     @FXML
     private AnchorPane event_aff;
@@ -139,5 +140,17 @@ public class Items {
         capacity.setText(String.valueOf(lieu.getCapacity()));
         goverment.setText(lieu.getZone());
         label.setText(lieu.getLabel());
+        // Assuming your Conference class has a property for image path named "imagePath"
+        String imagePath = conference.getImage();
+
+        // Load the image and set it in the ImageView
+        if (imagePath != null && !imagePath.isEmpty()) {
+            Image image = new Image("file:" + imagePath); // Assuming imagePath is the absolute path to the image file
+            confImage.setImage(image);
+        } else {
+            // Set a default image or handle the case where there's no image
+            confImage.setImage(new Image("com/example/gestionconference/Images/icons8-no-image-100.png")); // Change the path accordingly
+        }
+
     }
 }
