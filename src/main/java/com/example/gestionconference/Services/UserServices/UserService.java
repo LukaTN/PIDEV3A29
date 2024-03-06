@@ -1,6 +1,6 @@
-package GestionUser.UserServices;
+package com.example.gestionconference.Services.UserServices;
 
-import GestionUser.UserModels.User;
+import com.example.gestionconference.Models.UserModels.User;
 
 import java.sql.*;
 import java.util.List;

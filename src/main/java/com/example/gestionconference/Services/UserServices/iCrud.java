@@ -1,4 +1,4 @@
-package GestionUser.UserServices;
+package com.example.gestionconference.Services.UserServices;
 import java.sql.SQLException;
 import java.util.List;
 
