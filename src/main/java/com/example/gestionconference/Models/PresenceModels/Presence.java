@@ -1,20 +1,31 @@
-package com.example.gestionconference.Models.SessionModels;
+package com.example.gestionconference.Models.PresenceModels;
 
 import javafx.beans.property.*;
 
+import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalTime;
 
 public class Presence {
     private final StringProperty uid;
     private final IntegerProperty idParticipant;
-    private final ObjectProperty<LocalTime> presenceTime;
-    private final BooleanProperty presenceStatus;
+    private final ObjectProperty<Timestamp> presenceTime;
+    private final IntegerProperty presenceStatus;
 
-    public Presence(String uid, int idParticipant, LocalTime presenceTime, boolean presenceStatus) {
+
+
+
+    public Presence(String uid, int idParticipant, Timestamp presenceTime, int presenceStatus) {
         this.uid = new SimpleStringProperty(uid);
         this.idParticipant = new SimpleIntegerProperty(idParticipant);
         this.presenceTime = new SimpleObjectProperty<>(presenceTime);
-        this.presenceStatus = new SimpleBooleanProperty(presenceStatus);
+        this.presenceStatus = new SimpleIntegerProperty(presenceStatus);
+    }
+    public Presence(String uid, int idParticipant, int presenceStatus) {
+        this.uid = new SimpleStringProperty(uid);
+        this.idParticipant = new SimpleIntegerProperty(idParticipant);
+        this.presenceTime = new SimpleObjectProperty<>(null); // or you can leave it uninitialized
+        this.presenceStatus = new SimpleIntegerProperty(presenceStatus);
     }
 
     public String getUid() {
@@ -41,27 +52,28 @@ public class Presence {
         this.idParticipant.set(idParticipant);
     }
 
-    public LocalTime getPresenceTime() {
+    public Timestamp getPresenceTime() {
         return presenceTime.get();
     }
 
-    public ObjectProperty<LocalTime> presenceTimeProperty() {
+    public ObjectProperty<Timestamp> presenceTimeProperty() {
         return presenceTime;
     }
 
-    public void setPresenceTime(LocalTime presenceTime) {
+    public void setPresenceTime(Timestamp presenceTime) {
         this.presenceTime.set(presenceTime);
     }
 
-    public boolean isPresenceStatus() {
+    public int getPresenceStatus() {
         return presenceStatus.get();
     }
 
-    public BooleanProperty presenceStatusProperty() {
+    public IntegerProperty presenceStatusProperty() {
         return presenceStatus;
     }
 
-    public void setPresenceStatus(boolean presenceStatus) {
+    public void setPresenceStatus(int presenceStatus) {
         this.presenceStatus.set(presenceStatus);
     }
 }
+

@@ -1,6 +1,10 @@
 package com.example.gestionconference.Models.UserModels;
 
+import java.util.Arrays;
+
 public class User {
+
+    private int id;
 
     private String username;
     private String nom;  // changed from 'name' to 'nom'
@@ -21,7 +25,13 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
-
+    //getters and setters for id
+    public int getId() {
+        return id;
+    }
+    public void setId(int id) {
+        this.id = id;
+    }
 
 
     //getters and setters
@@ -102,18 +112,30 @@ public class User {
         this.profilePicture = profilePicture;
     }
 
+    public User(int id,String username) {
+        this.id = id;
+        this.username = username;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
-                "username='" + username + '\'' +
+                "id=" + id +
+                ", username='" + username + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", mail='" + mail + '\'' +
                 ", password='" + password + '\'' +
                 ", phone=" + phone +
+                ", role='" + role + '\'' +
+                ", profilePicture=" + Arrays.toString(profilePicture) +
                 '}';
     }
 
     public User() {
     }
+
+
+
 }
