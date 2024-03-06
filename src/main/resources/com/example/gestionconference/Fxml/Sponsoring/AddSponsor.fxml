@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.Sponsoring.AddSponsor">
+<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.Sponsoring.AddSponsor">
     <left>
         <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
             <children>
@@ -76,23 +66,13 @@
                         <Image url="@../../Images/Calque_1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Sponsors List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="40.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
                     <children>
-                        <Button maxWidth="400.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" styleClass="add-conference-Button" text="New Conference">
-                            <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" x="5.0">
-                                    <image>
-                                        <Image url="@../../Images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                         <ImageView>
                             <image>
                                 <Image url="@../../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
@@ -128,13 +108,13 @@
          <children>
             <VBox layoutX="159.0" layoutY="80.0" prefHeight="504.0" prefWidth="380.0">
                <children>
-                  <HBox prefHeight="94.0" prefWidth="379.0">
+                  <HBox fx:id="sponsorTable" prefHeight="94.0" prefWidth="379.0">
                      <children>
                         <Text fx:id="Nom" strokeType="OUTSIDE" strokeWidth="0.0" text="Nom" />
                         <TextField fx:id="nomTF" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="100.0" prefWidth="200.0">
+                  <HBox fx:id="sponsorstable" prefHeight="100.0" prefWidth="200.0">
                      <children>
                         <Text fx:id="Email" strokeType="OUTSIDE" strokeWidth="0.0" text="Email" />
                         <TextField fx:id="EmailTF" />
@@ -149,13 +129,20 @@
                   <HBox prefHeight="99.0" prefWidth="430.0">
                      <children>
                         <Text fx:id="status" strokeType="OUTSIDE" strokeWidth="0.0" text="Status" />
-                        <ComboBox fx:id="StatusCB" prefWidth="150.0" />
+                        <ComboBox fx:id="StatusCB" prefWidth="150.0" promptText="Select" />
                      </children>
                   </HBox>
-                  <HBox prefHeight="124.0" prefWidth="363.0">
+                   <HBox prefHeight="78.0" prefWidth="380.0" spacing="10.0">
+                       <Text fx:id="budgetLabel" text="Budget:" />
+                     <TextField fx:id="budgetTF" />
+                       <Text fx:id="causeLabel" text="Cause:" />
+                     <ComboBox fx:id="causeCB" prefHeight="28.0" prefWidth="103.0" promptText="Select" />
+                   </HBox>
+
+                   <HBox prefHeight="124.0" prefWidth="363.0">
                      <children>
-                        <Button fx:id="save" mnemonicParsing="false" prefHeight="59.0" prefWidth="97.0" text="Save" />
-                        <Button fx:id="clear" mnemonicParsing="false" prefHeight="59.0" prefWidth="104.0" text="Clear" />
+                        <Button fx:id="save" mnemonicParsing="false" onAction="#handleSave" prefHeight="59.0" prefWidth="97.0" text="Save" />
+                        <Button fx:id="clear" mnemonicParsing="false" onAction="#handleClear" prefHeight="59.0" prefWidth="97.0" text="Clear" />
                      </children>
                   </HBox>
                </children>

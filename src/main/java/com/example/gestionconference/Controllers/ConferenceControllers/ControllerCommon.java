@@ -13,7 +13,9 @@ public class ControllerCommon {
 
     public void jump(String title,String path, Control field){
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+           FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
+             // FXMLLoader loader = new FXMLLoader(getClass().getResource("com/example/gestionconference/Fxml/Sponsoring/ViewRejectedSponsors.fxml"));
+
             Parent root = loader.load();
             Scene scene = new Scene(root);
             Stage stage = new Stage();

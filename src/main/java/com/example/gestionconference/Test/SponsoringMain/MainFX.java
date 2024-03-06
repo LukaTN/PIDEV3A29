@@ -1,4 +1,4 @@
-package com.example.gestionconference.Test;
+package com.example.gestionconference.Test.SponsoringMain;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

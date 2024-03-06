@@ -1,4 +1,4 @@
-package GestionUser.UserModels;
+package com.example.gestionconference.Models.UserModels;
 
 public class User {
 

@@ -5,18 +5,24 @@ public class Sponsor {
     private String nom;
     private String email;
     private String numtel;
-
+    private double budget;
     private String status;
+    private  String cause;
 
     public Sponsor() {
 
     }
 
-    public Sponsor(int id, String nom, String email, String numtel, String status) {
+
+
+
+
+    public Sponsor(int id, String nom, String email, String numtel, String status, double budget) {
         this.id = id;
         this.nom = nom;
         this.email = email;
         this.numtel = numtel;
+        this.budget = budget;
         this.status = status;
     }
     public Sponsor(int id, String nom, String email, String numtel) {
@@ -27,8 +33,65 @@ public class Sponsor {
 
     }
 
+    public Sponsor(int id, String nom, String email, String numtel , String status,String cause) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.numtel = numtel;
+        this.status = status;
+        this.cause = cause;
+
+    }
+
+    public Sponsor(int id, String nom, String email, String numtel, String selectedStatus, double budget, String cause) {
+        this.id=id;
+        this.nom=nom;
+        this.email=email;
+        this.numtel=numtel;
+        this.status=selectedStatus;
+        this.budget=budget;
+        this.cause=cause;
+
+    }
+
+    public Sponsor(String nom, String email, String numtel, double budget, String status) {
+        this.nom = nom;
+        this.email = email;
+        this.numtel = numtel;
+        this.budget = budget;
+        this.status = status;
+    }
+
+    public Sponsor(String nom, String email, String numtel, String status, String cause) {
+        this.nom = nom;
+        this.email = email;
+        this.numtel = numtel;
+        this.status = status;
+        this.cause = cause;
+    }
+
+    public Sponsor(int id, String nom, String email, String numtel, String status) {
+        this.id = id;
+        this.nom = nom;
+        this.email = email;
+        this.numtel = numtel;
+        this.status = status;
+    }
+
+    public Sponsor(int id, String nom, String email, String numtel, double budget) {
+    }
+
+
     public int getId() {
         return id;
+    }
+
+    public double getBudget() {
+        return budget;
+    }
+
+    public void setBudget(double budget) {
+        this.budget = budget;
     }
 
     public void setId(int id) {
@@ -51,6 +114,7 @@ public class Sponsor {
         this.email = email;
     }
 
+
     public String getNumtel() {
         return numtel;
     }
@@ -67,6 +131,14 @@ public class Sponsor {
         this.status = status;
     }
 
+    public String getCause() {
+        return cause;
+    }
+
+    public void setCause(String cause) {
+        this.cause = cause;
+    }
+
     @Override
     public String toString() {
         return "Sponsor{" +
@@ -74,7 +146,9 @@ public class Sponsor {
                 ", nom='" + nom + '\'' +
                 ", email='" + email + '\'' +
                 ", numtel='" + numtel + '\'' +
-                ", status=" + status +
+                ", cause='" + cause + '\'' +
+                ", budget=" + budget +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

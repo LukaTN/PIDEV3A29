@@ -1,22 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.Sponsoring.ViewRejectedSponsors">
+<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.Sponsoring.ViewRejectedSponsors">
     <left>
         <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
             <children>
@@ -76,23 +66,13 @@
                         <Image url="@../../Images/Calque_1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Label layoutX="92.0" layoutY="27.0" stylesheets="@../../Styles/StyleSheet.css" text="Sponsors List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="40.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
                     <children>
-                        <Button maxWidth="400.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" styleClass="add-conference-Button" text="New Conference">
-                            <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" x="5.0">
-                                    <image>
-                                        <Image url="@../../Images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                         <ImageView>
                             <image>
                                 <Image url="@../../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
@@ -101,7 +81,7 @@
                         <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                         <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
                             <children>
-                                <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                                <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mokded Shili">
                                     <font>
                                         <Font size="15.0" />
                                     </font>
@@ -111,7 +91,7 @@
                                         <Image url="@../../Images/Mask group.png" />
                                     </image>
                                 </ImageView>
-                                <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                                <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Organizer">
                                     <font>
                                         <Font size="13.0" />
                                     </font>
@@ -127,13 +107,13 @@
         <AnchorPane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #f5f5f5;" BorderPane.alignment="CENTER">
             <!-- TableView and input fields -->
             <children>
-                <TableView fx:id="sponsors" layoutX="213.0" layoutY="129.0" onMouseClicked="#rowClicked" prefHeight="340.0" prefWidth="688.0" style="-fx-background-color: white;">
+                <TableView fx:id="sponsorrejected" layoutX="216.0" layoutY="95.0" prefHeight="340.0" prefWidth="688.0" style="-fx-background-color: white;">
                     <columns>
                         <TableColumn fx:id="idCol" prefWidth="75.0" text="ID" />
-                        <TableColumn fx:id="typeCol" prefWidth="137.0" text="Name" />
-                        <TableColumn fx:id="nameCol" prefWidth="154.0" text="NomTel" />
-                        <TableColumn prefWidth="172.0" text="Mail" />
-                        <TableColumn fx:id="statusCol" prefWidth="149.0" text="Cause" />
+                        <TableColumn fx:id="nomCol" prefWidth="137.0" text="Name" />
+                        <TableColumn fx:id="numtelCol" prefWidth="154.0" text="NumTel" />
+                        <TableColumn fx:id="emailCol" prefWidth="172.0" text="Email" />
+                        <TableColumn fx:id="causeCol" prefWidth="149.0" text="Cause" />
                     </columns>
                 </TableView>
             </children>

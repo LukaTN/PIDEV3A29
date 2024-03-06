@@ -1,30 +1,26 @@
 package com.example.gestionconference.Controllers.Sponsoring;
 
+import com.example.gestionconference.Controllers.ConferenceControllers.ControllerCommon;
+import com.example.gestionconference.Controllers.Sponsoring.AddSponsor;
 import com.example.gestionconference.Models.Sponsoring.Sponsor;
+import com.example.gestionconference.Services.Sponsoring.SponsorServices;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import javax.swing.*;
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.Objects;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class ViewSponsor implements Initializable {
 
@@ -41,76 +37,159 @@ public class ViewSponsor implements Initializable {
     private TableColumn<Sponsor, String> emailCol;
 
     @FXML
-    private TableColumn<Sponsor, Integer> numtelCol;
+    private TableColumn<Sponsor, String> numtelCol;
 
     @FXML
     private TableColumn<Sponsor, String> statusCol;
 
-    @FXML
-    private Icon add;
 
     @FXML
-    private Icon update;
+    private Button addsponsor;
 
     @FXML
-    private Icon delete;
+    private Button updatesponsor;
 
-    String query = null;
-    Connection connection = null ;
-    PreparedStatement preparedStatement = null ;
-    ResultSet resultSet = null ;
-    Sponsor sponsor = null ;
-    ObservableList<Sponsor> sponsorList = FXCollections.observableArrayList();
+    @FXML
+    private Button deletesponsor;
 
+    @FXML
+    private Button viewaccepted;
+
+    @FXML
+    private Button viewrejected;
+
+
+    ControllerCommon cc = new ControllerCommon();
+
+    private SponsorServices sponsorServices;
+
+    // ObservableList to hold sponsors for the TableView
+    private final ObservableList<Sponsor> sponsorList = FXCollections.observableArrayList();
+
+    public ViewSponsor() {
+        sponsorServices = new SponsorServices();
+    }
+
+    @FXML
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        // Initialization code here
+        // Set cell value factories for specific columns
+        idCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getId())));
+        nomCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNom()));
+        emailCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getEmail()));
+        numtelCol.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getNumtel()));
+        statusCol.setCellValueFactory(cellData -> new SimpleStringProperty(String.valueOf(cellData.getValue().getStatus())));
+
+        // Load sponsors initially
+        loadSponsors();
+    }
+
+    private void loadSponsors() {
+        try {
+            ObservableList<Sponsor> sponsorData = FXCollections.observableArrayList(sponsorServices.getAll());
+            sponsors.setItems(sponsorData);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            // Handle exception
+        }
+    }
+
+    public void rowClicked(MouseEvent mouseEvent) {
     }
 
     @FXML
-    void getAddView(MouseEvent event) {
+    public void handleviewr(ActionEvent event) throws IOException {
+        // Load the interface for viewing accepted sponsors
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/ViewRejectedSponsors.fxml"));
+        Parent root = loader.load();
+
+        // Show the interface
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+
+    public void handleviewa(ActionEvent event) {
         try {
-            Parent parent = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/ViewSponsor.fxml")));
-            Scene scene = new Scene(parent);
+            // Load the interface for viewing accepted sponsors
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/ViewAcceptedSponsors.fxml"));
+            Parent root = loader.load();
+
+            // Show the interface
             Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.initStyle(StageStyle.UTILITY);
+            stage.setScene(new Scene(root));
             stage.show();
-        } catch (IOException ex) {
-            Logger.getLogger(ViewSponsor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    void refreshTable(MouseEvent event) {
+
+
+
+
+    public void handleadd(ActionEvent actionEvent) {
         try {
-            sponsorList.clear();
-            query = "SELECT * FROM `sponsor`";
-            preparedStatement = connection.prepareStatement(query);
-            resultSet = preparedStatement.executeQuery();
+            // Load the AddSponsor.fxml file
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/AddSponsor.fxml"));
+            Parent root = loader.load();
 
-            while (resultSet.next()){
-                // Assuming you have a Status class with appropriate constructor
-                sponsorList.add(new  Sponsor(
-                        resultSet.getInt("id"),
-                        resultSet.getString("name"),
-                        resultSet.getString("email"),
-                        resultSet.getString("numtel"),
-                        resultSet.getString("status")));
-                sponsors.setItems(sponsorList);
-            }
-        } catch (SQLException ex) {
-            Logger.getLogger(ViewSponsor.class.getName()).log(Level.SEVERE, null, ex);
+            // Get the controller instance
+            AddSponsor addSponsor = loader.getController();
+
+            // Show the AddSponsor scene
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.show();
+
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
-    @FXML
-    void deleteSponsor(MouseEvent event) {
-        // Implement logic to delete a sponsor
+    public void handleupdate(ActionEvent actionEvent) {
+        Sponsor selectedSponsor = (Sponsor) sponsors.getSelectionModel().getSelectedItem();
+        if (selectedSponsor != null) {
+            try {
+                // Load the AddSponsor.fxml file
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/AddSponsor.fxml"));
+                Parent root = loader.load();
+
+                // Get the controller instance
+                AddSponsor AddSponsor = loader.getController();
+
+                // Pass the selected sponsor to the AddSponsor controller
+                AddSponsor.setSponsor(selectedSponsor);
+
+                // Show the AddSponsor scene
+                Stage stage = new Stage();
+                stage.setScene(new Scene(root));
+                stage.show();
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        } else {
+            // Show error message
+        }
     }
 
-    @FXML
-    void rowClicked(MouseEvent event) {
-        // Implement logic for handling row click event
+    public void handledelete(ActionEvent actionEvent) { Sponsor selectedSponsor = (Sponsor) sponsors.getSelectionModel().getSelectedItem();
+        if (selectedSponsor != null) {
+            try {
+                sponsorServices.delete(selectedSponsor);
+                sponsorList.remove(selectedSponsor);
+            } catch (SQLException e) {
+                e.printStackTrace();
+                // Handle exception
+            }
+        } else {
+            // Show error message
+        }
     }
 }
+
+
