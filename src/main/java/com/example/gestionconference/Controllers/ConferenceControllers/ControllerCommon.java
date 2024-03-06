@@ -34,4 +34,5 @@ public class ControllerCommon {
         alert.setContentText(content);
         alert.showAndWait();
     }
+
 }

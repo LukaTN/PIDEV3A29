@@ -4,8 +4,10 @@ package com.example.gestionconference.Services.UserServices;
 
 import java.sql.*;
 import java.util.List;
-import GestionUser.UserUtils.Mydatabase;
+import com.example.gestionconference.Util.UserUtils.Mydatabase;
 import com.example.gestionconference.Models.UserModels.User;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 public class UserService implements iCrud<User> {
 
@@ -16,8 +18,28 @@ public class UserService implements iCrud<User> {
     }
 
     @Override
-    public List<User> getAll() throws SQLException {
-        return null;
+    public ObservableList<User> getAll() throws SQLException {
+        ObservableList<User> users = FXCollections.observableArrayList();
+        String sql = "SELECT * FROM user";
+        try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                User user = new User();
+                user.setId(resultSet.getInt("id"));
+                user.setUsername(resultSet.getString("username"));
+                user.setMail(resultSet.getString("mail"));
+                user.setPassword(resultSet.getString("password"));
+                user.setPhone(resultSet.getInt("numtel"));
+                user.setNom(resultSet.getString("nom"));
+                user.setPrenom(resultSet.getString("prenom"));
+
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            System.err.println(e.getMessage());
+        }
+
+        return users;
     }
 
     @Override
@@ -132,6 +154,8 @@ public class UserService implements iCrud<User> {
         return false;
     }
 
+
+
     // Get user by username
     public User getByUsername(String username) throws SQLException {
         String sql = "SELECT * FROM user WHERE username = ?";
@@ -140,6 +164,7 @@ public class UserService implements iCrud<User> {
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()) {
                 User user = new User();
+                user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
                 user.setMail(resultSet.getString("mail"));
                 user.setPassword(resultSet.getString("password"));
