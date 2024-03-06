@@ -1,7 +1,7 @@
 package com.example.gestionconference.Services.ConferenceService;
 
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
-import com.example.gestionconference.Util.MyDB;
+import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -110,17 +110,20 @@ public class LieuServices {
         PreparedStatement stm;
 
         if (search != null) {
-            req1 = "SELECT * FROM emplacement WHERE ville LIKE ? OR gouvernourat LIKE ? OR capacite = ?";
+            req1 = "SELECT * FROM emplacement WHERE ville LIKE ? OR gouvernourat LIKE ? OR capacite = ? OR label LIKE ?";
             stm = cnx.prepareStatement(req1);
             stm.setString(1, "%" + search + "%");
             stm.setString(2, "%" + search + "%");
 
-            // Check if search is a number before setting it as an integer parameter
+//             Check if search is a number before setting it as an integer parameter
             if (search instanceof String && isNumeric((String) search)) {
                 stm.setInt(3, Integer.parseInt((String) search));
             } else {
                 stm.setInt(3, 0); // A placeholder value, won't affect the query
             }
+
+            // Set the parameter for label column
+            stm.setString(4, "%" + search + "%");
         } else {
             req1 = "SELECT * FROM emplacement";
             stm = cnx.prepareStatement(req1);

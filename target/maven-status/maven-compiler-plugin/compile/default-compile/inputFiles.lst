@@ -1,50 +1,60 @@
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\UserMain\MainFX.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SessionMain\test2.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Signup.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\ConferenceService\ConferenceServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SessionMain\Main.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Util\UserUtils\Mydatabase.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\Sponsoring\Status.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\Sponsoring\SponsorRejected.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Sponsoring\AddSponsor.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\UpdateConference.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\ConferenceTest\MainFX.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SponsoringMain\Main.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\SessionServices\TopicServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\UserServices\UserService.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\ConferenceList.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Signin.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\UserServices\iCrud.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewSponsor.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewRejectedSponsors.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\SessionModels\Session.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\ConferenceModels\Lieu.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\ConferenceTest\Main.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\SessionModels\Topic.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\LieuList.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewAcceptedSponsors.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\ControllerCommon.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SessionMain\test.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\Items.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\SessionModels\DataModel.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\SessionControllers\AddSessionController.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\UserModels\User.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\AddLieu.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Accountmanagement.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SponsoringMain\MainFX.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\ConferenceModels\ConferenceType.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\Sponsoring\Cause.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\Sponsoring\SponsorAccepted.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\SessionModels\Presence.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\Sponsoring\Sponsor.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Util\MyDB.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\ConferenceService\LieuServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorRejectedServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\SessionMain\MainFX.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Test\UserMain\Main.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\AddConference.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorAcceptedServices.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Models\ConferenceModels\Conference.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Controllers\SessionControllers\SessionController.java
-C:\Users\triki\Downloads\GestionConference (1)\GestionConference\src\main\java\com\example\gestionconference\Services\SessionServices\SessionServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\SessionControllers\SessionController.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\LieuList.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\ConferenceModels\ConferenceType.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\ConferenceTest\MainFX.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\UserMain\Main.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\EmailSender.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\SponsorRejected.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\ConferenceService\ConferenceServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\SessionControllers\AddSessionController.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\UpdateConference.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\Sponsoring\CauseOfRejectionServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\UserServices\UserService.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewCauseOfRejection.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorRejectedServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\ResetPassword1.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\SessionModels\Session.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\SessionModels\Presence.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\AddConference.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\ConferenceModels\Lieu.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Util\UserUtils\Mydatabase.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\SessionMain\Main.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\SessionMain\test.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\Main.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\ConferenceModels\Conference.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\SessionMain\MainFX.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\SponsorAccepted.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorAcceptedServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\AddLieu.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\ConferenceList.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\RessourceControllers\FinancialIncomesController\FinancialIncomesController.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\UserModels\User.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\Sponsoring\SponsorServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\CauseOfRejection.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Signup.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\StatesApi.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\SessionModels\Topic.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\Items.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\ResetPassword2.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewRejectedSponsors.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\UserServices\iCrud.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\MainFX.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\SessionServices\TopicServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Signin.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\RessourceControllers\LogisticController\LogisticManagment.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\CauseType.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\SessionModels\DataModel.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\ConferenceTest\Main.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\Accountmanagement.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\SessionMain\test2.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Test\UserMain\MainFX.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Util\MyDB.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewSponsor.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\ConferenceService\LieuServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Sponsoring\AddSponsor.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Services\SessionServices\SessionServices.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\Status.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Sponsoring\ViewAcceptedSponsors.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\Usercontrollers\ChangePassword.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Controllers\ConferenceControllers\ControllerCommon.java
+C:\Users\zayat\IdeaProjects\PIDEV3A29\src\main\java\com\example\gestionconference\Models\Sponsoring\Sponsor.java

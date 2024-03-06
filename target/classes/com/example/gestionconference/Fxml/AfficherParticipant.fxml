@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.AfficherParticipant">
+    <left>
+        <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
+            <children>
+                <VBox layoutX="27.2" layoutY="70.0" prefHeight="242.0" prefWidth="0.0" spacing="33.0" AnchorPane.leftAnchor="27.2">
+                    <children>
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/briefcase-dollar--briefcase-payment-cash-money-finance-baggage-bag.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/bullet-list--points-bullet-unordered-list-lists-bullets.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/cog--work-loading-cog-gear-settings-machine.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/user-circle-single--circle-geometric-human-person-single-user.png" />
+                            </image>
+                        </ImageView>
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/information-circle--information-frame-info-more-help-point-circle.png" />
+                            </image>
+                        </ImageView>
+                    </children>
+                </VBox>
+                <Button layoutX="63.0" layoutY="610.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="34.0" styleClass="logout" stylesheets="@../Styles/StyleSheet.css" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="29.0">
+                    <padding>
+                        <Insets top="5.0" />
+                    </padding>
+                    <graphic>
+                        <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                            <children>
+                                <ImageView layoutX="8.0" layoutY="4.0" styleClass="logout" AnchorPane.leftAnchor="8.0">
+                                    <image>
+                                        <Image url="@../Images/logout-1--arrow-exit-frame-leave-logout-rectangle-right.png" />
+                                    </image>
+                                </ImageView>
+                            </children>
+                        </AnchorPane>
+                    </graphic>
+                </Button>
+            </children>
+        </AnchorPane>
+    </left>
+    <top>
+        <AnchorPane prefHeight="90.0" prefWidth="1200.0" BorderPane.alignment="CENTER">
+            <children>
+                <ImageView layoutX="24.0" layoutY="28.0">
+                    <image>
+                        <Image url="@../Images/Calque_1.png" />
+                    </image>
+                </ImageView>
+                <Label layoutX="99.0" layoutY="21.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../Styles/StyleSheet.css" text="Participant List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                    <font>
+                        <Font size="40.0" />
+                    </font>
+                </Label>
+                <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
+                    <children>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <ImageView>
+                            <image>
+                                <Image url="@../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
+                            </image>
+                        </ImageView>
+                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
+                        <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
+                            <children>
+                                <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                                    <font>
+                                        <Font size="15.0" />
+                                    </font>
+                                </Text>
+                                <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                                    <image>
+                                        <Image url="@../Images/Mask group.png" />
+                                    </image>
+                                </ImageView>
+                                <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                                    <font>
+                                        <Font size="13.0" />
+                                    </font>
+                                </Text>
+                            </children>
+                        </Pane>
+                    </children>
+                </HBox>
+            </children>
+        </AnchorPane>
+    </top>
+    <center>
+        <AnchorPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+            <children>
+                <AnchorPane layoutX="-2.0" layoutY="2.0" prefHeight="640.0" prefWidth="1120.0" styleClass="blank-scene">
+                    <children>
+                        <AnchorPane layoutX="756.0" layoutY="200.0" prefHeight="336.0" prefWidth="294.0" styleClass="widget">
+                            <children>
+                                <Label layoutX="47.0" layoutY="34.0" styleClass="sf-display-pro-Bold" text="Search participant">
+                                    <font>
+                                        <Font size="23.0" />
+                                    </font>
+                                </Label>
+                                <Button alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="109.0" layoutY="253.0" mnemonicParsing="false" onAction="#Reset" prefHeight="30.0" prefWidth="92.0" styleClass="next-button-widget" text="Reset" textAlignment="CENTER" />
+                                <TextField fx:id="nameTF" layoutX="50.0" layoutY="108.0" prefHeight="35.0" prefWidth="209.0" promptText="Name">
+                                    <padding>
+                                        <Insets left="15.0" />
+                                    </padding>
+                                </TextField>
+                                <TextField fx:id="cinTF" layoutX="51.0" layoutY="168.0" prefHeight="35.0" prefWidth="207.0" promptText="CIN">
+                                    <padding>
+                                        <Insets left="15.0" />
+                                    </padding>
+                                </TextField>
+                            </children>
+                        </AnchorPane>
+                        <TableView fx:id="participantTV" layoutX="66.0" layoutY="237.0" prefHeight="200.0" prefWidth="660.0">
+                            <columns>
+                                <TableColumn fx:id="nameTC" prefWidth="110.39999389648438" text="Name" />
+                                <TableColumn fx:id="cinTC" minWidth="0.0" prefWidth="111.20002746582031" text="CIN" />
+                                <TableColumn fx:id="birthdayTC" prefWidth="100.0" text="Birthday" />
+                                <TableColumn fx:id="phoneTC" prefWidth="93.5999755859375" text="Phone" />
+                                <TableColumn fx:id="emailTC" prefWidth="244.79998779296875" text="                               Email" />
+                            </columns>
+                        </TableView>
+                  <Label fx:id="nbrOfParticipants" layoutX="132.0" layoutY="183.0" prefHeight="18.0" prefWidth="122.0" />
+                  <Button fx:id="exportToExcel" layoutX="610.0" layoutY="424.0" mnemonicParsing="false" onAction="#exportToExcel" text="Import" />
+                    </children></AnchorPane>
+            </children>
+        </AnchorPane>
+    </center>
+</BorderPane>

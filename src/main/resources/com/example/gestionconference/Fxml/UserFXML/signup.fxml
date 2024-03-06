@@ -13,9 +13,9 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="967.0" styleClass="parent" stylesheets="@UserStyle/stylesheet2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="GestionUser.Usercontrollers.Signup">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="967.0" styleClass="parent" stylesheets="@../../Styles/stylesheet2.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.Usercontrollers.Signup">
    <children>
-      <Pane layoutX="60.0" layoutY="106.0" prefHeight="506.0" prefWidth="848.0" styleClass="child" stylesheets="@UserStyle/stylesheet2.css">
+      <Pane layoutX="60.0" layoutY="106.0" prefHeight="506.0" prefWidth="848.0" styleClass="child" stylesheets="@/com/example/gestionconference/Styles/stylesheet2.css">
          <children>
             <VBox layoutX="14.0" layoutY="116.0" prefHeight="338.0" prefWidth="249.0" spacing="40.0">
                <children>
@@ -76,12 +76,12 @@
             </VBox>
             <ImageView fitHeight="197.0" fitWidth="189.0" layoutX="718.0" layoutY="373.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@UserImages/Calque_2.png" />
+                  <Image url="@../../Images/UserImages/Calque_2.png" />
                </image>
             </ImageView>
             <ImageView fitHeight="45.0" fitWidth="116.0" layoutX="366.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@UserImages/Sign%20Up.png" />
+                  <Image url="@../../Images/UserImages/Sign%20Up.png" />
                </image>
             </ImageView>
             <AnchorPane layoutX="290.0" layoutY="427.0" prefHeight="89.0" prefWidth="268.0">
@@ -97,7 +97,7 @@
       </Pane>
       <ImageView fitHeight="128.0" fitWidth="224.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@UserImages/Calque_1.png" />
+            <Image url="@../../Images/UserImages/Calque_1.png" />
          </image>
       </ImageView>
    </children>

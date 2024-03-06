@@ -1,6 +1,8 @@
 package com.example.gestionconference.Controllers.SessionControllers;
 
 
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.SessionModels.Session;
 import com.example.gestionconference.Models.SessionModels.Topic;
 import com.example.gestionconference.Services.SessionServices.SessionServices;
@@ -9,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
 import java.net.URL;
@@ -72,6 +75,11 @@ public class AddSessionController implements Initializable {
     @FXML
     private TextField TopicNameTF;
 
+    private int conferenceId;
+
+    public void setConferenceId(int conferenceId) {
+        this.conferenceId = conferenceId;
+    }
     int SessionNumber=1;
     int TopicNumber=1;
 
@@ -125,7 +133,8 @@ public class AddSessionController implements Initializable {
         } else {
 
             //Add Session to list
-            Session s = new Session(SessionNameTF.getText(), startTime, endTime, 1);
+            System.out.println(conferenceId);
+            Session s = new Session(SessionNameTF.getText(), startTime, endTime, conferenceId);
             s.setTopicList(topicToAdd);
             sessionToAdd.add(s);
 
@@ -185,7 +194,6 @@ public class AddSessionController implements Initializable {
             TopicDescriptionTF.setText("");
         }
 
-
     }
 
 
@@ -229,7 +237,7 @@ public class AddSessionController implements Initializable {
         }else {
             errorMsg.setText("Add at least one Session");
         }
-
+        System.out.println("zffzf");
     }
-}
 
+}

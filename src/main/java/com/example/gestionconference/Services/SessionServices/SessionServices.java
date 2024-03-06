@@ -1,7 +1,7 @@
 package com.example.gestionconference.Services.SessionServices;
 
 import com.example.gestionconference.Models.SessionModels.Session;
-import com.example.gestionconference.Util.MyDB;
+import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
@@ -17,18 +17,6 @@ public class SessionServices {
     }
 
 
-
-    public int convertTime(Time t) {
-        String[] parts =t.toString().split(":");
-
-        int hours = Integer.parseInt(parts[0]);
-        int minutes = Integer.parseInt(parts[1]);
-
-
-        int convertedTime = hours * 10000 + minutes * 100;
-
-        return convertedTime;
-    }
 
     public void addSessions(List<Session> sessions) {
         TopicServices ts = new TopicServices();
@@ -67,7 +55,7 @@ public class SessionServices {
         while (res.next()){
             Session s = new Session();
             s.setId(res.getInt("id"));
-            s.setId(res.getInt("id"));
+
             s.setSessionName(res.getString("sessionName"));
             s.setStartTime(res.getTime("startTime").toLocalTime());
             s.setEndTime(res.getTime("endTime").toLocalTime());
