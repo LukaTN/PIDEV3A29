@@ -70,7 +70,7 @@ public class Signin {
 
     }
     @FXML
-    void loginButtonOnAction(ActionEvent event) throws SQLException {
+    void loginButtonOnAction(ActionEvent event) throws SQLException, IOException {
         String username = login.getText();
         String pass = password.getText();
         if (username.isEmpty() || pass.isEmpty()) {
@@ -124,7 +124,14 @@ public class Signin {
                             e.printStackTrace();
                         }
                     }else {
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/EvaluationFXML/Ajoutercom.fxml"));
+                        Parent root = loader.load();
 
+                        // Add the AddSponsor scene to the current scene
+                        Scene scene = new Scene(root);
+                        Stage stage = (Stage) password.getScene().getWindow(); // Get the current stage
+                        stage.setScene(scene);
+                        stage.show();
                     }
 
 

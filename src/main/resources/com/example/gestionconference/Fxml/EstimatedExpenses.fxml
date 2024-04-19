@@ -77,7 +77,7 @@
                         <Image url="@../Images/Calque_1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../Styles/StyleSheet.css" text="Budget" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../Styles/StyleSheet.css" text="Estimated expenses" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="40.0" />
                     </font>
@@ -120,7 +120,7 @@
             <children>
                 <AnchorPane layoutX="-2.0" layoutY="2.0" prefHeight="640.0" prefWidth="1120.0" styleClass="blank-scene">
                     <children>
-                        <TableView fx:id="estExpensesTV" editable="true" layoutX="115.0" layoutY="235.0" onMouseClicked="#onSelectE" prefHeight="200.0" prefWidth="700.0">
+                        <TableView fx:id="estExpensesTV" editable="true" layoutX="115.0" layoutY="360.0" onMouseClicked="#onSelectE" prefHeight="200.0" prefWidth="700.0">
                             <columns>
                                 <TableColumn fx:id="estExpensesTC" prefWidth="200.00001525878906" text="Expenses" />
                                 <TableColumn fx:id="PExpTC" minWidth="0.0" prefWidth="123.20001220703125" text="Pessimistic" />
@@ -131,7 +131,7 @@
                                 <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                             </columnResizePolicy>
                         </TableView>
-                        <AnchorPane layoutX="67.0" layoutY="26.0" prefHeight="111.0" prefWidth="870.0" styleClass="widget">
+                        <AnchorPane layoutX="67.0" layoutY="151.0" prefHeight="111.0" prefWidth="870.0" styleClass="widget">
                             <children>
                                 <Button fx:id="addEstExp" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="274.0" layoutY="77.0" mnemonicParsing="false" onAction="#addEstExp" prefHeight="30.0" prefWidth="92.0" styleClass="next-button-widget" text="Submit" />
                                 <Button fx:id="deleteEstExp" alignment="BASELINE_LEFT" contentDisplay="RIGHT" layoutX="496.0" layoutY="77.0" mnemonicParsing="false" onAction="#deleteEstExp" prefHeight="30.0" prefWidth="92.0" styleClass="next-button-widget" text="Delete" />
@@ -142,11 +142,12 @@
                                 <Button fx:id="editEstExp" layoutX="405.0" layoutY="80.0" mnemonicParsing="false" onAction="#editEstExp" text="Edit" />
                             </children>
                         </AnchorPane>
-                        <Label layoutX="124.0" layoutY="196.0" prefHeight="18.0" prefWidth="89.0" text="Total Expenses" />
-                        <Label fx:id="pessimisticSum" layoutX="337.0" layoutY="196.0" prefHeight="18.0" prefWidth="118.0" />
+                        <Label layoutX="124.0" layoutY="321.0" prefHeight="18.0" prefWidth="89.0" text="Total Expenses" />
+                        <Label fx:id="pessimisticSum" layoutX="337.0" layoutY="321.0" prefHeight="18.0" prefWidth="118.0" />
                         <Label fx:id="totalIcomesSum" layoutX="700.0" layoutY="206.0" prefHeight="18.0" prefWidth="103.0" />
                         <Label fx:id="realisticSum" layoutX="493.0" layoutY="197.0" prefHeight="18.0" prefWidth="113.0" />
                         <Label fx:id="optimisticSum" layoutX="670.0" layoutY="197.0" prefHeight="18.0" prefWidth="101.0" />
+                  <Button layoutX="403.0" layoutY="35.0" mnemonicParsing="false" onAction="#onRatio" prefHeight="29.0" prefWidth="206.0" text="Ratio" />
                     </children></AnchorPane>
             </children>
         </AnchorPane>

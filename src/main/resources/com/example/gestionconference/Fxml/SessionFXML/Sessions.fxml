@@ -78,7 +78,7 @@
                         <Image url="@../../Images/Calque_1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Sessions" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="40.0" />
                     </font>
@@ -459,7 +459,7 @@
                                 </AnchorPane>
                             </children>
                         </HBox>
-                        <Button alignment="CENTER" layoutX="901.0" layoutY="557.0" mnemonicParsing="false" prefHeight="39.0" prefWidth="129.0" styleClass="next-button" text="Dashboard">
+                        <Button alignment="CENTER" layoutX="901.0" layoutY="557.0" mnemonicParsing="false" onAction="#onDash" prefHeight="39.0" prefWidth="129.0" styleClass="next-button" text="Dashboard">
                             <padding>
                                 <Insets right="10.0" />
                             </padding>

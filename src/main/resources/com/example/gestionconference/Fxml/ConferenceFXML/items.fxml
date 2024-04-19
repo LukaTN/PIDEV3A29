@@ -10,11 +10,16 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="event_aff" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="387.0" prefWidth="674.0" style="-fx-background-color: #ffff;" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.ConferenceControllers.Items">
+<AnchorPane fx:id="event_aff" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="436.0" prefWidth="674.0" style="-fx-background-color: #ffff;" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.ConferenceControllers.Items">
    <children>
-      <HBox alignment="CENTER" layoutX="468.0" layoutY="291.0" prefHeight="87.0" prefWidth="198.0" spacing="15.0">
+      <HBox alignment="CENTER" fillHeight="false" layoutX="321.0" layoutY="350.0" maxWidth="329.0" prefHeight="30.0" prefWidth="329.0" spacing="15.0">
          <children>
-            <Button fx:id="supprimerBT" mnemonicParsing="false" onAction="#supprimer" prefHeight="38.0" prefWidth="79.0" styleClass="deletebutton" stylesheets="@../../Styles/StyleSheet.css" text="Delete">
+            <Button mnemonicParsing="false" onAction="#toSessions" prefHeight="36.0" prefWidth="98.0" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Sessions">
+               <font>
+                  <Font name="Franklin Gothic Demi" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="supprimerBT" mnemonicParsing="false" onAction="#supprimer" prefHeight="37.0" prefWidth="84.0" styleClass="deletebutton" stylesheets="@../../Styles/StyleSheet.css" text="Delete">
                <font>
                   <Font name="Franklin Gothic Demi" size="12.0" />
                </font>
@@ -91,7 +96,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="256.0" prefWidth="100.0" spacing="13.0">
+            <VBox prefHeight="256.0" prefWidth="100.0" spacing="17.0">
                <children>
                   <Label fx:id="confLabel" text="confname" />
                   <Label fx:id="confDate" text="date" />

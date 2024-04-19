@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.collections.FXCollections;
@@ -9,15 +10,19 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
 
 public class ConferenceList {
+
+    private User user;
 
     @FXML
     private ChoiceBox triConference;
@@ -35,6 +40,7 @@ public class ConferenceList {
     private Button addConf;
 
     private ConferenceServices ss = new ConferenceServices();
+   // private User user;
 
     @FXML
     public void initialize() {
@@ -108,10 +114,11 @@ public class ConferenceList {
                 System.out.println(e.getMessage());
 
             }
-        }else {
+        } else {
             diplayConferences();
         }
     }
+
     public void setData(List<Conference> filteredConferences) {
         try {
 
@@ -164,6 +171,17 @@ public class ConferenceList {
         }
 
     }
-}
 
+    public void initData(User user) {
+        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+    }
+}
 

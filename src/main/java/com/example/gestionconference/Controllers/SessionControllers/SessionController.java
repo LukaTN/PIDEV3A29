@@ -1,5 +1,7 @@
 package com.example.gestionconference.Controllers.SessionControllers;
 
+import com.example.gestionconference.Models.ConferenceModels.Conference;
+import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.SessionModels.Session;
 import com.example.gestionconference.Models.SessionModels.Topic;
 import com.example.gestionconference.Services.SessionServices.SessionServices;
@@ -12,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
@@ -152,9 +155,7 @@ public class SessionController  implements Initializable {
 
     int currentSession=0;
     int currentTopic=0;
-
-
-
+    private Conference selectedConference;
 
 
     void setValueFactoryPrime(Spinner<Integer> spinner , int max ,int min , int initValue){
@@ -486,5 +487,29 @@ public class SessionController  implements Initializable {
         }
         System.out.println("uznjf,");
     }
+
+    @FXML
+    void onDash(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/PresenceFXML/CardManagement.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = new Stage();
+            stage.setTitle("confera");
+            stage.setScene(scene);
+            stage.show();
+            Stage currentStage = (Stage) doneSessionB.getScene().getWindow();
+            currentStage.close();
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        }
+    }
+    public void setSelectedConference(Conference selectedConference) {
+        this.selectedConference = selectedConference;
+
+
+    }
+
+
 
 }

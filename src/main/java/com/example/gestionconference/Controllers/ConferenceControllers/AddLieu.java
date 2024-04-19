@@ -3,6 +3,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,19 +13,29 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
 import javafx.scene.control.ComboBox;
+
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class AddLieu implements Initializable  {
+
+
     LieuServices ss = new LieuServices();
     String selectedValue;
+    @FXML
+    private TextField confCountry;
+
     @FXML
     private ComboBox<String> LDGov;
 
@@ -40,17 +51,24 @@ public class AddLieu implements Initializable  {
     @FXML
     private Text finalResp;
 
+    private User user;
+
+
     ControllerCommon cc = new ControllerCommon();
+
+
+
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        LDGov.getItems().addAll("Ariana","Gafsa","Kef","Kasserine","Beja","Jendouba","Medenine","Monastir","Nabeul","Sfax","SidiBouzid","Siliana","Sousse","Tataouine","Tozeur","Tunis","Zaghouan");
+//        List<String> states = StatesApi.getbyCountry("Tunisia");
+//        LDGov.getItems().addAll(states);
     }
 
 
     @FXML
     void onSelect(ActionEvent event) {
-         selectedValue = LDGov.getValue();
+        selectedValue = LDGov.getValue();
     }
 
     @FXML
@@ -111,6 +129,34 @@ public class AddLieu implements Initializable  {
 
     public void toNewConf(ActionEvent actionEvent) {
         cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
+    }
+
+    @FXML
+    void onMouseClickedGoverment(MouseEvent event) {
+        String country = confCountry.getText();
+        try {
+            List<String> states = StatesApi.getbyCountry(country);
+            LDGov.getItems().clear();
+            LDGov.getItems().addAll(states);
+            if (LDGov.getItems().isEmpty()) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name or enter country in english.");
+            }
+        }catch (Exception e){
+            cc.showAlert(Alert.AlertType.ERROR, "Invalid Country", "Please enter a valid country name.");
+        }
+
+    }
+
+    public void initData(User user) {
+        this.user=user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }
 

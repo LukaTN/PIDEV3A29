@@ -9,6 +9,8 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
 import static com.example.gestionconference.Services.ConferenceService.LieuServices.isNumeric;
@@ -60,13 +62,37 @@ public class ConferenceServices {
     }
 
 
-    public List<Conference> getConferenceByName(String name) throws SQLException {
+    public Conference getConferenceByName(String name) throws SQLException {
         String req1 = "SELECT * FROM conference WHERE nom = ?";
+        Conference u = new Conference();
         PreparedStatement stm = cnx.prepareStatement(req1);
         stm.setString(1, name);
         ResultSet res = stm.executeQuery();
         ObservableList<Conference> conferences = FXCollections.observableArrayList();
-        while (res.next()){
+        if (res.next()){
+
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setConferenceLocation(res.getInt("emplacement"));
+
+        }
+        return u;
+    }
+
+
+    public Conference getTodayConference() throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE date = ? LIMIT 1";
+        PreparedStatement stm = cnx.prepareStatement(req1);
+        LocalDate today = LocalDate.now();
+        stm.setDate(1, java.sql.Date.valueOf(today)); // Convert java.time.LocalDate to java.sql.Date
+        ResultSet res = stm.executeQuery();
+
+        // Assuming that there's at most one conference per day, hence no loop needed
+        if (res.next()) {
             Conference u = new Conference();
             u.setId(res.getInt("id"));
             u.setName(res.getString("nom"));
@@ -75,10 +101,13 @@ public class ConferenceServices {
             u.setBudget(res.getDouble("budget"));
             u.setType(transform(res.getString("typeConf")));
             u.setConferenceLocation(res.getInt("emplacement"));
-            conferences.add(u);
+
+            return u;
+        } else {
+            return null; // No conference found for today
         }
-        return conferences;
     }
+
     public void updateConference(Conference conference)  {
         String req = "UPDATE `conference` SET `nom`=?,`date`=?,`sujet`=?,`budget`=?,`typeConf`=?,`image`=? WHERE id = ?";
 
@@ -101,6 +130,25 @@ public class ConferenceServices {
 
     public List<Conference> getAllConferences() throws SQLException {
         String req1 = "SELECT * FROM conference";
+        Statement st = cnx.createStatement();
+        ResultSet res = st.executeQuery(req1);
+        ObservableList<Conference> conference = FXCollections.observableArrayList();
+        while (res.next()){
+            Conference u = new Conference();
+            u.setId(res.getInt("id"));
+            u.setName(res.getString("nom"));
+            u.setDate(res.getDate("date"));
+            u.setSubject(res.getString("sujet"));
+            u.setBudget(res.getDouble("budget"));
+            u.setType(transform(res.getString("typeConf")));
+            u.setImage(res.getString("image"));
+            u.setConferenceLocation(res.getInt("emplacement"));
+            conference.add(u);
+        }
+        return conference;
+    }
+    public List<Conference> getAllConferencesDone() throws SQLException {
+        String req1 = "SELECT * FROM conference WHERE date <= CURDATE()";
         Statement st = cnx.createStatement();
         ResultSet res = st.executeQuery(req1);
         ObservableList<Conference> conference = FXCollections.observableArrayList();

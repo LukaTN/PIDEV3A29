@@ -8,11 +8,15 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
@@ -232,5 +236,16 @@ public class EstimatedBudgetController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void onEstimatedExpenses(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/EstimatedExpenses.fxml"));
+        Parent root = loader.load();
+
+        // Add the AddSponsor scene to the current scene
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) deleteEstInc.getScene().getWindow(); // Get the current stage
+        stage.setScene(scene);
+        stage.show();
     }
 }

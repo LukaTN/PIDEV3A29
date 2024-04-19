@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
@@ -17,11 +18,14 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class Items {
+    private User user;
+
 
     @FXML
     private Label capacity;
@@ -65,6 +69,7 @@ public class Items {
 
     private LieuServices lieuServices = new LieuServices();
     private ControllerCommon cc = new ControllerCommon();
+    //private User user;
 
     public void initialize() throws SQLException {
     }
@@ -152,5 +157,17 @@ public class Items {
             confImage.setImage(new Image("com/example/gestionconference/Images/icons8-no-image-100.png")); // Change the path accordingly
         }
 
+    }
+
+    public void initData(User user) {
+        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }

@@ -74,7 +74,6 @@ public class Signup {
         assert signup != null : "fx:id=\"signup\" was not injected: check your FXML file 'signup.fxml'.";
         assert profileImageView != null : "fx:id=\"profileImageView\" was not injected: check your FXML file 'signup.fxml'.";
         role.getItems().addAll(roles);
-
     }
     @FXML
     private void choosePicture() {

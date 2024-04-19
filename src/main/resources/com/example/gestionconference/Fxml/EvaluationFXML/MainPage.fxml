@@ -75,23 +75,13 @@
                         <Image url="@../../Images/Calque_1.png" />
                     </image>
                 </ImageView>
-                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+                <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../Styles/StyleSheet.css" text="Evaluation" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                     <font>
                         <Font size="40.0" />
                     </font>
                 </Label>
                 <HBox alignment="CENTER_RIGHT" fillHeight="false" layoutX="584.0" layoutY="25.0" prefHeight="50.0" prefWidth="588.0" spacing="30.0">
                     <children>
-                        <Button maxWidth="400.0" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="233.0" styleClass="add-conference-Button" text="New Conference">
-                            <graphic>
-                                <ImageView fitHeight="15.0" fitWidth="15.0" x="5.0">
-                                    <image>
-                                        <Image url="@../../Images/add-1--expand-cross-buttons-button-more-remove-plus-add-+-mathematics-math.png" />
-                                    </image>
-                                </ImageView>
-                            </graphic>
-                        </Button>
-                        <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                         <ImageView>
                             <image>
                                 <Image url="@../../Images/ringing-bell-notification--notification-vibrate-ring-sound-alarm-alert-bell-noise.png" />
