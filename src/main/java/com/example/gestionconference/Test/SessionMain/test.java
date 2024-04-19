@@ -1,62 +1,44 @@
 package com.example.gestionconference.Test.SessionMain;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.StackPane;
+import javafx.stage.Stage;
 
-public class test {
+public class test extends Application {
 
-    public static void main(String[] args) {
-        // Get the UID thread
-        Thread thread = getUidThread();
+    @Override
+    public void start(Stage primaryStage) {
+        TabPane tabPane = new TabPane();
 
-        // Start the thread
-        thread.start();
+        Tab tab1 = new Tab("Tab 1");
+        tab1.setContent(new StackPane());
+        Tab tab2 = new Tab("Tab 2");
+        tab2.setContent(new StackPane());
+        Tab tab3 = new Tab("Tab 3");
+        tab3.setContent(new StackPane());
+
+        tabPane.getTabs().addAll(tab1, tab2, tab3);
+
+        tabPane.setStyle("-fx-background-color: #f0f0f0; -fx-background-radius: 10px;"); // Set the background color and radius
+
+        for (Tab tab : tabPane.getTabs()) {
+            tab.setStyle("-fx-background-color: #d0d0d0; -fx-border-color: #a0a0a0; -fx-border-width: 1px; -fx-border-style: solid; -fx-padding: 5 10;");
+        }
+
+        tabPane.getTabs().get(0).setStyle(tabPane.getTabs().get(0).getStyle() + "-fx-background-radius: 20px 0 0 0;"); // Apply border radius to the first tab
+
+        Scene scene = new Scene(tabPane, 400, 300);
+        scene.getStylesheets().add("/com/example/gestionconference/Styles/StyleSheet.css");
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Styled TabPane Example");
+        primaryStage.show();
     }
 
-    private static Thread getUidThread() {
-        return new Thread(new Runnable() {
-            @Override
-            public void run() {
-                String tester = "";
-                while (true) {
-                    try {
-                        // Specify the URL of your ESP32 endpoint
-                        URL url = new URL("http://192.168.231.134/rfid");
-
-                        // Open a connection to the URL
-                        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-                        conn.setRequestMethod("GET");
-
-                        // Read the response
-                        BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                        StringBuilder response = new StringBuilder();
-                        String line;
-                        while ((line = reader.readLine()) != null) {
-                            response.append(line);
-                        }
-                        reader.close();
-                        String test = response.toString();
-                        String test2 = test.substring(test.indexOf(",") + 1);
-                        if (!response.toString().isEmpty()) {
-                            if (!tester.equals(test2)) {
-                                System.out.println("Response from ESP32: " + response.toString());
-
-                            }
-                            tester = test2;
-                        }
-
-                        // Close the connection
-                        conn.disconnect();
-
-                        // Sleep for 1 second before making the next request
-                        Thread.sleep(1000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
+    public static void main(String[] args) {
+        launch(args);
     }
 }

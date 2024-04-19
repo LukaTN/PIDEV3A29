@@ -5,6 +5,7 @@ import com.example.gestionconference.Models.PresenceModels.Presence;
 import com.example.gestionconference.Models.SessionModels.Session;
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
+import com.example.gestionconference.Services.SessionServices.SessionServices;
 import com.example.gestionconference.Services.SessionServices.TopicServices;
 import com.example.gestionconference.Services.UserServices.UserService;
 import com.example.gestionconference.Util.MyDB;
@@ -58,6 +59,7 @@ Presence presence = new Presence(uid,0,currentTimeStamp,0);
                 // Increment the presence status
                 int stat = status + 1;
                 presence.setPresenceStatus(stat);
+                presence.setIdParticipant(resultSet.getInt("idParticipant"));
 
                     String req1 = "INSERT INTO `uidcard` (`uid`,`idParticipant`,`status`) VALUES(?,?,?)";
                     PreparedStatement updateStmt = cnx.prepareStatement(req1);
@@ -85,7 +87,7 @@ Presence presence = new Presence(uid,0,currentTimeStamp,0);
                 PreparedStatement insertStmt = cnx.prepareStatement(insertQuery);
                 insertStmt.setString(1, uid);
                 insertStmt.executeUpdate();
-                return presence;
+                return null;
 
             }
 return null;
@@ -158,28 +160,24 @@ return null;
 
     public boolean participantPresence(int idParticipant, String conferenceName) throws SQLException {
 
-            Conference conf = cs.getConferenceByName(conferenceName).get(0);
+            Conference conf = cs.getConferenceByName(conferenceName);
             String query = "SELECT * " +
                     "FROM uidcard " +
                     "WHERE idParticipant = ? AND DATE(currentTime) = ? " +
                     "ORDER BY status DESC LIMIT 1;";
             try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
                 pstmt.setInt(1, idParticipant);
-
                 pstmt.setDate(2,conf.getDate());
-
                 try (ResultSet rs = pstmt.executeQuery()) {
                     if (rs.next()) {
                         if (rs.getInt("status")>0){
+
                             return true;
                         }
                         return false;
                         }else {
                             return false ; // If there are rows, the participant is present
                         }
-
-
-
                 }
             }
 
@@ -188,7 +186,19 @@ return null;
 
 
 
+    public void setPresenceTime(Conference conf,int timeSpent,int stabilityValue) throws SQLException {
+        SessionServices ss = new SessionServices();
+        Session session;
+        session = ss.getCurrentSession(conf);
 
+        String req = "UPDATE `session` SET `presenceNbr`=?,`presenceSpent`=?,`presenceQuality`=? WHERE id = ?";
+        PreparedStatement stm = cnx.prepareStatement(req);
 
+        stm.setInt(1,session.getPresenceNbr()+1);
+        stm.setInt(2,session.getPresenceTime()+timeSpent);
+        stm.setInt(3,stabilityValue);
+        stm.setInt(4, session.getId());
 
+        stm.executeUpdate();
+    }
 }

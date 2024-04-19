@@ -8,12 +8,17 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
@@ -243,4 +248,14 @@ public class BudgetingController implements Initializable {
         incAmmountTF.clear();
     }
 
+    public void onEstimatedIncomes(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/EstimatedBudget.fxml"));
+        Parent root = loader.load();
+
+        // Add the AddSponsor scene to the current scene
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) addData.getScene().getWindow(); // Get the current stage
+        stage.setScene(scene);
+        stage.show();
+    }
 }

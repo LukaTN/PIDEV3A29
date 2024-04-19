@@ -3,6 +3,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +16,7 @@ import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
 
@@ -51,17 +53,16 @@ public class UpdateConference implements Initializable {
     private String selectedValue;
     private int lieuId;
 
+    private User user;
+
 
     ControllerCommon cc = new ControllerCommon();
     private Conference selectedConference; // Added field to store the selected conference
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-
 
 
     @FXML
@@ -160,9 +161,21 @@ public class UpdateConference implements Initializable {
                 // You may want to display a success message or handle other tasks here
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             cc.showAlert(Alert.AlertType.ERROR, "Error", "Error loading image: " + e.getMessage());
         }
 
+    }
+
+    public void initData(User user) {
+        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }

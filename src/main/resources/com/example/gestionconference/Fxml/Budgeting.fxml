@@ -155,6 +155,7 @@
                   <Label fx:id="totalExpensesSum" layoutX="296.0" layoutY="258.0" prefHeight="18.0" prefWidth="118.0" />
                   <Label layoutX="583.0" layoutY="257.0" prefHeight="18.0" prefWidth="89.0" text="Total incomes" />
                   <Label fx:id="totalIncomesSum" layoutX="701.0" layoutY="257.0" prefHeight="18.0" prefWidth="103.0" />
+                  <Button layoutX="459.0" layoutY="514.0" mnemonicParsing="false" onAction="#onEstimatedIncomes" text="Estimated Incomes" />
                     </children></AnchorPane>
             </children>
         </AnchorPane>

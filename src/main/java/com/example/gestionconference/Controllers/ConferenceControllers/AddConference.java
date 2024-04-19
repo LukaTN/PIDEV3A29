@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Controllers.SessionControllers.AddSessionController;
 import com.example.gestionconference.Controllers.Usercontrollers.Accountmanagement;
+import com.example.gestionconference.Controllers.Usercontrollers.ChangePassword;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
@@ -87,7 +88,7 @@ public class AddConference  implements Initializable {
         LieuServices ser = new LieuServices();
         try {
             // Retrieve locations from the service
-             lieux = ser.getAllLocations(); // Assuming Location is the class representing a location
+            lieux = ser.getAllLocations(); // Assuming Location is the class representing a location
             // Extract location names and add them to the ListView
             List<String> locationNames = new ArrayList<>();
             for (Lieu lieu : lieux) {
@@ -130,6 +131,10 @@ public class AddConference  implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml"));
         Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        AddLieu addLieu = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        addLieu.initData(user);
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -164,7 +169,7 @@ public class AddConference  implements Initializable {
                     return;
                 }
             } catch (NumberFormatException e) {
-               cc.showAlert(Alert.AlertType.ERROR, "Invalid Budget", "Please enter a valid integer for budget.");
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Budget", "Please enter a valid integer for budget.");
                 return;
             }
             try {
@@ -181,7 +186,7 @@ public class AddConference  implements Initializable {
             String ldLocationsValue = LDLocations.getValue();
             if (ldLocationsValue == null){
                 cc.showAlert(Alert.AlertType.ERROR,"Error","Plese select location or create one click on button New Location for more");
-              return;
+                return;
             }
             if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
                 cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
@@ -195,7 +200,7 @@ public class AddConference  implements Initializable {
             conference.setBudget(Double.parseDouble(SpBudget.getText()));
             conference.setType(transform());
             conference.setEmplacement(lieuId);
-          //  System.out.println(user.getId());
+            //  System.out.println(user.getId());
             conference.setOrganisateur(user.getId());
 
 //            Conference s = new Conference(

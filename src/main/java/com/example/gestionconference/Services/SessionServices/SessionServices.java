@@ -1,12 +1,17 @@
 package com.example.gestionconference.Services.SessionServices;
 
+import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.SessionModels.Session;
+import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Util.EvaluationUtils.MyDB;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
+
+
 
 
 public class SessionServices {
@@ -50,7 +55,9 @@ public class SessionServices {
         TopicServices ts = new TopicServices();
         String req1 = "SELECT * FROM session";
         Statement st = cnx.createStatement();
+
         ResultSet res = st.executeQuery(req1);
+
         ObservableList<Session> sessions = FXCollections.observableArrayList();
         while (res.next()){
             Session s = new Session();
@@ -60,6 +67,8 @@ public class SessionServices {
             s.setStartTime(res.getTime("startTime").toLocalTime());
             s.setEndTime(res.getTime("endTime").toLocalTime());
             s.setPresenceNbr(res.getInt("presenceNbr"));
+            s.setPresenceTime(res.getInt("presenceSpent"));
+            s.setPresenceQuality(res.getInt("presenceQuality"));
             s.setTopicList(ts.getSessionTopic(res.getInt("id")));
             sessions.add(s);
         }
@@ -67,6 +76,39 @@ public class SessionServices {
 
         return sessions;
     }
+
+    public Session getCurrentSession(Conference newConf) throws SQLException {
+        // Use a prepared statement for parameterized query
+        String req1 = "SELECT * " +
+                "FROM session " +
+                "WHERE idConference = ? " +
+                "AND CURTIME() BETWEEN startTime AND endTime;";
+
+        try (PreparedStatement pst = cnx.prepareStatement(req1)) {
+            pst.setInt(1, newConf.getId());
+
+            try (ResultSet res = pst.executeQuery()) {
+                if (res.next()) {
+                    // Session found, create and populate the Session object
+                    Session s = new Session();
+                    s.setId(res.getInt("id"));
+                    s.setSessionName(res.getString("sessionName"));
+                    s.setStartTime(res.getTime("startTime").toLocalTime());
+                    s.setEndTime(res.getTime("endTime").toLocalTime());
+                    s.setPresenceNbr(res.getInt("presenceNbr"));
+                    s.setPresenceTime(res.getInt("presenceSpent"));
+                    s.setPresenceQuality(res.getInt("presenceQuality"));
+
+                    return s;
+                } else {
+                    // No session found, return null
+                    return null;
+                }
+            }
+        }
+    }
+
+
 
 
     public void updateSession(Session session) throws SQLException {
@@ -94,5 +136,35 @@ public class SessionServices {
         } catch (SQLException e) {
             e.printStackTrace(); // Handle or log the exception appropriately
         }
+    }
+
+    public List<Session> getSessionsByConferenceId(int id) {
+        List<Session> sessions = new ArrayList<>();
+        TopicServices ts = new TopicServices();
+
+        try {
+            String query = "SELECT * FROM session WHERE idConference = ?";
+            PreparedStatement statement = cnx.prepareStatement(query);
+            statement.setInt(1, id);
+
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Session session = new Session();
+                session.setId(resultSet.getInt("id"));
+                session.setSessionName(resultSet.getString("sessionName"));
+                session.setStartTime(resultSet.getTime("startTime").toLocalTime());
+                session.setEndTime(resultSet.getTime("endTime").toLocalTime());
+                session.setPresenceNbr(resultSet.getInt("presenceNbr"));
+                session.setPresenceTime(resultSet.getInt("presenceSpent"));
+                session.setPresenceQuality(resultSet.getInt("presenceQuality"));
+                session.setTopicList(ts.getSessionTopic(resultSet.getInt("id")));
+
+                sessions.add(session);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace(); // Handle or log the exception appropriately
+        }
+
+        return sessions;
     }
 }

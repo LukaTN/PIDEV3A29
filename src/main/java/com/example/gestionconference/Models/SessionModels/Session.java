@@ -11,7 +11,8 @@ public class Session {
     private LocalTime endTime;
     private int presenceNbr;
     private List<Topic> topicList;
-
+    private int presenceQuality;
+    private int presenceTime;
     private int idConference;
 
 
@@ -24,6 +25,15 @@ public class Session {
         this.endTime = endTime;
         this.idConference = idConference;
     }
+    public Session(int id , String sessionName, LocalTime startTime, LocalTime endTime, int idConference,int presenceQuality,int presenceTime) {
+        this.id = id;
+        this.sessionName = sessionName;
+        this.startTime = startTime;
+        this.endTime = endTime;
+        this.idConference = idConference;
+        this.presenceTime=presenceTime;
+        this.presenceQuality = presenceQuality;
+    }
 
     public Session(String sessionName, LocalTime startTime, LocalTime endTime) {
         this.sessionName = sessionName;
@@ -32,7 +42,21 @@ public class Session {
 
     }
 
+    public int getPresenceQuality() {
+        return presenceQuality;
+    }
 
+    public void setPresenceQuality(int presenceQuality) {
+        this.presenceQuality = presenceQuality;
+    }
+
+    public int getPresenceTime() {
+        return presenceTime;
+    }
+
+    public void setPresenceTime(int presenceTime) {
+        this.presenceTime = presenceTime;
+    }
 
     public List<Topic> getTopicList() {
         return topicList;

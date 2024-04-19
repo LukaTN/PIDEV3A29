@@ -85,7 +85,7 @@ public class TopicServices {
         // Close the statement and result set
         st.close();
         res.close();
-        System.out.println(topics);
+
         // Return the list of topics
         return topics;
     }

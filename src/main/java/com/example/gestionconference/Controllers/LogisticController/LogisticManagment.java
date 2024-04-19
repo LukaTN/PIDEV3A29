@@ -1,7 +1,8 @@
 package com.example.gestionconference.Controllers.LogisticController;
 
 
-import com.example.gestionconference.Controllers.ControllerCommon;
+
+import com.example.gestionconference.Controllers.ConferenceControllers.ControllerCommon;
 import com.example.gestionconference.Models.LogisticModels.Logistic;
 import com.example.gestionconference.Models.LogisticModels.LogisticIncome;
 import com.example.gestionconference.Services.LogisticServices.LogisticServices;
@@ -151,7 +152,17 @@ public class LogisticManagment {
         stage.setScene(scene);
         stage.show();
     }*/
+    @FXML
+    void onBudget(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Budgeting.fxml"));
+        Parent root = loader.load();
 
+        // Add the AddSponsor scene to the current scene
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) deleteData.getScene().getWindow(); // Get the current stage
+        stage.setScene(scene);
+        stage.show();
+    }
 
 
 }

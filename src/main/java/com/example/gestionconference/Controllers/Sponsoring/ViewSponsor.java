@@ -251,9 +251,16 @@ public class ViewSponsor implements Initializable {
   }
 
 
+    public void onNext(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/FinancialIncomes.fxml"));
+        Parent root = loader.load();
 
-
-
+        // Add the AddSponsor scene to the current scene
+        Scene scene = new Scene(root);
+        Stage stage = (Stage) addsponsor.getScene().getWindow(); // Get the current stage
+        stage.setScene(scene);
+        stage.show();
+    }
 }
 
 
