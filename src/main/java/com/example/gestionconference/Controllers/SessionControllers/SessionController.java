@@ -247,6 +247,9 @@ public class SessionController  implements Initializable {
             currentTopic--;
             setDataTopic(sessionList.get(currentSession).getTopicList(),currentTopic);
               }
+        else if(sessionList.get(currentSession).getTopicList().size()==1){
+            NextTopicB.setDisable(true);
+        }
 
     }
 
@@ -378,6 +381,10 @@ public class SessionController  implements Initializable {
             currentTopic++;
             setDataTopic(sessionList.get(currentSession).getTopicList(),currentTopic);
               }
+        else if(sessionList.get(currentSession).getTopicList().size()==1){
+            NextTopicB.setDisable(true);
+            BackTopicB.setDisable(true);
+        }
         else {
             currentTopic++;
             setDataTopic(sessionList.get(currentSession).getTopicList(),currentTopic);
