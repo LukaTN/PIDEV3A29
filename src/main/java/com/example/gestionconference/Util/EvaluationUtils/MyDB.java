@@ -5,6 +5,7 @@ import java.sql.SQLException;
 public class MyDB {
 
 
+
     final String URL = "jdbc:mysql://192.168.1.12/conf";
     final String USER = "root";
     final  String PWD = "";

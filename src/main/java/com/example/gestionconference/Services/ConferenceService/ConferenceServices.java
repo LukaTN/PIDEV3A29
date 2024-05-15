@@ -11,6 +11,7 @@ import javafx.collections.ObservableList;
 import java.sql.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.example.gestionconference.Services.ConferenceService.LieuServices.isNumeric;
@@ -237,6 +238,21 @@ public class ConferenceServices {
         return id;
     }
 
+    public List<String> getConfereceNameByDate(Date date) throws SQLException {
+        String req = "SELECT nom FROM conference WHERE date = ?";
+        PreparedStatement stm = cnx.prepareStatement(req);
+        stm.setDate(1, date);
+        ResultSet res = stm.executeQuery();
+        ObservableList<Conference> conferences = FXCollections.observableArrayList();
+        String name = "";
+        List<String> names = new ArrayList<>();
+        while (res.next()) {
+            name = res.getString("nom");
+            names.add(name);
+        }
+        return names;
+    }
+
     public List<Conference> triConferenceByname() throws SQLException {
         String req = "SELECT * FROM conference ORDER BY nom";
 
@@ -299,6 +315,21 @@ public class ConferenceServices {
         return conferences;
     }
 
+    public List<String> getByDate(Date date) {
+        String req = "SELECT date FROM conference WHERE date = ?";
+        List<String> dates = new ArrayList<>();
+        try {
+            PreparedStatement stm = cnx.prepareStatement(req);
+            stm.setDate(1, date);
+            ResultSet res = stm.executeQuery();
+            while (res.next()) {
+                dates.add(res.getString("date"));
+            }
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return dates;
+    }
 }
 
 
