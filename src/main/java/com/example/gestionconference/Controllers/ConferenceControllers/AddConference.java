@@ -202,8 +202,9 @@ public class AddConference  implements Initializable {
             conference.setBudget(Double.parseDouble(SpBudget.getText()));
             conference.setType(ChTypeConf.isSelected());
             conference.setEmplacement(lieuId);
-            //  System.out.println(user.getId());
-            conference.setOrganisateur(29);
+            System.out.println(user.getId());
+            conference.setOrganisateur(user.getId());
+            //conference.setOrganisateur(29);
 
 //            Conference s = new Conference(
 //                    TFConfName.getText(),
