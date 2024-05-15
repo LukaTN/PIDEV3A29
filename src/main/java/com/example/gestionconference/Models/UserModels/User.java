@@ -9,7 +9,7 @@ public class User {
     private String username;
     private String nom;  // changed from 'name' to 'nom'
     private String prenom;  // added 'prenom'
-    private String mail;
+    private String email;
     private String password;
     private int phone;
     private String role;
@@ -70,11 +70,11 @@ public class User {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -101,11 +101,11 @@ public class User {
         return username;
     }
 
-    public User(String username, String nom, String prenom, String mail, String password, int phone, String role, byte[] profilePicture) {
+    public User(String username, String nom, String prenom, String email, String password, int phone, String role, byte[] profilePicture) {
         this.username = username;
         this.nom = nom;
         this.prenom = prenom;
-        this.mail = mail;
+        this.email = email;
         this.password = password;
         this.phone = phone;
         this.role = role;
@@ -125,7 +125,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
-                ", mail='" + mail + '\'' +
+                ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
                 ", phone=" + phone +
                 ", role='" + role + '\'' +
