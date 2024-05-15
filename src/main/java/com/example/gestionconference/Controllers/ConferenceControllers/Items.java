@@ -1,5 +1,6 @@
 package com.example.gestionconference.Controllers.ConferenceControllers;
 
+import com.example.gestionconference.Controllers.SessionControllers.SessionController;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Models.UserModels.User;
@@ -24,6 +25,7 @@ import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class Items {
+
     private User user;
 
 
@@ -150,7 +152,7 @@ public class Items {
 
         // Load the image and set it in the ImageView
         if (imagePath != null && !imagePath.isEmpty()) {
-            Image image = new Image("file:" + imagePath); // Assuming imagePath is the absolute path to the image file
+            Image image = new Image("file:" +"C:\\Users\\melek\\Desktop\\3a29\\pidevwebbb\\conferaWeb\\public\\images\\"+imagePath); // Assuming imagePath is the absolute path to the image file
             confImage.setImage(image);
         } else {
             // Set a default image or handle the case where there's no image
@@ -169,5 +171,20 @@ public class Items {
 //        } catch (Exception e) {
 //            System.out.println(e);
 //        }
+    }
+
+    public void toSessions(ActionEvent actionEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/SessionFXML/Sessions.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) event_aff.getScene().getWindow();
+            SessionController sessionController = loader.getController();
+            sessionController.setSelectedConference(conference);
+            stage.setScene(scene);
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

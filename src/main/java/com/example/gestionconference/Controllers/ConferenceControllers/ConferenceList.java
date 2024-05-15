@@ -108,7 +108,7 @@ public class ConferenceList {
     public void toConfType(ActionEvent actionEvent) {
         if (confType.isSelected()) {
             try {
-                List<Conference> filteredConferences = ss.getPublicorPrivate(ConferenceType.PRIVATE);
+                List<Conference> filteredConferences = ss.getPublicorPrivate(true);
                 setData(filteredConferences);
             } catch (Exception e) {
                 System.out.println(e.getMessage());

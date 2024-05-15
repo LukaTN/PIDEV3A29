@@ -32,7 +32,7 @@ public class ConferenceServices {
         stm.setDate(2, conference.getDate());
         stm.setString(3,conference.getSubject());
         stm.setDouble(4,conference.getBudget());
-        stm.setString(5,conference.getType().toString());
+        stm.setBoolean(5,conference.getType());
         stm.setString(6,conference.getImage());
         stm.setInt(7,conference.getConferenceLocation());
         stm.setInt(8,conference.getOrganisateur());
@@ -76,7 +76,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setConferenceLocation(res.getInt("emplacement"));
 
         }
@@ -99,7 +99,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setConferenceLocation(res.getInt("emplacement"));
 
             return u;
@@ -118,7 +118,7 @@ public class ConferenceServices {
             stm.setDate(2, conference.getDate());
             stm.setString(3,conference.getSubject());
             stm.setDouble(4,conference.getBudget());
-            stm.setString(5,conference.getType().toString());
+            stm.setBoolean(5,conference.getType());
             stm.setString(6,conference.getImage());
             stm.setInt(7,conference.getId());
             stm.executeUpdate();
@@ -140,7 +140,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conference.add(u);
@@ -159,7 +159,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conference.add(u);
@@ -171,19 +171,13 @@ public class ConferenceServices {
         PreparedStatement stm;
 
         if (search != null) {
-            req1 = "SELECT * FROM conference WHERE nom LIKE ? OR budget LIKE ? OR typeConf = ?";
+            req1 = "SELECT conference.* FROM conference JOIN emplacement ON conference.emplacement = emplacement.id WHERE conference.nom LIKE ? OR conference.budget LIKE ? OR emplacement.label LIKE ? OR emplacement.gouvernourat LIKE ?";
             stm = cnx.prepareStatement(req1);
-            stm.setString(1,  search + "%");
-            stm.setString(2,   search + "%");
-
-            // Check if search is a number before setting it as an integer parameter
-            if (search instanceof ConferenceType) {
-                ConferenceType conferenceType = (ConferenceType) search;
-                stm.setString(3, conferenceType.name());
-            } else {
-                // Handle other cases or provide a default value
-                stm.setString(3, "%" + search + "%");
-            }
+            String searchTerm = "%" + search + "%";
+            stm.setString(1, searchTerm);
+            stm.setString(2, searchTerm);
+            stm.setString(3, searchTerm);
+            stm.setString(4, searchTerm);
         } else {
             req1 = "SELECT * FROM conference";
             stm = cnx.prepareStatement(req1);
@@ -198,7 +192,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conferences.add(u);
@@ -208,10 +202,10 @@ public class ConferenceServices {
     }
 
 
-    public List<Conference> getPublicorPrivate(ConferenceType type) throws SQLException {
+    public List<Conference> getPublicorPrivate(Boolean type) throws SQLException {
         String req = "SELECT * FROM conference WHERE typeConf = ?";
         PreparedStatement stm = cnx.prepareStatement(req);
-        stm.setString(1, type.toString());
+        stm.setBoolean(1, type);
         ResultSet res = stm.executeQuery();
         ObservableList<Conference> conferences = FXCollections.observableArrayList();
         while (res.next()) {
@@ -221,7 +215,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conferences.add(u);
@@ -256,7 +250,7 @@ public class ConferenceServices {
                 u.setDate(res.getDate("date"));
                 u.setSubject(res.getString("sujet"));
                 u.setBudget(res.getDouble("budget"));
-                u.setType(transform(res.getString("typeConf")));
+                u.setType(res.getBoolean("typeConf"));
                 u.setImage(res.getString("image"));
                 u.setConferenceLocation(res.getInt("emplacement"));
                 conferences.add(u);
@@ -276,7 +270,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conferences.add(u);
@@ -297,7 +291,7 @@ public class ConferenceServices {
             u.setDate(res.getDate("date"));
             u.setSubject(res.getString("sujet"));
             u.setBudget(res.getDouble("budget"));
-            u.setType(transform(res.getString("typeConf")));
+            u.setType(res.getBoolean("typeConf"));
             u.setImage(res.getString("image"));
             u.setConferenceLocation(res.getInt("emplacement"));
             conferences.add(u);

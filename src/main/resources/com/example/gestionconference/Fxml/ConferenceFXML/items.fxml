@@ -96,7 +96,7 @@
                   </Label>
                </children>
             </VBox>
-            <VBox prefHeight="256.0" prefWidth="100.0" spacing="17.0">
+            <VBox prefHeight="256.0" prefWidth="100.0" spacing="13.0">
                <children>
                   <Label fx:id="confLabel" text="confname" />
                   <Label fx:id="confDate" text="date" />
