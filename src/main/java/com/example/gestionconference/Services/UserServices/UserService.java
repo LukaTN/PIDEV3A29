@@ -27,7 +27,7 @@ public class UserService implements iCrud<User> {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
-                user.setMail(resultSet.getString("mail"));
+                user.setMail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setPhone(resultSet.getInt("numtel"));
                 user.setNom(resultSet.getString("nom"));
@@ -50,7 +50,7 @@ public class UserService implements iCrud<User> {
         }
 
         // SQL query to insert a new user
-        String sql = "INSERT INTO user (username, mail, password, numtel, nom, prenom,role,profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user (username, email, password, numtel, nom, prenom,role,profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, user.getUsername());
@@ -129,7 +129,7 @@ public class UserService implements iCrud<User> {
     @Override
     public boolean update(User user) throws SQLException {
         if (userExistsByUsername(user.getUsername())){
-        String sql = "update user set username = ?,  mail = ?, password = ?, numtel = ?, nom = ?, prenom = ?, profile_picture=?,role=? where username=?";
+        String sql = "update user set username = ?,  email = ?, password = ?, numtel = ?, nom = ?, prenom = ?, profile_picture=?,role=? where username=?";
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getMail());
@@ -166,7 +166,7 @@ public class UserService implements iCrud<User> {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
-                user.setMail(resultSet.getString("mail"));
+                user.setMail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setPhone(resultSet.getInt("numtel"));
                 user.setNom(resultSet.getString("nom"));
@@ -192,7 +192,7 @@ public class UserService implements iCrud<User> {
                 User user = new User();
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
-                user.setMail(resultSet.getString("mail"));
+                user.setMail(resultSet.getString("email"));
                 user.setPassword(resultSet.getString("password"));
                 user.setPhone(resultSet.getInt("numtel"));
                 user.setNom(resultSet.getString("nom"));

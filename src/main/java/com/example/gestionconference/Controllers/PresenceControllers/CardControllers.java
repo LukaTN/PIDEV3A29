@@ -743,8 +743,11 @@ public class CardControllers implements Initializable {
                         }
                         int pair = newPresence.getPresenceStatus() % 2;
                         ParticipantNameT.setText(newUser.getUserName());
-                        Image image = new Image(new ByteArrayInputStream(newUser.getProfilePicture()));
-                        UserImage.setImage(image);
+                        if (newUser.getProfilePicture()!=null){
+                            Image image = new Image(new ByteArrayInputStream(newUser.getProfilePicture()));
+                            UserImage.setImage(image);
+                        }
+
                         LocalTime tt = LocalTime.parse(timeLabel.getText());
                         statusTimeT.setText(timeLabel.getText());
                         NumberT.setText("Phone : " + newUser.getPhone());
