@@ -144,7 +144,7 @@
             </ScrollPane>
             <AnchorPane layoutX="714.0" layoutY="-5.0" prefHeight="626.0" prefWidth="405.0" style="-fx-background-color: white;">
                <children>
-                  <VBox alignment="CENTER" layoutX="99.0" layoutY="134.0" prefHeight="200.0" prefWidth="231.0" spacing="50.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
+                  <VBox alignment="CENTER" layoutX="99.0" layoutY="134.0" prefHeight="200.0" prefWidth="231.0" spacing="40.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
                         <HBox prefHeight="16.0" prefWidth="200.0">
                            <children>
@@ -154,10 +154,11 @@
                                     <Image url="@../../Images/magnifying-glass--glass-search-magnifying.png" />
                                  </image>
                               </ImageView>
-                           </children>
+                               </children>
                         </HBox>
                         <ChoiceBox fx:id="triConference" onAction="#handleSortChoice" prefHeight="25.0" prefWidth="198.0" styleClass="widget-get" stylesheets="@../../Styles/StyleSheet.css" />
                         <CheckBox fx:id="confType" mnemonicParsing="false" onAction="#toConfType" prefHeight="17.0" prefWidth="63.0" text="Private" />
+                         <Button mnemonicParsing="false" onAction="#showCalendar" styleClass="next-button" stylesheets="@../../Styles/StyleSheet.css" text="Show Calendar" />
                      </children>
                   </VBox>
                </children></AnchorPane>

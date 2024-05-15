@@ -9,14 +9,18 @@ import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.YearMonth;
 import java.util.List;
 
 
@@ -38,6 +42,8 @@ public class ConferenceList {
 
     @FXML
     private Button addConf;
+
+
 
     private ConferenceServices ss = new ConferenceServices();
    // private User user;
@@ -170,6 +176,28 @@ public class ConferenceList {
             System.out.println(e.getMessage());
         }
 
+    }
+    @FXML
+    void showCalendar(ActionEvent event) throws IOException {
+        // Charger le fichier FXML pour la nouvelle fenêtre
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Calendar.fxml"));
+        Parent calendarRoot = loader.load();
+
+        // Créer une nouvelle scène pour la nouvelle fenêtre
+        Scene calendarScene = new Scene(calendarRoot);
+        calendarScene.getStylesheets().add(getClass().getResource("/com/example/gestionconference/Styles/calendar.css").toExternalForm());
+
+        // Créer une nouvelle fenêtre
+        Stage calendarStage = new Stage();
+        calendarStage.setTitle("Calendar");  // Vous pouvez définir le titre de la nouvelle fenêtre ici
+        calendarStage.setScene(calendarScene);
+
+        // Charger le contrôleur de calendrier et ajouter la vue du calendrier à son conteneur
+        Calendar calendarController = loader.getController();
+        calendarController.calendarPane.getChildren().add(new FullCalendarView(YearMonth.now(), ss).getView());
+
+        // Afficher la nouvelle fenêtre
+        calendarStage.show();
     }
 
     public void initData(User user) {
