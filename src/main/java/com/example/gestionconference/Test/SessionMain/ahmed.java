@@ -16,10 +16,11 @@ public class ahmed extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/PresenceFXML/CardManagement.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
-         primaryStage.setTitle("Confera");
+        primaryStage.setTitle("Confera");
         primaryStage.setScene(scene);
-        primaryStage.show();
         primaryStage.getScene().getStylesheets().add("com/example/gestionconference/Styles/StyleSheet.css");
+        primaryStage.show();
+
 
     }
 

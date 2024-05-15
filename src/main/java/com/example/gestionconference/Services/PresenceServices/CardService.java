@@ -35,8 +35,11 @@ public class CardService {
         ObservableList<Presence> presences = FXCollections.observableArrayList();
         while (res.next()){
             Presence presence = new Presence(res.getString("uid"),
-                    res.getInt("idParticipant"), res.getTimestamp("currentTime"),
-                    res.getInt("status"));
+                    res.getInt("idParticipant"),
+                    res.getTimestamp("currentTime"),
+                    res.getInt("status"),
+                   0)
+            ;
             presences.add(presence);
         }
 
@@ -44,39 +47,44 @@ public class CardService {
     }
 
     public Presence addCard(String uid) throws SQLException{
+        ConferenceServices cs = new ConferenceServices();
+        Conference conference;
+        conference = cs.getTodayConference();
+        SessionServices ss = new SessionServices();
+        Session session;
+        session = ss.getCurrentSession(conference);
         Timestamp currentTimeStamp = new Timestamp(System.currentTimeMillis());
-Presence presence = new Presence(uid,0,currentTimeStamp,0);
+        Presence presence = new Presence(uid,0,currentTimeStamp,0,0);
 
-
+        //cherching if uid exist from database
         String selectQuery = "SELECT * FROM uidcard WHERE uid = ? ORDER BY currentTime DESC LIMIT 1";
             PreparedStatement selectStmt = cnx.prepareStatement(selectQuery);
             selectStmt.setString(1, uid);
             ResultSet resultSet = selectStmt.executeQuery();
 
-            if (resultSet.next()) {
+            if (resultSet.next()&&session!=null) {
                 // UID exists in the table
+
                 int status = resultSet.getInt("status");
                 // Increment the presence status
                 int stat = status + 1;
                 presence.setPresenceStatus(stat);
                 presence.setIdParticipant(resultSet.getInt("idParticipant"));
+                presence.setIdSession(session.getId());
 
-                    String req1 = "INSERT INTO `uidcard` (`uid`,`idParticipant`,`status`) VALUES(?,?,?)";
+                    String req1 = "INSERT INTO `uidcard` (`uid`,`idParticipant`,`status`,`idSession`) VALUES(?,?,?,?)";
                     PreparedStatement updateStmt = cnx.prepareStatement(req1);
                     if(resultSet.getInt("idParticipant") != 0 && uid != null) {
                     updateStmt.setInt(3, stat);
                     updateStmt.setInt(2,resultSet.getInt("idParticipant") );
                     updateStmt.setString(1, uid);
+                    updateStmt.setInt(4,session.getId() );
 
                         updateStmt.executeUpdate();
 
 
 
-                    String req2 = "UPDATE `uidcard` SET `idParticipant`=? WHERE uid = ?";
-                    PreparedStatement updateStmt2 = cnx.prepareStatement(req2);
-                    updateStmt2.setString(2,uid);
-                    updateStmt2.setInt(1, resultSet.getInt("idParticipant") );
-                    updateStmt2.executeUpdate();
+
                     return presence;
                     }
 
@@ -108,7 +116,8 @@ return null;
                             res.getString("uid"),
                             res.getInt("idParticipant"),
                             res.getTimestamp("currentTime"),
-                            res.getInt("status")
+                            res.getInt("status"),
+                            0
                     );
                 }
             }
@@ -200,5 +209,38 @@ return null;
         stm.setInt(4, session.getId());
 
         stm.executeUpdate();
+    }
+
+
+    public Presence getLastUid() throws SQLException {
+        ConferenceServices cs = new ConferenceServices();
+        Conference conference;
+        conference = cs.getTodayConference();
+        SessionServices ss = new SessionServices();
+        Session session;
+        session = ss.getCurrentSession(conference);
+
+
+        String selectQuery = "SELECT * FROM uidcard  ORDER BY currentTime DESC LIMIT 1";
+        PreparedStatement selectStmt = cnx.prepareStatement(selectQuery);
+
+        ResultSet resultSet = selectStmt.executeQuery();
+
+        if (resultSet.next() && session != null) {
+            // UID exists in the table
+            Presence presencees =new Presence(
+                    resultSet.getString("uid"),
+                    resultSet.getInt("idParticipant"),
+                    resultSet.getTimestamp("currentTime"),
+                    resultSet.getInt("status"),
+                    resultSet.getInt("idSession")
+
+            );
+
+           return presencees;
+
+
+        }
+        return null;
     }
 }

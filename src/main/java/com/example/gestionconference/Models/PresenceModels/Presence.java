@@ -9,21 +9,25 @@ import java.time.LocalTime;
 public class Presence {
     private final StringProperty uid;
     private final IntegerProperty idParticipant;
+
+    private final IntegerProperty idSession;
     private final ObjectProperty<Timestamp> presenceTime;
     private final IntegerProperty presenceStatus;
 
 
 
 
-    public Presence(String uid, int idParticipant, Timestamp presenceTime, int presenceStatus) {
+    public Presence(String uid, int idParticipant, Timestamp presenceTime, int presenceStatus, int idSession) {
         this.uid = new SimpleStringProperty(uid);
         this.idParticipant = new SimpleIntegerProperty(idParticipant);
+        this.idSession = new SimpleIntegerProperty(idSession); // or you can leave it uninitialized
         this.presenceTime = new SimpleObjectProperty<>(presenceTime);
         this.presenceStatus = new SimpleIntegerProperty(presenceStatus);
     }
-    public Presence(String uid, int idParticipant, int presenceStatus) {
+    public Presence(String uid, int idParticipant, int idSession, int presenceStatus) {
         this.uid = new SimpleStringProperty(uid);
         this.idParticipant = new SimpleIntegerProperty(idParticipant);
+        this.idSession = new SimpleIntegerProperty(idSession);
         this.presenceTime = new SimpleObjectProperty<>(null); // or you can leave it uninitialized
         this.presenceStatus = new SimpleIntegerProperty(presenceStatus);
     }
@@ -38,6 +42,15 @@ public class Presence {
 
     public void setUid(String uid) {
         this.uid.set(uid);
+    }
+    public int getIdSession() {
+        return idSession.get();
+    }
+    public IntegerProperty idSessionProperty() {
+        return idSession;
+    }
+    public void setIdSession(int idSession) {
+        this.idSession.set(idSession);
     }
 
     public int getIdParticipant() {
