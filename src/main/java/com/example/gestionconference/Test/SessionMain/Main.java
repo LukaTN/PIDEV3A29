@@ -41,20 +41,24 @@ public class Main {
 
 
 
+import com.example.gestionconference.Models.LogisticModels.LogisticIncome;
+import com.example.gestionconference.Services.LogisticServices.LogisticIncomeServices;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.Files;
 
 public class Main extends Application {
 
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/SessionFXML/AddSession.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/SessionFXML/Sessions.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
         primaryStage.setTitle("Confera");
@@ -65,6 +69,19 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         launch(args);
+
+
+
+//        byte[] logProof = null;
+//        try {
+//            File pdfFile = new File("C:\\Users\\amena\\Desktop\\recu 3eme.pdf"); // Update with the actual path to your PDF file
+//            logProof = Files.readAllBytes(pdfFile.toPath());
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            return; // Exit the method if an error occurs
+//            LogisticIncome lg = new LogisticIncome("nn",5,logProof);
+//        }
+
     }
 
 }

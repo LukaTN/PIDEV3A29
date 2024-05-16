@@ -1,17 +1,19 @@
-/*
-package com.example.gestionconference.Services;
+package com.example.gestionconference.Services.Sponsoring;
 
-
-
+import com.example.gestionconference.Models.Sponsoring.Sponsor;
 import com.example.gestionconference.Models.Sponsoring.SponsorRejected;
 import com.example.gestionconference.Util.MyDB;
+import javafx.beans.binding.ListBinding;
+import javafx.collections.ObservableList;
 
-
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class SponsorRejectedServices  {
+public class SponsorRejectedServices {
 
     private Connection connection;
 
@@ -19,72 +21,46 @@ public class SponsorRejectedServices  {
         connection = MyDB.getInstance().getCnx();
     }
 
-
-    public void add(SponsorRejected sponsorRejected) throws SQLException {
-        String sql = "INSERT INTO sponsor_rejected (nom, email, numtel, cause) VALUES (?, ?, ?, ?)";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, sponsorRejected.getNom());
-        preparedStatement.setString(2, sponsorRejected.getEmail());
-        preparedStatement.setInt(3, sponsorRejected.getNumtel());
-        preparedStatement.setString(4, sponsorRejected.getCause());
-        preparedStatement.executeUpdate();
-    }
-
-
-    public void update(SponsorRejected sponsorRejected) throws SQLException {
-        String sql = "UPDATE sponsor_rejected SET nom = ?, email = ?, numtel = ?, cause = ? WHERE id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, sponsorRejected.getNom());
-        preparedStatement.setString(2, sponsorRejected.getEmail());
-        preparedStatement.setInt(3, sponsorRejected.getNumtel());
-        preparedStatement.setString(4, sponsorRejected.getCause());
-        preparedStatement.setInt(5, sponsorRejected.getId());
-        preparedStatement.executeUpdate();
-    }
-
-
-    public void delete(SponsorRejected sponsorRejected) throws SQLException {
-        String sql = "DELETE FROM sponsor_rejected WHERE id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, sponsorRejected.getId());
-        preparedStatement.executeUpdate();
-    }
-
-
-    public List<SponsorRejected> getAll() throws SQLException {
-        String sql = "SELECT * FROM sponsor_rejected";
+    public List<SponsorRejected> getAllRejectedSponsors() throws SQLException {
+        String sql = "SELECT * FROM sponsorrejected";
         Statement statement = connection.createStatement();
         ResultSet rs = statement.executeQuery(sql);
-        List<SponsorRejected> sponsorRejecteds = new ArrayList<>();
+        List<SponsorRejected> rejectedSponsors = new ArrayList<>();
         while (rs.next()) {
-            SponsorRejected sponsorRejected = new SponsorRejected();
-            sponsorRejected.setId(rs.getInt("id"));
-            sponsorRejected.setNom(rs.getString("nom"));
-            sponsorRejected.setEmail(rs.getString("email"));
-            sponsorRejected.setNumtel(rs.getInt("numtel"));
-            sponsorRejected.setCause(rs.getString("cause"));
-            sponsorRejecteds.add(sponsorRejected);
+            SponsorRejected sp = new SponsorRejected();
+            sp.setId(rs.getInt("id"));
+            sp.setId(rs.getInt("idsponsor"));
+            sp.setCause(rs.getString("cause"));
+            rejectedSponsors.add(sp);
         }
-        return sponsorRejecteds;
+        return rejectedSponsors;
     }
 
-
-    public SponsorRejected getById(int id) throws SQLException {
-        String sql = "SELECT nom, email, numtel, cause FROM sponsor_rejected WHERE id = ?";
-        PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setInt(1, id);
-        ResultSet resultSet = preparedStatement.executeQuery();
-
-        if (resultSet.next()) {
-            String nom = resultSet.getString("nom");
-            String email = resultSet.getString("email");
-            int numtel = resultSet.getInt("numtel");
-            String cause = resultSet.getString("cause");
-
-            return new SponsorRejected(id, nom, email, numtel, cause);
-        } else {
-            return null;
-        }
+    // Convert a single Sponsor object to a SponsorRejected object
+    private SponsorRejected convertToSponsorRejected(ResultSet rs) throws SQLException {
+        return new SponsorRejected(
+                rs.getInt("id"),
+                rs.getString("nom"),
+                rs.getString("email"),
+                rs.getString("numtel"),
+                rs.getString("cause")
+        );
     }
+
+    // Method to convert a list of Sponsor objects to a list of SponsorRejected objects
+    public List<SponsorRejected> convertToSponsorRejectedList(List<Sponsor> sponsors) {
+        List<SponsorRejected> sponsorRejectedList = new ArrayList<>();
+        for (Sponsor sponsor : sponsors) {
+            sponsorRejectedList.add(new SponsorRejected(
+                    sponsor.getId(),
+                    sponsor.getNom(),
+                    sponsor.getEmail(),
+                    sponsor.getNumtel(),
+                    sponsor.getCause()
+            ));
+        }
+        return sponsorRejectedList;
+    }
+
+    // Other methods specific to rejected sponsors can be added here if needed
 }
-*/

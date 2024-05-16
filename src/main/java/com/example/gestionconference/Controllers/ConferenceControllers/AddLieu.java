@@ -68,7 +68,7 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onSelect(ActionEvent event) {
-         selectedValue = LDGov.getValue();
+        selectedValue = LDGov.getValue();
     }
 
     @FXML
@@ -149,6 +149,14 @@ public class AddLieu implements Initializable  {
 
     public void initData(User user) {
         this.user=user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }
 

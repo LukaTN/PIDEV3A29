@@ -12,7 +12,7 @@ public class Conference {
     private Date date;
     private String subject;
     private double budget;
-    private ConferenceType typeConf;
+    private Boolean typeConf;
 
     private String image;
     private int emplacement;
@@ -24,7 +24,7 @@ public class Conference {
     // Constructor for Conference
 
 
-    public Conference(int id, String name, Date date, String subject, double budget, ConferenceType typeConf, int emplacement) {
+    public Conference(int id, String name, Date date, String subject, double budget, Boolean typeConf, int emplacement) {
         this.id = id;
         this.name = name;
         this.date = date;
@@ -33,7 +33,7 @@ public class Conference {
         this.typeConf = typeConf;
         this.emplacement = emplacement;
     }
-    public Conference(String name, Date date, String subject, double budget, ConferenceType typeConf, int emplacement, int organisateur) {
+    public Conference(String name, Date date, String subject, double budget, Boolean typeConf, int emplacement, int organisateur) {
 
         this.name = name;
         this.date = date;
@@ -45,7 +45,7 @@ public class Conference {
 
     }
 
-    public Conference( String name, Date date, String subject, double budget, ConferenceType typeConf, int emplacement) {
+    public Conference( String name, Date date, String subject, double budget, Boolean typeConf, int emplacement) {
 
         this.name = name;
         this.date = date;
@@ -55,7 +55,7 @@ public class Conference {
         this.emplacement = emplacement;
 
     }
-    public Conference(int id, String name, Date date, String subject, double budget, ConferenceType typeConf,
+    public Conference(int id, String name, Date date, String subject, double budget, Boolean typeConf,
                       String image, int emplacement, int organisateur) {
         this.id = id;
         this.name = name;
@@ -68,7 +68,7 @@ public class Conference {
         this.organisateur = organisateur;
     }
 
-    public Conference(int id, String name, Date date, String subject, double budget, ConferenceType typeConf,
+    public Conference(int id, String name, Date date, String subject, double budget, Boolean typeConf,
                       String image, int emplacement, int organisateur, List<Session> sessions) {
         this(id, name, date, subject, budget, typeConf, image, emplacement, organisateur);
         this.sessions = sessions;
@@ -135,11 +135,11 @@ public class Conference {
         this.budget = budget;
     }
 
-    public ConferenceType getType() {
+    public Boolean getType() {
         return typeConf;
     }
 
-    public void setType(ConferenceType typeConf) {
+    public void setType(Boolean typeConf) {
         this.typeConf = typeConf;
     }
 
@@ -151,11 +151,11 @@ public class Conference {
         this.emplacement = emplacement;
     }
 
-    public ConferenceType getTypeConf() {
+    public Boolean getTypeConf() {
         return typeConf;
     }
 
-    public void setTypeConf(ConferenceType typeConf) {
+    public void setTypeConf(Boolean typeConf) {
         this.typeConf = typeConf;
     }
 

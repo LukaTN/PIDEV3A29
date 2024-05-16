@@ -2,22 +2,31 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.time.YearMonth;
 import java.util.List;
 
 
 public class ConferenceList {
+
+    private User user;
 
     @FXML
     private ChoiceBox triConference;
@@ -34,7 +43,10 @@ public class ConferenceList {
     @FXML
     private Button addConf;
 
+
+
     private ConferenceServices ss = new ConferenceServices();
+   // private User user;
 
     @FXML
     public void initialize() {
@@ -102,16 +114,17 @@ public class ConferenceList {
     public void toConfType(ActionEvent actionEvent) {
         if (confType.isSelected()) {
             try {
-                List<Conference> filteredConferences = ss.getPublicorPrivate(ConferenceType.PRIVATE);
+                List<Conference> filteredConferences = ss.getPublicorPrivate(true);
                 setData(filteredConferences);
             } catch (Exception e) {
                 System.out.println(e.getMessage());
 
             }
-        }else {
+        } else {
             diplayConferences();
         }
     }
+
     public void setData(List<Conference> filteredConferences) {
         try {
 
@@ -164,6 +177,39 @@ public class ConferenceList {
         }
 
     }
-}
+    @FXML
+    void showCalendar(ActionEvent event) throws IOException {
+        // Charger le fichier FXML pour la nouvelle fenêtre
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Calendar.fxml"));
+        Parent calendarRoot = loader.load();
 
+        // Créer une nouvelle scène pour la nouvelle fenêtre
+        Scene calendarScene = new Scene(calendarRoot);
+        calendarScene.getStylesheets().add(getClass().getResource("/com/example/gestionconference/Styles/calendar.css").toExternalForm());
+
+        // Créer une nouvelle fenêtre
+        Stage calendarStage = new Stage();
+        calendarStage.setTitle("Calendar");  // Vous pouvez définir le titre de la nouvelle fenêtre ici
+        calendarStage.setScene(calendarScene);
+
+        // Charger le contrôleur de calendrier et ajouter la vue du calendrier à son conteneur
+        Calendar calendarController = loader.getController();
+        calendarController.calendarPane.getChildren().add(new FullCalendarView(YearMonth.now(), ss).getView());
+
+        // Afficher la nouvelle fenêtre
+        calendarStage.show();
+    }
+
+    public void initData(User user) {
+        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+    }
+}
 

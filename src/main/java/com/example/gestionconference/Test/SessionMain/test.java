@@ -1,79 +1,41 @@
 package com.example.gestionconference.Test.SessionMain;
-import com.example.gestionconference.Models.SessionModels.DataModel;
 
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.scene.Scene;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
 
 public class test extends Application {
 
-    private TableView<DataModel> tableView;
-
-    // Database connection parameters
-    private final String dbUrl = "jdbc:mysql://localhost:3306/testback";
-    private final String dbUsername = "root";
-    private final String dbPassword = "";
-
-    final String URL = "jdbc:mysql://localhost:3306/confera";
-    final String USER = "root";
-    final String password = "";
-
     @Override
     public void start(Stage primaryStage) {
-        tableView = new TableView<>();
-        TableColumn<DataModel, String> nameColumn = new TableColumn<>("uid");
-        nameColumn.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        TabPane tabPane = new TabPane();
 
-        // Add more columns as needed
+        Tab tab1 = new Tab("Tab 1");
+        tab1.setContent(new StackPane());
+        Tab tab2 = new Tab("Tab 2");
+        tab2.setContent(new StackPane());
+        Tab tab3 = new Tab("Tab 3");
+        tab3.setContent(new StackPane());
 
-        tableView.getColumns().add(nameColumn);
+        tabPane.getTabs().addAll(tab1, tab2, tab3);
 
-        VBox root = new VBox(tableView);
-        Scene scene = new Scene(root, 400, 300);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("Real-Time Table View Demo");
-        primaryStage.show();
+        tabPane.setStyle("-fx-background-color: #f0f0f0; -fx-background-radius: 10px;"); // Set the background color and radius
 
-        // Load data initially
-        loadDataFromDatabase();
-
-        // Start a thread to periodically update the table view
-        Thread updateThread = new Thread(() -> {
-            while (true) {
-                try {
-                    Thread.sleep(1000); // Adjust the update interval as needed
-                    Platform.runLater(this::loadDataFromDatabase);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-        updateThread.setDaemon(true);
-        updateThread.start();
-    }
-
-    private void loadDataFromDatabase() {
-        try (Connection conn = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
-             Statement stmt = conn.createStatement()) {
-            ResultSet rs = stmt.executeQuery("SELECT * FROM testiot");
-            tableView.getItems().clear();
-            while (rs.next()) {
-                DataModel data = new DataModel(rs.getString("uid"));
-                tableView.getItems().add(data);
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+        for (Tab tab : tabPane.getTabs()) {
+            tab.setStyle("-fx-background-color: #d0d0d0; -fx-border-color: #a0a0a0; -fx-border-width: 1px; -fx-border-style: solid; -fx-padding: 5 10;");
         }
+
+        tabPane.getTabs().get(0).setStyle(tabPane.getTabs().get(0).getStyle() + "-fx-background-radius: 20px 0 0 0;"); // Apply border radius to the first tab
+
+        Scene scene = new Scene(tabPane, 400, 300);
+        scene.getStylesheets().add("/com/example/gestionconference/Styles/StyleSheet.css");
+
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Styled TabPane Example");
+        primaryStage.show();
     }
 
     public static void main(String[] args) {

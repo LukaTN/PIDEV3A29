@@ -1,6 +1,7 @@
 package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
@@ -10,9 +11,11 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
 
+import java.io.ByteArrayInputStream;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -55,6 +58,8 @@ public class LieuList implements Initializable {
     @FXML
     private TextField TFZone;
 
+    private User user;
+
     ControllerCommon cc = new ControllerCommon();
 
     @Override
@@ -93,6 +98,7 @@ public class LieuList implements Initializable {
             TFZone.setText(selectedLieu.getPlace());
         }
     }
+
     @FXML
     void updateLieu(ActionEvent event) {
         Lieu lieu = lieuTableView.getSelectionModel().getSelectedItem();
@@ -153,11 +159,11 @@ public class LieuList implements Initializable {
 
     public void newPlace(ActionEvent actionEvent) {
 
-        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml",TFZone);
+        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml", TFZone);
     }
 
 
-     public void searchLieu(Object o) {
+    public void searchLieu(Object o) {
         try {
             ObservableList<Lieu> filteredLocations;
 
@@ -181,4 +187,16 @@ public class LieuList implements Initializable {
         LDGov.getItems().addAll(states);
     }
 
+    public void initData(User user) {
+//        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+
+    }
 }

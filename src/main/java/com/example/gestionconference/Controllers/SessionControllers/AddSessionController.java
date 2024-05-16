@@ -1,6 +1,7 @@
 package com.example.gestionconference.Controllers.SessionControllers;
 
 
+import com.example.gestionconference.Controllers.Sponsoring.ViewRejectedSponsors;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.SessionModels.Session;
@@ -9,11 +10,15 @@ import com.example.gestionconference.Services.SessionServices.SessionServices;
 import com.example.gestionconference.Services.SessionServices.TopicServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
 import java.net.URL;
 
 import java.time.LocalTime;
@@ -24,6 +29,7 @@ import java.util.ResourceBundle;
 import javafx.scene.control.Spinner;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 public class AddSessionController implements Initializable {
 
@@ -126,7 +132,7 @@ public class AddSessionController implements Initializable {
             errorMsg.setText("Please verify Session name");
         }else if(SessionNameTF.getText().length() > 30){
             errorMsg.setText("Please verify Session name");
-        } else if (!startTime.isAfter(endTime) ) {
+        } else if (startTime.isAfter(endTime) ) {
             errorMsg.setText("Make sure Start time is after the end Time");
         } else if (TopicNumber==1) {
             errorMsg.setText("You need to add at least 1 Topic");
@@ -229,6 +235,15 @@ public class AddSessionController implements Initializable {
                 TopicNameTF.setText("");
                 TopicDescriptionTF.setText("");
 
+                    // Load the interface for viewing accepted sponsors
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/Sponsoring/ViewSponsor.fxml"));
+                    Parent root = loader.load();
+
+                    // Add the AddSponsor scene to the current scene
+                    Scene scene = new Scene(root);
+                    Stage stage = (Stage) SessionNameTF.getScene().getWindow(); // Get the current stage
+                    stage.setScene(scene);
+                    stage.show();
 
 
             } catch (Exception e) {
@@ -241,4 +256,3 @@ public class AddSessionController implements Initializable {
     }
 
 }
-

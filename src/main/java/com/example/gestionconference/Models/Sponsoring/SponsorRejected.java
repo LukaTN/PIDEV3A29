@@ -8,7 +8,7 @@ public class SponsorRejected extends Sponsor {
     }
 
     public SponsorRejected(int id, String nom, String email, String numtel, String cause) {
-        super(id, nom, email, numtel, "REJECTED");
+        super(id, nom, email, numtel);
         this.cause = cause;
     }
 

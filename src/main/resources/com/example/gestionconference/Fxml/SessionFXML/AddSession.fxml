@@ -78,7 +78,7 @@
                   <Image url="@../../Images/Calque_1.png" />
                </image>
             </ImageView>
-            <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Conference List" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
+            <Label layoutX="92.0" layoutY="27.0" styleClass="sf-display-pro-Semibold-Italic" stylesheets="@../../Styles/StyleSheet.css" text="Add session" textFill="WHITE" textOverrun="WORD_ELLIPSIS">
                <font>
                   <Font size="40.0" />
                </font>

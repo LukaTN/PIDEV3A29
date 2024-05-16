@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 import com.example.gestionconference.Controllers.SessionControllers.AddSessionController;
 import com.example.gestionconference.Controllers.Usercontrollers.Accountmanagement;
+import com.example.gestionconference.Controllers.Usercontrollers.ChangePassword;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
@@ -27,6 +28,8 @@ import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.sql.SQLException;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -87,7 +90,7 @@ public class AddConference  implements Initializable {
         LieuServices ser = new LieuServices();
         try {
             // Retrieve locations from the service
-             lieux = ser.getAllLocations(); // Assuming Location is the class representing a location
+            lieux = ser.getAllLocations(); // Assuming Location is the class representing a location
             // Extract location names and add them to the ListView
             List<String> locationNames = new ArrayList<>();
             for (Lieu lieu : lieux) {
@@ -130,6 +133,10 @@ public class AddConference  implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml"));
         Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        AddLieu addLieu = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        addLieu.initData(user);
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);
@@ -164,7 +171,7 @@ public class AddConference  implements Initializable {
                     return;
                 }
             } catch (NumberFormatException e) {
-               cc.showAlert(Alert.AlertType.ERROR, "Invalid Budget", "Please enter a valid integer for budget.");
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Budget", "Please enter a valid integer for budget.");
                 return;
             }
             try {
@@ -181,10 +188,10 @@ public class AddConference  implements Initializable {
             String ldLocationsValue = LDLocations.getValue();
             if (ldLocationsValue == null){
                 cc.showAlert(Alert.AlertType.ERROR,"Error","Plese select location or create one click on button New Location for more");
-              return;
+                return;
             }
-            if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
-                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
+            if (!TFConfName.getText().matches("^[a-zA-Z0-9\\s_-]+$")) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets, numbers, spaces, hyphens, and underscores.");
                 return;
             }
             java.sql.Date sqlDate = java.sql.Date.valueOf(TFDate.getValue());
@@ -193,10 +200,11 @@ public class AddConference  implements Initializable {
             conference.setDate(sqlDate);
             conference.setSubject(TASubject.getText());
             conference.setBudget(Double.parseDouble(SpBudget.getText()));
-            conference.setType(transform());
+            conference.setType(ChTypeConf.isSelected());
             conference.setEmplacement(lieuId);
-          //  System.out.println(user.getId());
+            System.out.println(user.getId());
             conference.setOrganisateur(user.getId());
+            //conference.setOrganisateur(29);
 
 //            Conference s = new Conference(
 //                    TFConfName.getText(),
@@ -250,13 +258,14 @@ public class AddConference  implements Initializable {
 
         if (selectedFile != null) {
             try {
-                // Set the image path in the Conference object
-                String imagePath = selectedFile.getAbsolutePath();
-                imageConf.setImage(new Image(selectedFile.toURI().toString()));
+                String imageName = selectedFile.getName(); // Get only the filename
+                String imagePath = "C:\\Users\\melek\\Desktop\\3a29\\pidevwebbb\\conferaWeb\\public\\images\\" + imageName;
 
-                // Set the image path in your Conference object (assuming imagePath is a property in the Conference class)
-                // Replace "yourConferenceObject" with the actual instance of your Conference object
-                conference.setImage(imagePath);
+                // Copy the selected file to the specified directory
+                Files.copy(selectedFile.toPath(), new File(imagePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
+
+                imageConf.setImage(new Image("file:///" + imagePath)); // Set the image path with file:/// prefix
+                conference.setImage(imageName); // Store the full image path in the database
 
             } catch (Exception e) {
                 // Handle exceptions gracefully, like logging or showing an error message

@@ -3,21 +3,27 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 import com.example.gestionconference.Models.ConferenceModels.Conference;
 import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
+import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
 import javafx.fxml.Initializable;
 
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -51,17 +57,16 @@ public class UpdateConference implements Initializable {
     private String selectedValue;
     private int lieuId;
 
+    private User user;
+
 
     ControllerCommon cc = new ControllerCommon();
     private Conference selectedConference; // Added field to store the selected conference
 
 
-
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
     }
-
 
 
     @FXML
@@ -77,11 +82,7 @@ public class UpdateConference implements Initializable {
         SpBudget.setText(String.valueOf(selectedConference.getBudget()));
         Image existingImage = new Image("file:" + selectedConference.getImage());
         imageConf.setImage(existingImage);
-        if (selectedConference.getType() == ConferenceType.PRIVATE) {
-            ChTypeConf.setSelected(true);
-        } else {
-            ChTypeConf.setSelected(false);
-        }
+        selectedConference.setType(ChTypeConf.isSelected());
 
     }
 
@@ -111,22 +112,28 @@ public class UpdateConference implements Initializable {
                 cc.showAlert(Alert.AlertType.ERROR, "Error", "Invalid budget value");
                 return;
             }
-            if (!TFConfName.getText().matches("^[a-zA-Z0-9]+$")) {
-                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets and numbers.");
+            if (!TFConfName.getText().matches("^[a-zA-Z0-9\\s_-]+$")) {
+                cc.showAlert(Alert.AlertType.ERROR, "Invalid Conference Name", "Conference name should contain only alphabets, numbers, spaces, hyphens, and underscores.");
                 return;
             }
 
             // If all validations pass, update the conference
-            Conference updatedConference = new Conference();
+
+            selectedConference.setName(TFConfName.getText());
+            selectedConference.setSubject(TASubject.getText());
+            selectedConference.setBudget(budget);
+            selectedConference.setType(ChTypeConf.isSelected());
+            selectedConference.setImage(selectedConference.getImage());
+           /* Conference updatedConference = new Conference();
             updatedConference.setId(selectedConference.getId());
             updatedConference.setName(conferenceName);
             updatedConference.setSubject(subject);
             updatedConference.setBudget(budget);
             updatedConference.setDate(selectedConference.getDate());
-            updatedConference.setType(transform());
-            updatedConference.setImage(selectedConference.getImage());
+            updatedConference.setType(ChTypeConf.isSelected());
+            updatedConference.setImage(selectedConference.getImage());*/
 
-            conferenceServices.updateConference(updatedConference);
+            conferenceServices.updateConference(selectedConference);
             cc.showAlert(Alert.AlertType.INFORMATION, "Success", "Conference updated successfully");
         } catch (Exception e) {
             cc.showAlert(Alert.AlertType.ERROR, "Error", "Error updating conference: " + e.getMessage());
@@ -138,31 +145,44 @@ public class UpdateConference implements Initializable {
     }
 
 
-    public void importImage(ActionEvent actionEvent) {
-        try {
-            FileChooser fileChooser = new FileChooser();
-            fileChooser.getExtensionFilters().addAll(
-                    new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
-            );
+    @FXML
+    void importImage(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
 
-            // Show open file dialog
-            Stage stage = (Stage) imageConf.getScene().getWindow();
-            java.io.File selectedFile = fileChooser.showOpenDialog(stage);
+        // Show the FileChooser dialog
+        File selectedFile = fileChooser.showOpenDialog(((Node) event.getSource()).getScene().getWindow());
 
-            if (selectedFile != null) {
-                // Load and set the selected image
-                Image selectedImage = new Image(selectedFile.toURI().toString());
-                imageConf.setImage(selectedImage);
+        if (selectedFile != null) {
+            try {
+                String imageName = selectedFile.getName(); // Get only the filename
+                String imagePath = "C:\\Users\\melek\\Desktop\\3a29\\pidevwebbb\\conferaWeb\\public\\images\\" + imageName;
 
-                // Update the image path in the Conference object
-                selectedConference.setImage(selectedFile.getAbsolutePath());
+                // Copy the selected file to the specified directory
+                Files.copy(selectedFile.toPath(), new File(imagePath).toPath(), StandardCopyOption.REPLACE_EXISTING);
 
-                // You may want to display a success message or handle other tasks here
+                imageConf.setImage(new Image("file:///" + imagePath)); // Set the image path with file:/// prefix
+                selectedConference.setImage(imageName); // Store the full image path in the database
+
+            } catch (Exception e) {
+                // Handle exceptions gracefully, like logging or showing an error message
+                cc.showAlert(Alert.AlertType.ERROR, "Error", "Error processing image: " + e.getMessage());
             }
-
-        }catch (Exception e) {
-            cc.showAlert(Alert.AlertType.ERROR, "Error", "Error loading image: " + e.getMessage());
         }
 
+    }
+
+    public void initData(User user) {
+        this.user = user;
+//        username.setText(user.getUsername());
+//        role.setText(user.getRole());
+//        try {
+//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+//            imageUser.setImage(image);
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
     }
 }

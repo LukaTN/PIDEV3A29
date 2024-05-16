@@ -5,7 +5,8 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class MyDB {
-    final String URL = "jdbc:mysql://localhost:3306/confera";
+
+    final String URL = "jdbc:mysql://192.168.1.12/conf";
     final String USER = "root";
     final String password = "";
     private static MyDB instance;

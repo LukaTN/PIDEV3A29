@@ -86,7 +86,7 @@
  }
 
 .text-field .prompt-text {
-    -fx-text-fill: grey;
+    -fx-text-fill: gray;
     -fx-font-size: 4;
 
 }
@@ -254,17 +254,139 @@
     -fx-background-radius: 10;
 }
 .table-view .table-cell {
-    -fx-padding: 0 0 0 10;
-    -fx-text-fill: black; /* Text color */
+
+    -fx-text-fill: #3E3838; /* Text color */
     -fx-font-family: 'SF Pro Display Medium'; /* Font family */
-    -fx-font-size: 14px; /* Font size */
+    -fx-font-size: 16px; /* Font size */
     -fx-border-color: transparent transparent transparent transparent; /* Transparent border color */
     -fx-background-radius: 10;
+    -fx-padding: 10;
 
 }
+
 .table-row-cell {
     -fx-background-radius: 10;
-    -fx-border-color: transparent; /* Transparent border color */
+    -fx-border-color: transparent;
+    -fx-size:50px; /* Transparent border color */
+}
+/* styles.css */
+.tab-pane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;
+}
+
+.tab-pane
+{
+    -fx-tab-min-width:90px;
+    -fx-tab-min-height: 40px;
+}
+
+.tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+}
+.tab-pane .tab
+{
+    -fx-background-color: #abe0ff;
+
+}
+.tab-header-background .tab {
+    -fx-alignment: center; /* Center-align the tab buttons */
+}
+.tab-pane .tab:selected
+{
+    -fx-background-color: #015A7C;
+}
+
+.tab .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: #3c3c3c;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+.tab:selected .tab-label {
+    -fx-alignment: CENTER;
+    -fx-text-fill: white;
+}
+
+.tab-pane:top *.tab-header-area {
+    -fx-background-insets: 0, 0 0 1 0;
+    /* -fx-padding: 0.416667em 0.166667em 0.0em 0.833em; /* 5 2 0 10 */
+    -fx-padding: 0.416667em 0.166667em 0.0em 0.0em; /* overridden as 5 2 0 0 */
+}
+
+.my-combobox {
+    /* Define your styling properties here */
+    -fx-background-color: transparent; /* Example background color */
+    -fx-text-fill: transparent;
+    -fx-pref-width: 300px;/* Example text color */
+    /* Add more styling properties as needed */
+}
+.my-combobox:hover {
+    /* Define your styling properties for hover state */
+    -fx-background-color: lightblue; /* Example hover background color */
+    -fx-text-fill: black; /* Example hover text color */
+}
+
+
+.conf-combobox {
+    /* Define your styling properties here */
+    /*-fx-background-color: #7b6fb9; /* Example background color */
+    -fx-text-fill: transparent;
+
+    -fx-background-color: #F5F8FF;
+    -fx-background-radius: 5, 5, 4, 3;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 2;
+    -fx-padding: 7;
+    -fx-font-family: 'SF Pro Display', sans-serif;
+    -fx-font-size: 13;
+
+    /* Add more styling properties as needed */
+}
+.conf-combobox:hover {
+    /* Define your styling properties for hover state */
+    -fx-background-color: lightblue; /* Example hover background color */
+    -fx-text-fill: black; /* Example hover text color */
+}
+.conf-combobox.list-cell
+{
+    -fx-background: white;
+    -fx-background-color: transparent;
+    -fx-text-fill: -fx-text-base-color;
+    -fx-padding: 3 0 2 7;
+    -fx-cell-size: 1.66667em;
+}
+
+.conf-combobox-popup .list-view
+{
+    -fx-background-color: white, white;
+    -fx-background-insets: 0, 1;
+    -fx-effect: dropshadow( three-pass-box , rgba(0,0,0,0.6) , 8, 0.0 , 0 , 0 );
+}
+
+.conf-combobox-popup .list-view .list-cell
+{
+    -fx-padding: 4 0 4 5;
+
+    /* No alternate highlighting */
+    -fx-background-color: white;
+}
+
+
+.my-deleteButton {
+    /* Define your styling properties here */
+    -fx-background-color: #a8a0a0; /* Example background color */
+
+    /* Add more styling properties as needed */
+    -fx-background-radius: 30;
+    -fx-font-family:'SF Pro Display Medium';
+
+    -fx-font-size: 14;
+    -fx-text-fill: white;
+}
+.my-deleteButton:hover {
+    /* Define your styling properties for hover state */
+    -fx-background-color: lightblue; /* Example hover background color */
+    -fx-text-fill: black; /* Example hover text color */
 }
 
 .deletebutton
@@ -285,4 +407,24 @@
 .menu-item
 {
     -fx-background-color: linear-gradient(to bottom,#013B66,#00AFFF) ;
+}
+
+.chart-content{
+    -fx-background-color: white;
+}
+
+.default-color0.chart-bar {
+    -fx-bar-fill: #32679F;
+
+
+}
+.default-color1.chart-bar {
+
+    -fx-bar-fill: #b44e52;
+
+
+}
+.default-color2.chart-bar {
+    -fx-bar-fill: #8CD5EF;
+    -fx-background-radius: 20 20 0 0;
 }
