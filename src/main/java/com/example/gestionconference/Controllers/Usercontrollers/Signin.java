@@ -65,8 +65,7 @@ public class Signin {
         assert signuplink != null : "fx:id=\"signuplink\" was not injected: check your FXML file 'signin.fxml'.";
         assert fermer != null : "fx:id=\"fermer\" was not injected: check your FXML file 'signin.fxml'.";
         assert forgotpass != null : "fx:id=\"forgotpass\" was not injected: check your FXML file 'signin.fxml'.";
-        login.setText("melek");
-        password.setText("password");
+       
 
     }
     @FXML

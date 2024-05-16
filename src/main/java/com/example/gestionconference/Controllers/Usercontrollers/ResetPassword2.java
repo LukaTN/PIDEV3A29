@@ -86,7 +86,7 @@ public class ResetPassword2 {
             }
         }
         else {
-            showAlert(Alert.AlertType.ERROR, "Error", "Incorrect Current Password", "Please enter the correct current password.");
+            showAlert(Alert.AlertType.ERROR, "Error", "Incorrect Code", "Please enter the correct current password.");
 
         }
     }
