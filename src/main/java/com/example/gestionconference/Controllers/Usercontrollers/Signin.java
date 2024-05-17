@@ -19,6 +19,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 import com.example.gestionconference.Services.UserServices.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Signin {
 
@@ -65,13 +66,16 @@ public class Signin {
         assert signuplink != null : "fx:id=\"signuplink\" was not injected: check your FXML file 'signin.fxml'.";
         assert fermer != null : "fx:id=\"fermer\" was not injected: check your FXML file 'signin.fxml'.";
         assert forgotpass != null : "fx:id=\"forgotpass\" was not injected: check your FXML file 'signin.fxml'.";
-       
+        login.setText("melek");
+        password.setText("password");
 
     }
     @FXML
     void loginButtonOnAction(ActionEvent event) throws SQLException, IOException {
         String username = login.getText();
         String pass = password.getText();
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+
         if (username.isEmpty() || pass.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Error");
@@ -91,7 +95,7 @@ public class Signin {
             }
             else
             {
-                if (!user.getPassword().equals(pass)) {
+                if (!passwordEncoder.matches(pass,user.getPassword()) ){
                     Alert alert = new Alert(Alert.AlertType.ERROR);
                     alert.setTitle("Error");
                     alert.setHeaderText(null);
@@ -181,4 +185,3 @@ public class Signin {
     }
 
 }
-

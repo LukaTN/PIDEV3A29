@@ -8,6 +8,8 @@ import com.example.gestionconference.Util.UserUtils.Mydatabase;
 import com.example.gestionconference.Models.UserModels.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 
 public class UserService implements iCrud<User> {
 
@@ -48,19 +50,20 @@ public class UserService implements iCrud<User> {
             System.out.println("User with username '" + user.getUsername() + "' already exists.");
             return false;
         }
+        BCryptPasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
 
         // SQL query to insert a new user
-        String sql = "INSERT INTO user (username, email, password, numtel, nom, prenom,role,profile_picture) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO user (username, email, password, numtel, nom, prenom,role,roles) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement preparedStatement = connection.prepareStatement(sql)) {
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getMail());
-            preparedStatement.setString(3, user.getPassword());
+            preparedStatement.setString(3, passwordEncoder.encode(user.getPassword()));
             preparedStatement.setInt(4, user.getPhone());
             preparedStatement.setString(5, user.getNom());
             preparedStatement.setString(6, user.getPrenom());
             preparedStatement.setString(7, user.getRole());
-            preparedStatement.setBytes(8, user.getProfilePicture());
+            preparedStatement.setString(8, "[\"ROLE_USER\"]");
             preparedStatement.executeUpdate();
 
             System.out.println("User added successfully.");
@@ -111,15 +114,15 @@ public class UserService implements iCrud<User> {
     @Override
     public boolean delete(String username) throws SQLException {
         if (userExistsByUsername(username)){
-        try {
-            String sql = "delete from user where username = ?";
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1, username);
-            preparedStatement.executeUpdate();
-            return true;
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
-        }}
+            try {
+                String sql = "delete from user where username = ?";
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1, username);
+                preparedStatement.executeUpdate();
+                return true;
+            } catch (SQLException e) {
+                System.err.println(e.getMessage());
+            }}
         else {
             System.out.println("User with username '" + username + "' does not exist.");
         }
@@ -129,25 +132,24 @@ public class UserService implements iCrud<User> {
     @Override
     public boolean update(User user) throws SQLException {
         if (userExistsByUsername(user.getUsername())){
-        String sql = "update user set username = ?,  email = ?, password = ?, numtel = ?, nom = ?, prenom = ?, profile_picture=?,role=? where username=?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
-            preparedStatement.setString(1, user.getUsername());
-            preparedStatement.setString(2, user.getMail());
-            preparedStatement.setString(3, user.getPassword());
-            preparedStatement.setInt(4, user.getPhone());
-            preparedStatement.setString(5, user.getNom());
-            preparedStatement.setString(6, user.getPrenom());
-            preparedStatement.setString(9, user.getUsername());
-            preparedStatement.setBytes(7, user.getProfilePicture());
-            preparedStatement.setString(8, user.getRole());
-            preparedStatement.executeUpdate();
-            System.out.println("Updated successfully");
-            return true;
+            String sql = "update user set username = ?,  email = ?, password = ?, numtel = ?, nom = ?, prenom = ?,role=? where username=?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(sql);) {
+                preparedStatement.setString(1, user.getUsername());
+                preparedStatement.setString(2, user.getMail());
+                preparedStatement.setString(3, user.getPassword());
+                preparedStatement.setInt(4, user.getPhone());
+                preparedStatement.setString(5, user.getNom());
+                preparedStatement.setString(6, user.getPrenom());
+                preparedStatement.setString(9, user.getUsername());
+                preparedStatement.setString(7, user.getRole());
+                preparedStatement.executeUpdate();
+                System.out.println("Updated successfully");
+                return true;
 
-        } catch
-        (SQLException e) {
-            System.err.println(e.getMessage());
-        }}
+            } catch
+            (SQLException e) {
+                System.err.println(e.getMessage());
+            }}
         else {
             System.out.println("User with username '" + user.getUsername() + "' does not exist.");
         }
@@ -172,7 +174,7 @@ public class UserService implements iCrud<User> {
                 user.setNom(resultSet.getString("nom"));
                 user.setPrenom(resultSet.getString("prenom"));
                 user.setRole(resultSet.getString("role"));
-                user.setProfilePicture(resultSet.getBytes("profile_picture"));
+                //user.setProfilePicture(resultSet.getBytes("profile_picture"));
 
                 return user;
             }
@@ -198,7 +200,7 @@ public class UserService implements iCrud<User> {
                 user.setNom(resultSet.getString("nom"));
                 user.setPrenom(resultSet.getString("prenom"));
                 user.setRole(resultSet.getString("role"));
-                user.setProfilePicture(resultSet.getBytes("profile_picture"));
+
 
                 return user;
             }

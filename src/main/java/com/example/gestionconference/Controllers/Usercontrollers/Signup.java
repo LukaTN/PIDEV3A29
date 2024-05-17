@@ -19,6 +19,7 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.UserServices.UserService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 public class Signup {
 
@@ -78,7 +79,7 @@ public class Signup {
     @FXML
     private void choosePicture() {
         FileChooser fileChooser = new FileChooser();
-        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg"));
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Image Files", ".png", ".jpg", "*.jpeg"));
 
         File selectedFile = fileChooser.showOpenDialog(null);
 
@@ -183,7 +184,7 @@ public class Signup {
 
     private boolean validatePassword(String password, String confirmPassword) {
 
-        if (password.length() < 8) {
+        if (password.length() < 8 ){
             showAlert(Alert.AlertType.ERROR, "Error", "Weak Password", "Password must be at least 8 characters long.");
             return false;
         } else if (!password.equals(confirmPassword)) {
