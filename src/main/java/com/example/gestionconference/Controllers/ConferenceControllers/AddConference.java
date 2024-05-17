@@ -148,6 +148,10 @@ public class AddConference  implements Initializable {
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml"));
         Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        ConferenceList conferenceList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        conferenceList.initData(user);
         Scene scene = new Scene(root);
         Stage stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         stage.setScene(scene);

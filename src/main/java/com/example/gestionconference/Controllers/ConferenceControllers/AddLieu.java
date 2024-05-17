@@ -2,6 +2,7 @@ package com.example.gestionconference.Controllers.ConferenceControllers;
 
 
 
+import com.example.gestionconference.Controllers.Usercontrollers.Accountmanagement;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
@@ -14,6 +15,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
 
@@ -52,6 +54,16 @@ public class AddLieu implements Initializable  {
     private Text finalResp;
 
     private User user;
+    @FXML
+    private TextField TFOrgName;
+    @FXML
+    private ImageView imageUser;
+
+    @FXML
+    private Text role;
+
+    @FXML
+    private Text username;
 
 
     ControllerCommon cc = new ControllerCommon();
@@ -113,7 +125,16 @@ public class AddLieu implements Initializable  {
 
     @FXML
     void onCancel(ActionEvent event) throws IOException {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
+        Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        AddConference lieuList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        lieuList.initData(user);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     void clearFields() {
@@ -123,12 +144,30 @@ public class AddLieu implements Initializable  {
         TFPlaceNom.setText("");
     }
 
-    public void toPlaces(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/LieuList.fxml",TFZone);
+    public void toPlaces(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/LieuList.fxml"));
+        Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        LieuList lieuList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        lieuList.initData(user);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
-    public void toNewConf(ActionEvent actionEvent) {
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml",TFZone);
+    public void toNewConf(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/Conference.fxml"));
+        Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        AddConference lieuList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        lieuList.initData(user);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     @FXML
@@ -149,14 +188,47 @@ public class AddLieu implements Initializable  {
 
     public void initData(User user) {
         this.user=user;
-//        username.setText(user.getUsername());
-//        role.setText(user.getRole());
-//        try {
-//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
-//            imageUser.setImage(image);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+        username.setText(user.getUsername());
+        role.setText(user.getRole());
+        try {
+            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+            imageUser.setImage(image);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+    }
+    @FXML
+    void toAccountManagemnt(MouseEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/Accountmanagement.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+
+            // Get the controller of the loaded FXML file
+            Accountmanagement accountmanagement = loader.getController();
+
+            // Pass user details to the Accountmanagement controller
+            accountmanagement.initData(user);
+
+            // Set the new scene
+            Stage stage = (Stage) TFCapacity.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    @FXML
+    public void logout(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/UserFXML/signin.fxml"));
+            Parent root = loader.load();
+            Scene scene = new Scene(root);
+            Stage stage = (Stage) TFCapacity.getScene().getWindow();
+            stage.setScene(scene);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
 

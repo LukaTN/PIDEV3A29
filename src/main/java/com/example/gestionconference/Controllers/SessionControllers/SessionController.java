@@ -513,7 +513,7 @@ public class SessionController  implements Initializable {
     }
     public void setSelectedConference(Conference selectedConference) {
         this.selectedConference = selectedConference;
-
+        sessionList.addAll(ss.getSessionsByConferenceId(selectedConference.getId()));
 
     }
 

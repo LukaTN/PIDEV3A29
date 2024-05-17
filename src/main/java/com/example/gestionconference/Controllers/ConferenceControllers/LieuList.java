@@ -8,14 +8,23 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.InputMethodEvent;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import org.apache.commons.math3.analysis.function.Add;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -59,6 +68,15 @@ public class LieuList implements Initializable {
     private TextField TFZone;
 
     private User user;
+
+    @FXML
+    private ImageView imageUser;
+
+    @FXML
+    private Text role;
+
+    @FXML
+    private Text username;
 
     ControllerCommon cc = new ControllerCommon();
 
@@ -157,9 +175,18 @@ public class LieuList implements Initializable {
     }
 
 
-    public void newPlace(ActionEvent actionEvent) {
+    public void newPlace(ActionEvent actionEvent) throws IOException {
 
-        cc.jump("Add Place", "/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml", TFZone);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/AddLieu.fxml"));
+        Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        AddLieu lieuList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        lieuList.initData(user);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node) actionEvent.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
 
@@ -183,20 +210,20 @@ public class LieuList implements Initializable {
 
     @FXML
     void onMouseClickedGoverment(MouseEvent event) {
-        List<String> states = StatesApi.getbyCountry("Tunisia");
+        List<String> states = StatesApi.getbyCountry(TFPlaceNom.getText());
         LDGov.getItems().addAll(states);
     }
 
     public void initData(User user) {
-//        this.user = user;
-//        username.setText(user.getUsername());
-//        role.setText(user.getRole());
-//        try {
-//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
-//            imageUser.setImage(image);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+        this.user = user;
+        username.setText(user.getUsername());
+        role.setText(user.getRole());
+        try {
+            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+            imageUser.setImage(image);
+       } catch (Exception e) {
+            System.out.println(e);
+        }
 
     }
 }

@@ -5,15 +5,20 @@ import com.example.gestionconference.Models.ConferenceModels.ConferenceType;
 import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
+import com.example.gestionconference.Services.ConferenceService.LieuServices;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.text.Text;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -24,7 +29,8 @@ import java.net.URL;
 
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.time.LocalDate;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -60,19 +66,54 @@ public class UpdateConference implements Initializable {
     private User user;
 
 
+    @FXML
+    private TextField TFOrgName;
+    @FXML
+    private ImageView imageUser;
+
+    @FXML
+    private Text role;
+
+    @FXML
+    private Text username;
+
+
     ControllerCommon cc = new ControllerCommon();
     private Conference selectedConference; // Added field to store the selected conference
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+        LieuServices ser = new LieuServices();
+        try {
+            // Retrieve locations from the service
+            lieux = ser.getAllLocations(); // Assuming Location is the class representing a location
+            // Extract location names and add them to the ListView
+            List<String> locationNames = new ArrayList<>();
+            for (Lieu lieu : lieux) {
+                locationNames.add(lieu.getLabel());
+            }
+            LDLocations.getItems().addAll(locationNames);
+        } catch (SQLException e) {
+            // Handle SQL exception gracefully, like logging or showing an error message
+            System.out.println(e.getMessage()); // For debugging purposes, you might want to log the exception
+        }
     }
 
 
     @FXML
     void onViewList(ActionEvent event) throws IOException {
 
-        cc.jump("Confera", "/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml", TFConfName);
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/ConferenceFXML/ConferenceList.fxml"));
+        Parent root = loader.load();
+        // Get the controller of the loaded FXML file
+        ConferenceList lieuList = loader.getController();
+        // Pass user details to the Accountmanagement controller
+        lieuList.initData(user);
+        Scene scene = new Scene(root);
+        Stage stage = (Stage)((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(scene);
+        stage.show();
     }
 
     public void setSelectedConference(Conference selectedConference) {
@@ -80,6 +121,8 @@ public class UpdateConference implements Initializable {
         TFConfName.setText(selectedConference.getName());
         TASubject.setText(selectedConference.getSubject());
         SpBudget.setText(String.valueOf(selectedConference.getBudget()));
+        TFDate.setValue(selectedConference.getDate().toLocalDate());
+
         Image existingImage = new Image("file:" + selectedConference.getImage());
         imageConf.setImage(existingImage);
         selectedConference.setType(ChTypeConf.isSelected());
@@ -176,13 +219,27 @@ public class UpdateConference implements Initializable {
 
     public void initData(User user) {
         this.user = user;
-//        username.setText(user.getUsername());
-//        role.setText(user.getRole());
-//        try {
-//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
-//            imageUser.setImage(image);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+        username.setText(user.getUserName());
+        role.setText(user.getRole());
+        try {
+            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
+            imageUser.setImage(image);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+    }
+
+    public void onSelectLocation(ActionEvent actionEvent) {
+        selectedValue = LDLocations.getValue();
+        if (selectedValue != null) {
+
+            lieuId = lieux.stream()
+                    .filter(lieu -> selectedValue.equals(lieu.getLabel()))
+                    .mapToInt(Lieu::getId)
+                    .findFirst()
+                    .orElse(-1);
+            System.out.println(lieuId);
+        }
     }
 }

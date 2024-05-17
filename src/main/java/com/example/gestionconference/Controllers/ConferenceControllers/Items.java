@@ -6,6 +6,7 @@ import com.example.gestionconference.Models.ConferenceModels.Lieu;
 import com.example.gestionconference.Models.UserModels.User;
 import com.example.gestionconference.Services.ConferenceService.ConferenceServices;
 import com.example.gestionconference.Services.ConferenceService.LieuServices;
+import com.example.gestionconference.Services.UserServices.UserService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,6 +18,7 @@ import javafx.scene.control.ButtonType;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.ByteArrayInputStream;
@@ -27,7 +29,14 @@ import java.text.SimpleDateFormat;
 public class Items {
 
     private User user;
+    @FXML
+    private ImageView imageUser;
 
+    @FXML
+    private Text role;
+
+    @FXML
+    private Text username;
 
     @FXML
     private Label capacity;
@@ -67,6 +76,9 @@ public class Items {
 
     private Conference conference;
 
+
+
+
     private ConferenceServices conferenceServices = new ConferenceServices();
 
     private LieuServices lieuServices = new LieuServices();
@@ -88,8 +100,13 @@ public class Items {
             // Get the controller for the UpdateConference scene
             UpdateConference updateConferenceController = loader.getController();
 
+
+            updateConferenceController.initData(user);
             // Set the selected conference in UpdateConference controller
             updateConferenceController.setSelectedConference(conference);
+
+            // Pass user details to the UpdateConference controller
+
 
             // Create a new scene and set it on the stage
             Scene scene = new Scene(root);
@@ -143,10 +160,19 @@ public class Items {
         confType.setText(conference.getType().toString());
         confBudget.setText(String.valueOf(conference.getBudget()));
         Lieu lieu = lieuServices.getLieuByid(lieu_id);
-        city.setText(lieu.getPlace());
-        capacity.setText(String.valueOf(lieu.getCapacity()));
-        goverment.setText(lieu.getZone());
-        label.setText(lieu.getLabel());
+        if (lieu != null) {
+
+            city.setText(lieu.getPlace());
+            capacity.setText(String.valueOf(lieu.getCapacity()));
+            goverment.setText(lieu.getZone());
+            label.setText(lieu.getLabel());
+        }else {
+            city.setText("");
+            capacity.setText("");
+            goverment.setText("");
+            label.setText("");
+        }
+
         // Assuming your Conference class has a property for image path named "imagePath"
         String imagePath = conference.getImage();
 
@@ -161,30 +187,43 @@ public class Items {
 
     }
 
-    public void initData(User user) {
-        this.user = user;
-//        username.setText(user.getUsername());
-//        role.setText(user.getRole());
-//        try {
-//            Image image = new Image(new ByteArrayInputStream(user.getProfilePicture()));
-//            imageUser.setImage(image);
-//        } catch (Exception e) {
-//            System.out.println(e);
-//        }
+    public void initData(User user) throws SQLException {
+        UserService us = new UserService();
+        this.user = us.getById(1);
+
     }
 
     public void toSessions(ActionEvent actionEvent) {
+        Stage stage = (Stage) modifierBT.getScene().getWindow();
+
         try {
+            // Load the UpdateConference scene
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/gestionconference/Fxml/SessionFXML/Sessions.fxml"));
             Parent root = loader.load();
+
+            // Get the controller for the UpdateConference scene
+            SessionController updateConferenceController = loader.getController();
+
+
+            //updateConferenceController.initData(user);
+            // Set the selected conference in UpdateConference controller
+            updateConferenceController.setSelectedConference(conference);
+
+            // Pass user details to the UpdateConference controller
+
+
+            // Create a new scene and set it on the stage
             Scene scene = new Scene(root);
-            Stage stage = (Stage) event_aff.getScene().getWindow();
-            SessionController sessionController = loader.getController();
-            sessionController.setSelectedConference(conference);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
+            Alert errorAlert = new Alert(Alert.AlertType.ERROR);
+            errorAlert.setTitle("Erreur");
+            errorAlert.setHeaderText(null);
+            errorAlert.setContentText("Error loading Sessions scene");
+            errorAlert.showAndWait();
+            // Handle the exception (show an alert or log the error)
         }
     }
 }

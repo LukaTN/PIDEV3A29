@@ -102,17 +102,17 @@
                   <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                   <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
                      <children>
-                        <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                        <Text fx:id="username" layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                        <ImageView fx:id="imageUser" fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
                            <image>
                               <Image url="@../../Images/Mask group.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                        <Text fx:id="role" layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
                            <font>
                               <Font size="13.0" />
                            </font>

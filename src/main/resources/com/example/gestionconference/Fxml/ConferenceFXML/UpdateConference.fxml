@@ -17,6 +17,8 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.ComboBox?>
 <BorderPane prefHeight="720.0" prefWidth="1200.0" styleClass="parent" stylesheets="@../../Styles/StyleSheet.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.gestionconference.Controllers.ConferenceControllers.UpdateConference">
    <left>
       <AnchorPane prefHeight="132.0" prefWidth="80.0" BorderPane.alignment="CENTER">
@@ -94,17 +96,17 @@
                   <Separator orientation="VERTICAL" prefHeight="30.0" prefWidth="0.0" />
                   <Pane prefHeight="60.0" prefWidth="170.0" styleClass="profile">
                      <children>
-                        <Text layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
+                        <Text fx:id="username" layoutX="62.0" layoutY="22.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Bold" text="Mokded Shili">
                            <font>
                               <Font size="15.0" />
                            </font>
                         </Text>
-                        <ImageView fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
+                        <ImageView fx:id="imageUser" fitHeight="39.0" fitWidth="42.0" layoutX="8.0" layoutY="5.0">
                            <image>
                               <Image url="@../../Images/Mask group.png" />
                            </image>
                         </ImageView>
-                        <Text layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
+                        <Text fx:id="role" layoutX="63.0" layoutY="38.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="sf-display-pro-Regular" text="Organizer">
                            <font>
                               <Font size="13.0" />
                            </font>
@@ -125,10 +127,18 @@
                   <VBox layoutX="613.0" layoutY="97.0" prefHeight="363.0" prefWidth="357.0" spacing="20.0" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css">
                      <children>
                         <TextField fx:id="TFConfName" prefHeight="26.0" prefWidth="200.0" promptText="Conference Name" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
+                        <DatePicker fx:id="TFDate" prefHeight="25.0" prefWidth="336.0" promptText="Date" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
                         <TextArea fx:id="TASubject" prefHeight="75.0" prefWidth="200.0" promptText="Subject" styleClass="text-area" stylesheets="@../../Styles/StyleSheet.css" />
                         <TextField fx:id="SpBudget" prefHeight="26.0" prefWidth="200.0" promptText="Budget" styleClass="text-field" stylesheets="@../../Styles/StyleSheet.css" />
 
-                        <CheckBox fx:id="ChTypeConf" mnemonicParsing="false" text="Private" />
+                        <CheckBox fx:id="ChTypeConf" mnemonicParsing="false" stylesheets="@../../Styles/StyleSheet.css" text="Private" />
+                        <HBox prefHeight="29.0" prefWidth="331.0" spacing="20.0">
+                           <children><ComboBox fx:id="LDLocations" onAction="#onSelectLocation" prefHeight="23.0" prefWidth="144.0" promptText="Location" styleClass="widget" stylesheets="@../../Styles/StyleSheet.css" />
+                           </children>
+                           <padding>
+                              <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                           </padding>
+                        </HBox>
                      </children>
                      <padding>
                         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
