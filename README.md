@@ -8,8 +8,6 @@ Confera est une application complète pour mobile, [web](https://github.com/ahme
 
 Jupyter est utilisé pour le [code de machine learning](machine_learning-stat.ipynb) afin de traiter nos statistiques de présence et d'évaluer plus efficacement nos sessions.
 
-![chart (8)](https://github.com/ahmeddouss/conferaWeb/assets/118319834/340b7d82-ae16-4e05-9391-03047e4bf1c3)
-
 
 ## Arduino IDE
 
@@ -30,14 +28,14 @@ Mercure est le serveur auquel tous les utilisateurs se connectent pour recevoir 
 
 ![mercure](https://github.com/ahmeddouss/conferaWeb/assets/118319834/32ea5b68-0406-4714-a397-0deb74559bc2)
 
-Remarque: Lorsque les deux application web et desktop marche simultaniment un code a été ajouter pour donnée la priorité de l'enregistrement dans le Web pour évité la duplication des données.
+
 
 Utilisez cette commande dans PowerShell pour exécuter Mercure :
 
 ```powershell
 $env:MERCURE_PUBLISHER_JWT_KEY='!ChangeThisMercureHubJWTSecretKey!'; $env:MERCURE_SUBSCRIBER_JWT_KEY='!ChangeThisMercureHubJWTSecretKey!'; .\mercure.exe run --config Caddyfile.dev
 ```
-
+- **Remarque:** Lorsque les deux application web et desktop marche simultaniment un code a été ajouter pour donnée la priorité de l'enregistrement dans le Web pour évité la duplication des données.
 
 ---
 # Interfaces de Confera
